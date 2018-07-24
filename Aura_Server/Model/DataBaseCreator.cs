@@ -13,20 +13,22 @@ namespace Aura_Server.Model
         //класс, отвечающий за создание баз данных
 
 
-        public void CreateDateBase(string dbFileName)
+        public void CreateDataBase(string dbFileName)
         {
-            string commandString = CreateCommandString_LogTable();
+            string commandString = CreateCommandString_UsersTable();
             CreateDataBase(dbFileName, commandString);
 
-            commandString = CreateCommandString_UsersTable();
-            CreateDataBase(dbFileName, commandString);
-
-            commandString = CreateCommandString_PurchasesTable();  
+            commandString = CreateCommandString_PurchasesTable();
             CreateDataBase(dbFileName, commandString);
 
         }
 
+        public void CreateDataBaseForLogs(string dbFileName)
+        {
+            string commandString = CreateCommandString_LogTable();
+            CreateDataBase(dbFileName, commandString);
 
+        }
 
         private void CreateDataBase(string dbFileName, string commandString)
         {
@@ -82,7 +84,7 @@ namespace Aura_Server.Model
             sb.Append("name TEXT UNIQUE, ");
             sb.Append("roleID INTEGER, ");
             sb.Append("dateOfCreation TEXT, ");
-            sb.Append("dateOfLastEnter TEXT)");          
+            sb.Append("dateOfLastEnter TEXT)");
 
             return sb.ToString();
 

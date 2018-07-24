@@ -10,20 +10,29 @@ using System.Data;
 namespace Aura_Server
 {
     class Program
-    {
-        private static string tempDBstring = "tempDataBase.sqlite";
-
+    {       
         static void Main()
         {
             try
             {
-                DataBaseCreator creator = new DataBaseCreator();
-                DataBaseManager dataBase = new DataBaseManager();
+                string dbForLogsFileName = "tempDataBaseForLogs.sqlite";
+                string dbFileName = "tempDataBase.sqlite";
 
-                creator.CreateDateBase(tempDBstring);
+                DataBaseCreator creator = new DataBaseCreator();
+                creator.CreateDataBaseForLogs(dbForLogsFileName);
+                creator.CreateDataBase(dbFileName);
                 creator = null;
-                dataBase.ConnectToDataBase(tempDBstring);
+
+                LogManager.Instance.InitializeLogManager(dbForLogsFileName);
+
+                DataBaseManager dataBase = new DataBaseManager();
+                dataBase.ConnectToDataBase(dbFileName);
+
+                LogManager.Log(-1, "Connection to DBs is established");
                 
+
+
+
             }
 
             catch (Exception ex)

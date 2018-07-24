@@ -15,5 +15,21 @@ namespace Aura_Server.Model
         public string message;          //описание действия
         public string logDateTime;      //дата и время, когда было совершено действие
 
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+            sb.Append(logDateTime);
+            sb.Append("] UserID= ");
+            sb.Append(userID);
+            sb.Append("\tPurchaseID= ");
+            sb.Append(purchaseID);
+            sb.Append("\t");
+            sb.Append(message);
+
+            return sb.ToString();
+
+        }
     }
 }
