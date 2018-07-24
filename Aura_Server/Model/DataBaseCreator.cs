@@ -14,12 +14,15 @@ namespace Aura_Server.Model
 
         public void CreateDateBase(string dbFileName)
         {
-            string commandString =
-                CreateCommandString_LogTable() +
-                CreateCommandString_UsersTable() +
-                CreateCommandString_PurchasesTable();
-
+            string commandString = CreateCommandString_LogTable();
             CreateDataBase(dbFileName, commandString);
+
+            commandString = CreateCommandString_UsersTable();
+            CreateDataBase(dbFileName, commandString);
+
+            commandString = CreateCommandString_PurchasesTable();  
+            CreateDataBase(dbFileName, commandString);
+
         }
 
 
@@ -53,6 +56,7 @@ namespace Aura_Server.Model
             //создать commandString для таблицы логов
 
             return "";
+
         }
 
         private string CreateCommandString_UsersTable()
@@ -61,23 +65,51 @@ namespace Aura_Server.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("CREATE TABLE IF NOT EXISTS Users (");
             sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
-            sb.Append("login TEXT, ");
+            sb.Append("login TEXT UNIQUE, ");
             sb.Append("password TEXT, ");
-            sb.Append("name TEXT, ");
+            sb.Append("name TEXT UNIQUE, ");
             sb.Append("roleID INTEGER, ");
             sb.Append("dateOfCreation TEXT, ");
-            sb.Append("dateOfLastEnter TEXT, ");
-            sb.Append(")");
+            sb.Append("dateOfLastEnter TEXT)");          
 
             return sb.ToString();
+
         }
 
         private string CreateCommandString_PurchasesTable()
         {
             //создать commandString для таблицы закупок
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IF NOT EXISTS Purchases (");
+            sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+            sb.Append("employeID INTEGER, ");
+            sb.Append("organizationID INTEGER, ");
+            sb.Append("purchaseMethodID INTEGER, ");
+            sb.Append("purchaseName TEXT, ");
+            sb.Append("statusID INTEGER, ");
+            sb.Append("purchacePrice REAL, ");
 
-            return "";
+            sb.Append("purchaseEisNum TEXT, ");
+            sb.Append("purchaseEisDate TEXT, ");
+            sb.Append("bidsStartDate TEXT, ");
+            sb.Append("bidsEndDate TEXT, ");
+            sb.Append("bidsOpenDate TEXT, ");
+            sb.Append("bidsFirstPartDate TEXT, ");
+            sb.Append("auctionDate TEXT, ");
+            sb.Append("bidsSecondPartDate TEXT, ");
+            sb.Append("bidsFinishDate TEXT, ");
+
+            sb.Append("contractPrice REAL, ");
+            sb.Append("contractDatePlan TEXT, ");
+            sb.Append("contractDateLast TEXT, ");
+            sb.Append("contractDateReal TEXT, ");
+            sb.Append("reestrDateLast TEXT, ");
+            sb.Append("reestrNumber TEXT, ");
+            sb.Append("comments TEXT)");
+
+            return sb.ToString();
         }
 
     }
+
 }

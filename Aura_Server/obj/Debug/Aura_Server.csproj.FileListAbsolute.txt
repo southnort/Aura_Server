@@ -5,3 +5,7 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.c
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.exe
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.pdb
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csproj.CopyComplete
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EnvDTE.dll
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\stdole.dll
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EnvDTE.xml
