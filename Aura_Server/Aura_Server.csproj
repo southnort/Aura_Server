@@ -61,7 +61,9 @@
   <ItemGroup>
     <Compile Include="Controller\DataBaseAdapter.cs" />
     <Compile Include="Controller\DataBaseManager.cs" />
+    <Compile Include="Controller\LogManager.cs" />
     <Compile Include="Model\DataBaseCreator.cs" />
+    <Compile Include="Model\LogNode.cs" />
     <Compile Include="Model\Purchase.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />

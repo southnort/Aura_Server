@@ -10,6 +10,7 @@ namespace Aura_Server.Model
     {
         //класс, описывающий пользователя системы
 
+
         public int ID;
         public string login;
         public string password;

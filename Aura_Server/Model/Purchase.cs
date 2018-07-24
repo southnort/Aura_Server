@@ -9,6 +9,8 @@ namespace Aura_Server.Model
     class Purchase
     {
         //класс, описывающий объект закупки
+
+
         public int id;                      //ИД закупки в БД
         public int employeID;               //индекс юзера, ответственного за закупку
         public int organizationID;          //индекс организации - заказчика

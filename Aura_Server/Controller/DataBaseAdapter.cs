@@ -11,11 +11,15 @@ namespace Aura_Server.Controller
     {
         //класс-переводчик между программой и базой данных
         //переводит пользовательские команды в запросы SQL и наоборот
+
+
         protected DataBaseManager dataBase;
+        protected LogManager logManager;
 
         public DataBaseAdapter(DataBaseManager manager)
         {
             dataBase = manager;
+            logManager = new LogManager();
         }
 
         protected string ExecuteCommand(string sqlCommand)
@@ -36,6 +40,8 @@ namespace Aura_Server.Controller
     class UsersTableAdapter : DataBaseAdapter
     {
         //класс для взаимодействия с таблицей "Users" в БД
+
+
         public UsersTableAdapter(DataBaseManager manager) : base(manager)
         {
 
@@ -78,6 +84,8 @@ namespace Aura_Server.Controller
     class PurchasesTableAdapter : DataBaseAdapter
     {
         //класс для взаимодействия с таблицей "Purchases" в БД
+
+
         public PurchasesTableAdapter(DataBaseManager manager) : base(manager)
         {
         }

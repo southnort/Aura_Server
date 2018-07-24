@@ -13,6 +13,8 @@ namespace Aura_Server.Controller
     {
         //менеджер, осуществляющий связь между БД и программой
         //один менеджер на одну базу
+
+
         private SQLiteConnection connection;
         private SQLiteCommand command;
 
@@ -70,6 +72,9 @@ namespace Aura_Server.Controller
 
         }
 
+
+
+        
     }
 
 }

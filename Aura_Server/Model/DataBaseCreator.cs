@@ -12,6 +12,7 @@ namespace Aura_Server.Model
     {
         //класс, отвечающий за создание баз данных
 
+
         public void CreateDateBase(string dbFileName)
         {
             string commandString = CreateCommandString_LogTable();
@@ -31,6 +32,7 @@ namespace Aura_Server.Model
         {
             //если нет БД - создать её. Если есть БД, 
             //добавить в неё всё отсутствующие таблицы из commandString
+
 
             if (!File.Exists(dbFileName))
             {
@@ -55,13 +57,23 @@ namespace Aura_Server.Model
         {
             //создать commandString для таблицы логов
 
-            return "";
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IF NOT EXISTS Logs (");
+            sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+            sb.Append("userID INTEGER, ");
+            sb.Append("message TEXT, ");
+            sb.Append("logDateTime TEXT)");
+
+            return sb.ToString();
 
         }
 
         private string CreateCommandString_UsersTable()
         {
             //создать commandString для таблицы юзеров
+
+
             StringBuilder sb = new StringBuilder();
             sb.Append("CREATE TABLE IF NOT EXISTS Users (");
             sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
