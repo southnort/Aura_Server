@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Aura_Server.Model
 {
-    class User
+    public class User
     {
         //класс, описывающий пользователя системы
 
-
+                   
         public int ID;
         public string login;
         public string password;

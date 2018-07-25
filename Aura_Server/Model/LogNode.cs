@@ -9,7 +9,7 @@ namespace Aura_Server.Model
     {
         //класс, используемый в системе логирования
         //описывает одно конкретное действие одного пользователя в один момент
-        public int id;              
+        public int id;
         public int userID;              //ид юзера, совершившего действие
         public int purchaseID;          //ид закупки, которую изменили
         public string message;          //описание действия
@@ -21,10 +21,17 @@ namespace Aura_Server.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("[");
             sb.Append(logDateTime);
-            sb.Append("] UserID= ");
-            sb.Append(userID);
-            sb.Append("\tPurchaseID= ");
-            sb.Append(purchaseID);
+            sb.Append("]");
+            if (userID != -1)
+            {
+                sb.Append(" UserID= ");
+                sb.Append(userID);
+            }
+            if (purchaseID != -1)
+            {
+                sb.Append("\tPurchaseID= ");
+                sb.Append(purchaseID);
+            }
             sb.Append("\t");
             sb.Append(message);
 

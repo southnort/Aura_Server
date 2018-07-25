@@ -7,7 +7,7 @@ using Aura_Server.Model;
 
 namespace Aura_Server.Controller
 {
-    abstract class DataBaseAdapter
+    public abstract class DataBaseAdapter
     {
         //класс-переводчик между программой и базой данных
         //переводит пользовательские команды в запросы SQL и наоборот
@@ -37,7 +37,7 @@ namespace Aura_Server.Controller
 
 
 
-    class UsersTableAdapter : DataBaseAdapter
+    public class UsersTableAdapter : DataBaseAdapter
     {
         //класс для взаимодействия с таблицей "Users" в БД
 
@@ -47,8 +47,20 @@ namespace Aura_Server.Controller
 
         }
 
-        public string CreateNewUser(User user)
+        public string AddUser(User user)
         {
+            if (user.ID < 1)
+                return CreateNewUser(user);
+
+            else
+                return RefreshUser(user);
+        }
+
+
+
+        private string CreateNewUser(User user)
+        {
+            //добавить нового юзера в БД
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO Users ('login', 'password', 'name', 'roleID', 'dateOfCreation', 'dateOfLastEnter') values ('");
             sb.Append(user.login);
@@ -63,25 +75,75 @@ namespace Aura_Server.Controller
             sb.Append("', '");
             sb.Append(user.dateOfLastEnter);
             sb.Append("')");
+            return ExecuteCommand(sb.ToString());
 
-            try
+        }
+
+        private string RefreshUser(User user)
+        {
+            //изменить данные в таблице БД
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE Users SET login = '");
+            sb.Append(user.login);
+            sb.Append("', password = '");
+            sb.Append(user.password);
+            sb.Append("', name = '");
+            sb.Append(user.name);
+            sb.Append("', roleID = '");
+            sb.Append(user.roleID);
+            sb.Append("', dateOfCreation = '");
+            sb.Append(user.dateOfCreation);
+            sb.Append("', dateOfLastEnter = '");
+            sb.Append(user.dateOfLastEnter);
+            sb.Append("' WHERE ID = ");
+            sb.Append(user.ID);
+            return ExecuteCommand(sb.ToString());
+
+        }
+
+        public DataTable GetAllUsers()
+        {
+            return
+                 dataBase.GetData("SELECT * FROM Users");
+
+        }
+
+        public User GetUser(int userID)
+        {
+            DataTable table = dataBase.GetData("SELECT * FROM Users WHERE ID = " + userID);
+            var row = table.Rows[0];
+
+            User user = new User();
+            user.ID = int.Parse(row.ItemArray[0].ToString());
+            user.login = (string)row.ItemArray[1];
+            user.password = (string)row.ItemArray[2];
+            user.name = (string)row.ItemArray[3];
+            user.roleID = int.Parse(row.ItemArray[4].ToString());
+
+            return user;
+
+        }
+
+        public bool CheckLoginAndPassword(string login, string password)
+        {
+            //проверка на наличие в БД указанной пары логин/пароль
+
+            DataTable item = dataBase.GetData("SELECT * FROM Users WHERE login = " + login);
+            if (item.Rows.Count < 1) return false;
+
+            else
             {
-                return ExecuteCommand(sb.ToString());
-
+                Console.WriteLine("\n\nLoginIn DB = " + item.Rows[0][1]);
+                Console.WriteLine("Password DB = "+item.Rows[0][2]);
+                Console.WriteLine(login+" "+password);
+                return (string)item.Rows[0][2] == password;
             }
-
-            catch (Exception ex)
-            {
-                throw (new Exception(ex.ToString() + "\n"
-                    + sb.ToString()));
-            }
-
         }
 
     }
 
 
-    class PurchasesTableAdapter : DataBaseAdapter
+    public class PurchasesTableAdapter : DataBaseAdapter
     {
         //класс для взаимодействия с таблицей "Purchases" в БД
 

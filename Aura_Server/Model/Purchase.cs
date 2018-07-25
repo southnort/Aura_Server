@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aura_Server.Model
 {
-    class Purchase
+    public class Purchase
     {
         //класс, описывающий объект закупки
 

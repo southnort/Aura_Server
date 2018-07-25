@@ -8,7 +8,7 @@ using Aura_Server.Model;
 
 namespace Aura_Server.Controller
 {
-    class LogManager
+    public class LogManager
     {
         //класс отвечает за логирование действий пользователей в программе
         //выполнен в виде Singleton
@@ -24,12 +24,10 @@ namespace Aura_Server.Controller
                 userID = userId,
                 message = message,
                 logDateTime = DateTime.Now.ToString(),
+                purchaseID = idOfPurchase,
 
             };
-            if (idOfPurchase >= 0)
-            {
-                node.purchaseID = idOfPurchase;
-            }
+
 
             Instance.Log(node);
 

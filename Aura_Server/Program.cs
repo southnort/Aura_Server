@@ -5,42 +5,45 @@ using System.Text;
 using System.Threading.Tasks;
 using Aura_Server.Model;
 using Aura_Server.Controller;
+using Aura_Server.View;
 using System.Data;
 
 namespace Aura_Server
 {
     class Program
-    {       
+    {
         static void Main()
         {
-            try
-            {
-                string dbForLogsFileName = "tempDataBaseForLogs.sqlite";
-                string dbFileName = "tempDataBase.sqlite";
+            UsersTableAdapter usersDataBase;
+            PurchasesTableAdapter purchasesDataBase;
 
-                DataBaseCreator creator = new DataBaseCreator();
-                creator.CreateDataBaseForLogs(dbForLogsFileName);
-                creator.CreateDataBase(dbFileName);
-                creator = null;
+            //настраиваем соединения с БД            
+            string dbForLogsFileName = "tempDataBaseForLogs.sqlite";
+            string dbFileName = "tempDataBase.sqlite";
 
-                LogManager.Instance.InitializeLogManager(dbForLogsFileName);
+            DataBaseCreator creator = new DataBaseCreator();
+            creator.CreateDataBaseForLogs(dbForLogsFileName);
+            creator.CreateDataBase(dbFileName);
+            creator = null;
 
-                DataBaseManager dataBase = new DataBaseManager();
-                dataBase.ConnectToDataBase(dbFileName);
+            LogManager.Instance.InitializeLogManager(dbForLogsFileName);
 
-                LogManager.Log(-1, "Connection to DBs is established");
-                
+            DataBaseManager dataBase = new DataBaseManager();
+            dataBase.ConnectToDataBase(dbFileName);
+
+            usersDataBase = new UsersTableAdapter(dataBase);
+            purchasesDataBase = new PurchasesTableAdapter(dataBase);
+
+            LogManager.Log(-1, "Connection to DBs established successfully");
 
 
 
-            }
+            //открываем формы   
+            LoginWindow loginWindow = new LoginWindow(usersDataBase);
+            loginWindow.ShowDialog();
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
             
-            Console.Read();
         }
     }
 }

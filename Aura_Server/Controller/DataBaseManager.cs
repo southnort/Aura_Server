@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Aura_Server.Controller
 {
-    class DataBaseManager
+    public class DataBaseManager
     {
         //менеджер, осуществляющий связь между БД и программой
         //один менеджер на одну базу
@@ -63,18 +63,17 @@ namespace Aura_Server.Controller
         }
 
         public DataTable GetData(string queryString)
-        {            
+        {
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(queryString, connection);
             DataTable dataTable = new System.Data.DataTable();
             adapter.Fill(dataTable);
-
             return dataTable;
 
         }
 
 
 
-        
+
     }
 
 }
