@@ -32,7 +32,17 @@ namespace Aura_Server.View
         {
             if (loginTextBox.Text.Length > 0 && passwordTextBox.Text.Length > 0)
             {
-                if (usersDataBase.CheckLoginAndPassword(loginTextBox.Text, passwordTextBox.Text))
+                int userID = usersDataBase.CheckLoginAndPassword(loginTextBox.Text, passwordTextBox.Text);
+                
+                if(userID == -1)
+                {
+                    //если аутентификация не пройдена
+                    resultTextLabel.Text = "Неправильный логин или пароль";
+                    resultTextLabel.ForeColor = Color.Red;
+
+                }
+
+                else
                 {
                     //если аутентификация пройдена
                     resultTextLabel.Text = "Аутентификация пройдена";
@@ -41,13 +51,7 @@ namespace Aura_Server.View
 
                 }
 
-                else
-                {
-                    //если аутентификация не пройдена
-                    resultTextLabel.Text = "Неправильный логин или пароль";
-                    resultTextLabel.ForeColor = Color.Red;
-
-                }
+                
             }
 
         }

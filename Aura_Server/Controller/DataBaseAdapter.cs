@@ -29,7 +29,7 @@ namespace Aura_Server.Controller
 
         protected DataTable GetData(string sqlQuery)
         {
-            return dataBase.GetData(sqlQuery);
+            return dataBase.GetTable(sqlQuery);
 
         }
 
@@ -104,13 +104,13 @@ namespace Aura_Server.Controller
         public DataTable GetAllUsers()
         {
             return
-                 dataBase.GetData("SELECT * FROM Users");
+                 dataBase.GetTable("SELECT * FROM Users");
 
         }
 
         public User GetUser(int userID)
         {
-            DataTable table = dataBase.GetData("SELECT * FROM Users WHERE ID = " + userID);
+            DataTable table = dataBase.GetTable("SELECT * FROM Users WHERE ID = " + userID);
             var row = table.Rows[0];
 
             User user = new User();
@@ -124,19 +124,27 @@ namespace Aura_Server.Controller
 
         }
 
-        public bool CheckLoginAndPassword(string login, string password)
+        public int CheckLoginAndPassword(string login, string password)
         {
             //проверка на наличие в БД указанной пары логин/пароль
+            //true - возвращается ID пользователя. false - возвращается -1
 
-            DataTable item = dataBase.GetData("SELECT * FROM Users WHERE login = " + login);
-            if (item.Rows.Count < 1) return false;
+
+            object ob = dataBase.GetValue("SELECT id FROM Users WHERE login = '" +
+                login + "' AND password = '" + password+ "' AND roleID != '-1'");
+
+
+            //object ob = dataBase.GetValue("SELECT id FROM Users WHERE password = " + password);
+
+            if (ob != null)
+            {
+                LogManager.Log(-1, ob.ToString());
+                return (int)(long)ob;
+            }
 
             else
             {
-                Console.WriteLine("\n\nLoginIn DB = " + item.Rows[0][1]);
-                Console.WriteLine("Password DB = "+item.Rows[0][2]);
-                Console.WriteLine(login+" "+password);
-                return (string)item.Rows[0][2] == password;
+                return -1;
             }
         }
 

@@ -49,29 +49,41 @@ namespace Aura_Server.Controller
 
         public string ExecuteCommand(string commandString)
         {
-            try
-            {
-                command.CommandText = commandString;
-                command.ExecuteNonQuery();
-                return "Success";
-            }
+            //запрос к БД не возвращающий значений
+            LogManager.Log(-1, commandString);
 
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            command.CommandText = commandString;
+            command.ExecuteNonQuery();
+            return "Success";
+
         }
 
-        public DataTable GetData(string queryString)
+        public object GetValue(string queryString)
         {
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(queryString, connection);
-            DataTable dataTable = new System.Data.DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
+            //запрос к БД, предполагающий возвращение единственного значения
+            LogManager.Log(-1, queryString);
+
+            command.CommandText = queryString;
+            return command.ExecuteScalar();
 
         }
 
+        public DataTable GetTable(string queryString)
+        {
+            //запрос к БД, предполагающий возвращение множества значений в виде таблицы
+            LogManager.Log(-1, queryString);
 
+            command.CommandText = queryString;
+            DataSet dataSet = new DataSet();
+            dataSet.Reset();
+            SQLiteDataAdapter ad = new SQLiteDataAdapter(command);
+            ad.Fill(dataSet);
+
+            return dataSet.Tables[0];
+
+        }
+
+       
 
 
     }
