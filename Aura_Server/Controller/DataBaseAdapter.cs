@@ -128,6 +128,7 @@ namespace Aura_Server.Controller
         {
             //проверка на наличие в БД указанной пары логин/пароль
             //true - возвращается ID пользователя. false - возвращается -1
+            //если пользователь заблокирован - возвращается -1
 
 
             object ob = dataBase.GetValue("SELECT id FROM Users WHERE login = '" +
@@ -165,7 +166,7 @@ namespace Aura_Server.Controller
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO Purchases ('employeID', 'organizationID', 'purchaseMethodID', 'purchaseName', ");
             sb.Append("'statusID', 'purchacePrice', 'purchaseEisNum', 'purchaseEisDate', 'bidsStartDate', ");
-            sb.Append("'bidsEndDate, 'bidsOpenDate', 'bidsFirstPartDate', 'auctionDate', 'bidsSecondPartDate', ");
+            sb.Append("'bidsEndDate', 'bidsOpenDate', 'bidsFirstPartDate', 'auctionDate', 'bidsSecondPartDate', ");
             sb.Append("'bidsFinishDate', 'contractPrice', 'contractDatePlan', 'contractDateLast', ");
             sb.Append("'contractDateReal', 'reestrDateLast', 'reestrNumber', 'comments') values ('");
 
@@ -226,6 +227,28 @@ namespace Aura_Server.Controller
                     + sb.ToString()));
             }
 
+
+        }
+
+        public DataTable GetAllPurchases()
+        {
+            //возвращает все закупки в виде таблицы
+            return GetData("SELECT * FROM Purchases");
+
+        }
+
+        public Calendar GetCalendar()
+        {
+            //возвращает все закупки из БД в виде календаря
+            DataTable table = GetAllPurchases();
+            Calendar calendar = new Calendar();
+
+            foreach (DataRow row in table.Rows)
+            {
+                calendar.Add(new Purchase(row));
+            }
+
+            return calendar;
 
         }
 

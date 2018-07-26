@@ -95,6 +95,7 @@ namespace Aura_Server.Model
             //создать commandString для таблицы закупок
             StringBuilder sb = new StringBuilder();
             sb.Append("CREATE TABLE IF NOT EXISTS Purchases (");
+
             sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
             sb.Append("employeID INTEGER, ");
             sb.Append("organizationID INTEGER, ");

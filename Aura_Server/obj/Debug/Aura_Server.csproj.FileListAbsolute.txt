@@ -28,3 +28,5 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.V
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.OpenUserForm.resources
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.UsersDataBaseForm.resources
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csproj.GenerateResource.cache
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.DayInCalendarForm.resources
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchasesCalendarForm.resources

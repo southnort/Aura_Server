@@ -63,13 +63,22 @@
   <ItemGroup>
     <Compile Include="Controller\DataBaseAdapter.cs" />
     <Compile Include="Controller\DataBaseManager.cs" />
+    <Compile Include="Controller\ExtensionsMethods.cs" />
     <Compile Include="Controller\LogManager.cs" />
+    <Compile Include="Model\Calendar\Calendar.cs" />
     <Compile Include="Model\DataBaseCreator.cs" />
+    <Compile Include="Model\Calendar\DayInCalendar.cs" />
     <Compile Include="Model\LogNode.cs" />
     <Compile Include="Model\Purchase.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\DayInCalendarForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\DayInCalendarForm.Designer.cs">
+      <DependentUpon>DayInCalendarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +90,12 @@
     </Compile>
     <Compile Include="View\OpenUserForm.Designer.cs">
       <DependentUpon>OpenUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PurchasesCalendarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PurchasesCalendarForm.Designer.cs">
+      <DependentUpon>PurchasesCalendarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UsersDataBaseForm.cs">
       <SubType>Form</SubType>
@@ -94,11 +109,17 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="View\DayInCalendarForm.resx">
+      <DependentUpon>DayInCalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginWindow.resx">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\OpenUserForm.resx">
       <DependentUpon>OpenUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PurchasesCalendarForm.resx">
+      <DependentUpon>PurchasesCalendarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UsersDataBaseForm.resx">
       <DependentUpon>UsersDataBaseForm.cs</DependentUpon>

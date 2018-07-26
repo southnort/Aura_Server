@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Aura_Server.Model
 {
@@ -10,6 +11,49 @@ namespace Aura_Server.Model
     {
         //класс, описывающий объект закупки
 
+        public Purchase()
+        {
+            purchaseEisDate = bidsStartDate = bidsEndDate =
+                bidsOpenDate = bidsFirstPartDate = auctionDate =
+                bidsSecondPartDate = bidsFinishDate = contractDatePlan =
+                contractDateLast = contractDateReal = reestrDateLast =
+
+                DateTime.MinValue.ToString();
+
+        }
+
+        public Purchase(DataRow row)
+        {
+            //создать закупку из строки БД
+
+            id = (int)(long)row[0];
+            employeID = (int)(long)row[1];
+            organizationID = (int)(long)row[2];
+            purchaseMethodID = (int)(long)row[3];
+            purchaseName = (string)row[4];
+            statusID = (int)(long)row[5];            
+            purchacePrice = (float)(double)row[6];
+
+            purchaseEisNum = (string)row[7];
+            purchaseEisDate = (string)row[8];
+            bidsStartDate = (string)row[9];
+            bidsEndDate = (string)row[10];
+            bidsOpenDate = (string)row[11];
+            bidsFirstPartDate = (string)row[12];
+            auctionDate = (string)row[13];
+            bidsSecondPartDate = (string)row[14];
+            bidsFinishDate = (string)row[15];
+
+            contractPrice = (float)(double)row[16];
+            contractDatePlan = (string)row[17];
+            contractDateLast = (string)row[18];
+            contractDateReal = (string)row[19];
+            reestrDateLast = (string)row[20];
+            reestrNumber = (string)row[21];
+
+            comments = (string)row[22];
+
+        }
 
         public int id;                      //ИД закупки в БД
         public int employeID;               //индекс юзера, ответственного за закупку
