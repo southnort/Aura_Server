@@ -19,8 +19,9 @@ namespace Aura_Server.View
         {
             InitializeComponent();
 
-            dateLabel.Text = dayInCalendar.date.Day.ToString() 
-                +" "+ dayInCalendar.date.DayOfWeek.ToString();
+            dateLabel.Text = dayInCalendar.date.Day.ToString();
+
+            lowerLabel.Text = "Добавить";
 
             //добавить кнопки закупок, если на этот день что-то назначено
             foreach (var pair in dayInCalendar.events)
@@ -36,8 +37,7 @@ namespace Aura_Server.View
                     else
                     {
                         btn.Location = new Point(7, 51);
-                    }
-                    lowerLabel.Text = "Добавить";
+                    }                    
 
                 }
 
@@ -46,6 +46,12 @@ namespace Aura_Server.View
                     lowerLabel.Text = "...и еще " + (dayInCalendar.events.Count - 2);
                     break;
                 }
+            }
+
+            if (dayInCalendar.date.DayOfWeek == DayOfWeek.Sunday ||
+                dayInCalendar.date.DayOfWeek == DayOfWeek.Saturday)
+            {
+                BackColor = Color.MistyRose;
             }
 
         }
