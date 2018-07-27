@@ -34,7 +34,7 @@ namespace Aura_Server.Model
         {
             if (!ContainsKey(date.ToDateTime()))
             {
-                Add(date.ToDateTime(), new DayInCalendar());
+                Add(date.ToDateTime(), new DayInCalendar(date.ToDateTime()));
             }
 
             this[date.ToDateTime()].Add(purchase);

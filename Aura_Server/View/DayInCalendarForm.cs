@@ -14,12 +14,13 @@ namespace Aura_Server.View
     {
         //краткое визуальное представление одного дня в календаре
         //содержит кнопки-ссылки на закупки, для которых этот день важен
-
+        
         public DayInCalendarForm(DayInCalendar dayInCalendar)
         {
             InitializeComponent();
 
-            dateLabel.Text = dayInCalendar.date.Day.ToString();
+            dateLabel.Text = dayInCalendar.date.Day.ToString() 
+                +" "+ dayInCalendar.date.DayOfWeek.ToString();
 
             //добавить кнопки закупок, если на этот день что-то назначено
             foreach (var pair in dayInCalendar.events)
@@ -36,6 +37,7 @@ namespace Aura_Server.View
                     {
                         btn.Location = new Point(7, 51);
                     }
+                    lowerLabel.Text = "Добавить";
 
                 }
 

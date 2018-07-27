@@ -9,6 +9,11 @@ namespace Aura_Server.Model
     {
         //класс описывающий один день из календаря.
         //хранит в себе список закупок, для которых этот день важен
+        public DayInCalendar(DateTime date)
+        {
+            this.date = date;
+        }
+
 
         public DateTime date { get; private set; }
         private List<Purchase> purchases = new List<Purchase>();

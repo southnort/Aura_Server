@@ -43,9 +43,8 @@ namespace Aura_Server
             //LoginWindow loginWindow = new LoginWindow(usersDataBase);
             //loginWindow.ShowDialog();
 
-            purchasesDataBase.CreateNewPurchase(new Purchase());
-
-            PurchasesCalendarForm calendarForm = new PurchasesCalendarForm(purchasesDataBase.GetCalendar());
+           
+            PurchasesCalendarForm calendarForm = new PurchasesCalendarForm(purchasesDataBase);
             calendarForm.ShowDialog();
         }
 
