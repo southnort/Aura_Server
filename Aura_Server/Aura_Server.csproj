@@ -65,11 +65,14 @@
     <Compile Include="Controller\DataBaseManager.cs" />
     <Compile Include="Controller\ExtensionsMethods.cs" />
     <Compile Include="Controller\LogManager.cs" />
+    <Compile Include="Controller\Network\NetworkBridge.cs" />
     <Compile Include="Model\Calendar\Calendar.cs" />
+    <Compile Include="Controller\Network\ClientObject.cs" />
     <Compile Include="Model\DataBaseCreator.cs" />
     <Compile Include="Model\Calendar\DayInCalendar.cs" />
     <Compile Include="Model\LogNode.cs" />
     <Compile Include="Model\Purchase.cs" />
+    <Compile Include="Controller\Network\ServerObject.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

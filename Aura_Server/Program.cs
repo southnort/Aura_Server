@@ -46,6 +46,8 @@ namespace Aura_Server
            
             PurchasesCalendarForm calendarForm = new PurchasesCalendarForm(purchasesDataBase);
             calendarForm.ShowDialog();
+
+           
         }
 
     }

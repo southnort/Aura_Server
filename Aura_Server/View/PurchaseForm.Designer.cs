@@ -77,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(641, 41);
+            this.label1.Location = new System.Drawing.Point(513, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 0;
@@ -87,7 +87,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(733, 38);
+            this.comboBox1.Location = new System.Drawing.Point(605, 42);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(176, 21);
             this.comboBox1.TabIndex = 1;
@@ -95,7 +95,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(662, 65);
+            this.comboBox2.Location = new System.Drawing.Point(534, 69);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(248, 21);
             this.comboBox2.TabIndex = 3;
@@ -103,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(532, 68);
+            this.label2.Location = new System.Drawing.Point(404, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 13);
             this.label2.TabIndex = 2;
@@ -148,7 +148,7 @@
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(733, 11);
+            this.comboBox4.Location = new System.Drawing.Point(605, 15);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(176, 21);
             this.comboBox4.TabIndex = 9;
@@ -156,7 +156,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(686, 14);
+            this.label5.Location = new System.Drawing.Point(558, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 8;
@@ -199,7 +199,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(455, 96);
+            this.dateTimePicker1.Location = new System.Drawing.Point(145, 122);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker1.TabIndex = 14;
@@ -207,7 +207,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(320, 99);
+            this.label8.Location = new System.Drawing.Point(10, 125);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(129, 13);
             this.label8.TabIndex = 15;
@@ -217,7 +217,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(95, 152);
+            this.label9.Location = new System.Drawing.Point(97, 179);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(121, 13);
             this.label9.TabIndex = 17;
@@ -226,7 +226,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(222, 152);
+            this.dateTimePicker2.Location = new System.Drawing.Point(224, 179);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker2.TabIndex = 16;
@@ -234,7 +234,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(77, 178);
+            this.label10.Location = new System.Drawing.Point(79, 205);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(139, 13);
             this.label10.TabIndex = 19;
@@ -243,7 +243,7 @@
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(222, 178);
+            this.dateTimePicker3.Location = new System.Drawing.Point(224, 205);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker3.TabIndex = 18;
@@ -251,7 +251,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(75, 204);
+            this.label11.Location = new System.Drawing.Point(77, 231);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(141, 13);
             this.label11.TabIndex = 21;
@@ -260,7 +260,7 @@
             // 
             // dateTimePicker4
             // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(222, 204);
+            this.dateTimePicker4.Location = new System.Drawing.Point(224, 231);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker4.TabIndex = 20;
@@ -268,7 +268,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(404, 152);
+            this.label12.Location = new System.Drawing.Point(406, 179);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(158, 13);
             this.label12.TabIndex = 23;
@@ -277,7 +277,7 @@
             // 
             // dateTimePicker5
             // 
-            this.dateTimePicker5.Location = new System.Drawing.Point(568, 152);
+            this.dateTimePicker5.Location = new System.Drawing.Point(570, 179);
             this.dateTimePicker5.Name = "dateTimePicker5";
             this.dateTimePicker5.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker5.TabIndex = 22;
@@ -285,7 +285,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(404, 204);
+            this.label13.Location = new System.Drawing.Point(406, 231);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(157, 13);
             this.label13.TabIndex = 25;
@@ -294,7 +294,7 @@
             // 
             // dateTimePicker6
             // 
-            this.dateTimePicker6.Location = new System.Drawing.Point(568, 204);
+            this.dateTimePicker6.Location = new System.Drawing.Point(570, 231);
             this.dateTimePicker6.Name = "dateTimePicker6";
             this.dateTimePicker6.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker6.TabIndex = 24;
@@ -302,7 +302,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(416, 178);
+            this.label14.Location = new System.Drawing.Point(418, 205);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 13);
             this.label14.TabIndex = 27;
@@ -311,7 +311,7 @@
             // 
             // dateTimePicker7
             // 
-            this.dateTimePicker7.Location = new System.Drawing.Point(568, 178);
+            this.dateTimePicker7.Location = new System.Drawing.Point(570, 205);
             this.dateTimePicker7.Name = "dateTimePicker7";
             this.dateTimePicker7.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker7.TabIndex = 26;
@@ -319,7 +319,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(83, 230);
+            this.label15.Location = new System.Drawing.Point(85, 257);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(133, 13);
             this.label15.TabIndex = 29;
@@ -328,7 +328,7 @@
             // 
             // dateTimePicker8
             // 
-            this.dateTimePicker8.Location = new System.Drawing.Point(222, 230);
+            this.dateTimePicker8.Location = new System.Drawing.Point(224, 257);
             this.dateTimePicker8.Name = "dateTimePicker8";
             this.dateTimePicker8.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker8.TabIndex = 28;
@@ -336,7 +336,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(47, 298);
+            this.label16.Location = new System.Drawing.Point(33, 330);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(220, 13);
             this.label16.TabIndex = 31;
@@ -345,7 +345,7 @@
             // 
             // dateTimePicker9
             // 
-            this.dateTimePicker9.Location = new System.Drawing.Point(273, 298);
+            this.dateTimePicker9.Location = new System.Drawing.Point(259, 330);
             this.dateTimePicker9.Name = "dateTimePicker9";
             this.dateTimePicker9.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker9.TabIndex = 30;
@@ -353,7 +353,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(73, 324);
+            this.label17.Location = new System.Drawing.Point(59, 356);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(194, 13);
             this.label17.TabIndex = 33;
@@ -362,7 +362,7 @@
             // 
             // dateTimePicker10
             // 
-            this.dateTimePicker10.Location = new System.Drawing.Point(273, 324);
+            this.dateTimePicker10.Location = new System.Drawing.Point(259, 356);
             this.dateTimePicker10.Name = "dateTimePicker10";
             this.dateTimePicker10.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker10.TabIndex = 32;
@@ -370,7 +370,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(377, 383);
+            this.label18.Location = new System.Drawing.Point(372, 436);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(151, 13);
             this.label18.TabIndex = 35;
@@ -379,7 +379,7 @@
             // 
             // dateTimePicker11
             // 
-            this.dateTimePicker11.Location = new System.Drawing.Point(534, 383);
+            this.dateTimePicker11.Location = new System.Drawing.Point(529, 436);
             this.dateTimePicker11.Name = "dateTimePicker11";
             this.dateTimePicker11.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker11.TabIndex = 34;
@@ -387,7 +387,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(456, 297);
+            this.label19.Location = new System.Drawing.Point(446, 330);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(157, 26);
             this.label19.TabIndex = 37;
@@ -396,14 +396,14 @@
             // 
             // dateTimePicker12
             // 
-            this.dateTimePicker12.Location = new System.Drawing.Point(619, 297);
+            this.dateTimePicker12.Location = new System.Drawing.Point(609, 330);
             this.dateTimePicker12.Name = "dateTimePicker12";
             this.dateTimePicker12.Size = new System.Drawing.Size(158, 20);
             this.dateTimePicker12.TabIndex = 36;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(202, 383);
+            this.textBox4.Location = new System.Drawing.Point(197, 436);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(158, 20);
             this.textBox4.TabIndex = 39;
@@ -411,7 +411,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(37, 386);
+            this.label20.Location = new System.Drawing.Point(32, 439);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(159, 13);
             this.label20.TabIndex = 38;
@@ -420,7 +420,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(202, 409);
+            this.textBox5.Location = new System.Drawing.Point(197, 462);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(158, 20);
             this.textBox5.TabIndex = 41;
@@ -428,7 +428,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(25, 409);
+            this.label21.Location = new System.Drawing.Point(20, 462);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(171, 13);
             this.label21.TabIndex = 40;
@@ -439,16 +439,16 @@
             // 
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 494);
+            this.richTextBox1.Location = new System.Drawing.Point(12, 556);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(903, 172);
+            this.richTextBox1.Size = new System.Drawing.Size(773, 172);
             this.richTextBox1.TabIndex = 42;
             this.richTextBox1.Text = "";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(9, 478);
+            this.label22.Location = new System.Drawing.Point(9, 540);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(80, 13);
             this.label22.TabIndex = 43;
@@ -459,7 +459,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 727);
+            this.ClientSize = new System.Drawing.Size(797, 791);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox5);
