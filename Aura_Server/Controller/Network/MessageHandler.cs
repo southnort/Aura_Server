@@ -27,7 +27,7 @@ namespace Aura_Server.Controller.Network
         {
             List<string> result = new List<string>();
             message = message.Replace("<", "").Replace(">", "");
-            foreach (var str in message.Split('#'))
+            foreach (var str in message.Split(new char[] { '#' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 result.Add(str.Replace("#", ""));
             }

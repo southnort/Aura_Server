@@ -21,7 +21,8 @@ namespace Aura_Server
         {
             StartDataBases();
             StartNetwork();
-            ShowForms();             
+            ShowForms();
+            Console.WriteLine("Server starting successfully");
            
         }
 
