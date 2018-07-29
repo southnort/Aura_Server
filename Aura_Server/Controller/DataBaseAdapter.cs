@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using Aura_Server.Model;
+using Aura.Model;
 
 namespace Aura_Server.Controller
 {

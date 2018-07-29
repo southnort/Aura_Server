@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Aura_Server.Controller;
-using Aura_Server.Model;
+using Aura.Model;
 using Aura_Server.View;
 
 namespace Aura_Server.View

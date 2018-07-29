@@ -4,84 +4,88 @@ using System.Linq;
 using System.Text;
 using System.Net.Sockets;
 
-namespace Aura_Server.Network
+namespace Aura_Server.Controller.Network
 {
-    /// <summary>
-    /// Предназначен для клиент-серверного взаимодействия.
-    /// Представляет собой отдельное подключение единичного клиента.
-    /// </summary>
     class ClientObject
     {
-        protected internal string clientID { get; private set; }        //ид сессии. Создается при подключении
-        protected internal NetworkStream stream { get; private set; }
-        protected internal string userID;                               //ид юзера. Постоянный. Берется из БД
+        protected internal string Id { get; private set; }
+        protected internal NetworkStream Stream { get; private set; }
+
         TcpClient client;
-        ServerObject server;
+        ServerObject server; // объект сервера
 
         public ClientObject(TcpClient tcpClient, ServerObject serverObject)
         {
-            clientID = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();
             client = tcpClient;
             server = serverObject;
-            server.AddConnection(this);
-
+            serverObject.AddConnection(this);
         }
 
         public void Process()
         {
             try
             {
-                stream = client.GetStream();
+                Stream = client.GetStream();
+
+                // в бесконечном цикле получаем сообщения от клиента
                 while (true)
                 {
                     try
                     {
                         string message = GetMessage();
-                        server.HandleMessage(clientID, message);
-
+                        Console.WriteLine(message);
+                        server.HandleMessage(message, this);
                     }
-
                     catch
                     {
-                        server.RemoveConnection(this.clientID);
+                        Close();
+                        break;
                     }
                 }
-
-
             }
-
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine();
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                // в случае выхода из цикла закрываем ресурсы
+                server.RemoveConnection(this.Id);
+                Close();
             }
         }
 
+        // чтение входящего сообщения и преобразование в строку
         private string GetMessage()
         {
-            // чтение входящего сообщения и преобразование в строку
-            byte[] data = new byte[64];
-            StringBuilder sb = new StringBuilder();
+            byte[] data = new byte[64]; // буфер для получаемых данных
+            StringBuilder builder = new StringBuilder();
             int bytes = 0;
             do
             {
-                bytes = stream.Read(data, 0, data.Length);
-                sb.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                bytes = Stream.Read(data, 0, data.Length);
+                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
             }
-            while (stream.DataAvailable);
+            while (Stream.DataAvailable);
 
-            return sb.ToString();
-            
+            return builder.ToString();
         }
-        
+
+        protected internal void SendMessage(string message)
+        {
+            byte[] data = Encoding.Unicode.GetBytes(message);
+            Stream.Write(data, 0, data.Length);
+        }
+
+        // закрытие подключения
         protected internal void Close()
         {
-            if (stream != null)
-                stream.Close();
+            if (Stream != null)
+                Stream.Close();
             if (client != null)
                 client.Close();
-
         }
-
-
     }
 }
+
