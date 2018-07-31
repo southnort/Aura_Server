@@ -60,7 +60,7 @@ namespace Aura_Server.Controller.Network
 
         private string TryLogin(List<string> str)
         {
-            int id = Program.usersDataBase.CheckLoginAndPassword(str[1], str[2]);
+            int id = Program.usersDataBase.CheckLoginAndPassword(str[2], str[3]);
             if (id == -1)
             {
                 return "LOGINFAILED";

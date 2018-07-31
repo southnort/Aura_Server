@@ -34,8 +34,5 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.V
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.DayInCalendarFullForm.resources
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchaseForm.resources
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchasesCalendarForm.resources
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.pdb
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll.config
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.DayInCalendarFullForm.resources
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchaseForm.resources

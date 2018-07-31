@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -16,10 +17,16 @@ namespace Aura_Server.Controller.Network
     class ClientObject
     {
         protected internal string connectionID { get; private set; }
-        protected internal NetworkStream stream { get; private set; }
-
+        private NetworkStream stream;
         TcpClient client;
         ServerObject server; // объект сервера
+
+
+        private TcpClient broadcastClient;
+        private int broadcastPort = 40502;
+        protected internal NetworkStream broadcastStream { get; private set; }      //поток для отправки оповещений
+
+
 
         protected internal ClientObject(TcpClient tcpClient, ServerObject serverObject)
         {
@@ -27,6 +34,25 @@ namespace Aura_Server.Controller.Network
             client = tcpClient;
             server = serverObject;
             serverObject.AddConnection(this);
+            CreateBroadcastStream();
+        }
+
+        private void CreateBroadcastStream()
+        {
+            try
+            {
+                broadcastClient = new TcpClient();                
+                string clientIP = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
+                broadcastClient.Connect(clientIP, broadcastPort);
+                broadcastStream = broadcastClient.GetStream();
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Close();
+            }
         }
 
         protected internal void Process()
@@ -64,7 +90,7 @@ namespace Aura_Server.Controller.Network
                 Close();
             }
         }
-       
+
         protected internal void Close()
         {
             // закрытие подключения
@@ -72,6 +98,12 @@ namespace Aura_Server.Controller.Network
                 stream.Close();
             if (client != null)
                 client.Close();
+
+            if (broadcastStream != null)
+                broadcastStream.Close();
+            if (broadcastClient != null)
+                broadcastClient.Close();
+
         }
 
 
@@ -79,6 +111,7 @@ namespace Aura_Server.Controller.Network
         protected internal void SendMessage(string message)
         {
             //отправить сообщение, не требующее ответа
+            Console.WriteLine("Sending message: " + message);
             byte[] data = Encoding.Unicode.GetBytes(message);
             Send(data);
 
@@ -117,6 +150,7 @@ namespace Aura_Server.Controller.Network
             while (stream.DataAvailable);
             string message = builder.ToString();
 
+            Console.WriteLine("Recieving message: " + message);
             return message;
         }
 

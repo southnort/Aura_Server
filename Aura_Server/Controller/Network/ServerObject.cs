@@ -93,7 +93,7 @@ namespace Aura_Server.Controller.Network
 
             foreach (var pair in clients)
             {
-                pair.Value.stream.Write(data, 0, data.Length); //передача данных
+                pair.Value.broadcastStream.Write(data, 0, data.Length); //передача данных
             }
 
         }
