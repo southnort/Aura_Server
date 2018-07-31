@@ -8,34 +8,57 @@ using System.Threading;
 
 namespace Aura_Server.Controller.Network
 {
+    /// <summary>
+    /// Предназначен для клиент-серверного взаимодействия.
+    /// Устанавливается на стороне сервера.
+    /// Принимает новые подключения и создает на каждое из них ClientObject.
+    /// Выполняет массовое оповещение всех клиентов.
+    /// </summary>
     class ServerObject
     {
-        static TcpListener tcpListener; // сервер для прослушивания
-        List<ClientObject> clients = new List<ClientObject>();  // все подключения
-        static MessageHandler messageHandler = new MessageHandler();    //обработчик сетевых сообщений
+        private TcpListener tcpListener;    //сервер для прослушивания
+        private Dictionary<string, ClientObject> clients;   //все подключения
+        private MessageHandler messageHandler;  //обработчик сетевых сообщений
+
+        public ServerObject()
+        {
+            clients = new Dictionary<string, ClientObject>();
+            messageHandler = new MessageHandler(this);
+            
+        }
 
         protected internal void AddConnection(ClientObject clientObject)
         {
-            clients.Add(clientObject);
+            clients.Add(clientObject.connectionID, clientObject);
         }
 
         protected internal void RemoveConnection(string id)
         {
-            // получаем по id закрытое подключение
-            ClientObject client = clients.FirstOrDefault(c => c.Id == id);
-            // и удаляем его из списка подключений
-            if (client != null)
-                clients.Remove(client);
+            if (clients.ContainsKey(id))
+                clients.Remove(id);
+
         }
 
-        // прослушивание входящих подключений
+        protected internal void Disconnect()
+        {
+            // отключение всех клиентов, остановка сервера
+            tcpListener.Stop(); //остановка сервера
+            foreach (var pair in clients)
+            {
+                pair.Value.Close();
+            }
+
+            Environment.Exit(0); //завершение процесса
+        }
+
         protected internal void Listen()
         {
+            //прослушивание входящих подключений
             try
             {
                 tcpListener = new TcpListener(IPAddress.Any, 40501);
                 tcpListener.Start();
-                
+
                 while (true)
                 {
                     TcpClient tcpClient = tcpListener.AcceptTcpClient();
@@ -52,38 +75,40 @@ namespace Aura_Server.Controller.Network
             }
         }
 
-        // обработка полученного сообщения
+
+
         protected internal void HandleMessage(string message, ClientObject client)
         {
-            string result = messageHandler.HandleMessage(message);
-            client.SendMessage(result.ToNetworkMessage());
+            //обработка полученного сообщения
+            messageHandler.HandleMessage(message, client.connectionID);
 
         }
 
-        // трансляция сообщения подключенным клиентам
-        protected internal void BroadcastMessage(string message, string id)
+
+
+        protected internal void BroadcastMessage(string message)
         {
+            //трансляция сообщения всем подключенным клиентам
             byte[] data = Encoding.Unicode.GetBytes(message);
-            for (int i = 0; i < clients.Count; i++)
+
+            foreach (var pair in clients)
             {
-                if (clients[i].Id != id) // если id клиента не равно id отправляющего
-                {
-                    clients[i].Stream.Write(data, 0, data.Length); //передача данных
-                }
+                pair.Value.stream.Write(data, 0, data.Length); //передача данных
             }
+
         }
 
-        // отключение всех клиентов
-        protected internal void Disconnect()
+        protected internal void SendMessage(string message, string connectionID)
         {
-            tcpListener.Stop(); //остановка сервера
-
-            for (int i = 0; i < clients.Count; i++)
-            {
-                clients[i].Close(); //отключение клиента
-            }
-            Environment.Exit(0); //завершение процесса
+            clients[connectionID].SendMessage(message);
         }
+
+        protected internal void SendObject(object ob, string connectionID)
+        {
+            clients[connectionID].SendObject(ob);
+        }
+
+        
     }
 }
 

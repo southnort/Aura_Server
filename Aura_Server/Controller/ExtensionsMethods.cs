@@ -25,11 +25,6 @@ namespace Aura_Server.Controller
           
 
         }
-
-        public static string ToNetworkMessage(this string str)
-        {
-            return "<#" + str + "#>";
-        }
-
+        
     }
 }

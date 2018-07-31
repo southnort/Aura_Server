@@ -5,36 +5,55 @@ using System.Text;
 
 namespace Aura_Server.Controller.Network
 {
-    /// <summary>
-    /// Класс предназначен для обработки полученных сообщений от клиентов.    /// 
-    /// </summary>
-    class MessageHandler
+   
+    partial class MessageHandler : MessageHandlerBase
     {
-        protected internal string HandleMessage(string message)
+        private ServerObject server;
+        protected internal MessageHandler(ServerObject servObj)
         {
-            //обработать полученное сообщение и ответить клиенту
-            List<string> arr = SplitString(message);
-            switch (arr[0])
-            {
-                case "LOGIN": return TryLogin(arr);
+            server = servObj;
+        }
 
-                default: return "ERROR#No such command " + arr[0];
+        protected override void HandleMessage(List<string> message)
+        {
+            //обработать запрос, не требующий ответа      
+
+
+
+            
+            
+        }
+
+        protected override void HandleRequest(List<string> message, string connectionID)
+        {
+            //обработать запрос, требующий ответа
+            string response = "";
+
+            switch (message[1])
+            {
+                case "LOGIN": response = TryLogin(message); break;
+
+                default: response = "ERROR#No such command " + message[1]; break;
+
             }
+
+            server.SendMessage(PrepareString(response), connectionID);
 
         }
 
-        private List<string> SplitString(string message)
+        protected override void ReceiveObject(List<string> message, string connectionID)
         {
-            List<string> result = new List<string>();
-            message = message.Replace("<", "").Replace(">", "");
-            foreach (var str in message.Split(new char[] { '#' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                result.Add(str.Replace("#", ""));
-            }
-
-            return result;
-
+            //получить объект от клиента
+            throw new NotImplementedException();
         }
+
+        protected override void SendObject(List<string> message, string connectionID)
+        {
+            //отправить объект клиенту
+            throw new NotImplementedException();
+        }
+
+
 
 
 
@@ -60,7 +79,6 @@ namespace Aura_Server.Controller.Network
             }
 
         }
-
     }
 
 }
