@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Aura.Model;
 
 namespace Aura_Server.Controller.Network
 {
-   
+
     partial class MessageHandler : MessageHandlerBase
     {
         private ServerObject server;
@@ -17,11 +18,11 @@ namespace Aura_Server.Controller.Network
         protected override void HandleMessage(List<string> message)
         {
             //обработать запрос, не требующий ответа      
+            switch (message[1])
+            {
+                default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
+            }
 
-
-
-            
-            
         }
 
         protected override void HandleRequest(List<string> message, string connectionID)
@@ -44,13 +45,27 @@ namespace Aura_Server.Controller.Network
         protected override void ReceiveObject(List<string> message, string connectionID)
         {
             //получить объект от клиента
-            throw new NotImplementedException();
+            switch (message[1])
+            {
+                default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
+            }
         }
 
         protected override void SendObject(List<string> message, string connectionID)
-        {
-            //отправить объект клиенту
-            throw new NotImplementedException();
+        {                     
+            //клиент запрашивает объект
+            switch (message[1])
+            {
+                case ("USERNAMES"): server.SendObject(CreateUserNames(), connectionID); break;
+                case ("ALLPURCHASES"): server.SendObject(CreatePurchases(), connectionID);break;
+
+                default:
+                    {
+                        server.SendObject(null, connectionID);
+                        Console.WriteLine(ToString() + " invalid command " + message[1]);
+                    }
+                    break;
+            }
         }
 
 
@@ -79,6 +94,37 @@ namespace Aura_Server.Controller.Network
             }
 
         }
+
+        private Dictionary<string, string> CreateUserNames()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            var table = Program.usersDataBase.GetUsersInTable();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                string id = table.Rows[i][0].ToString();
+                string name = table.Rows[i][3].ToString();
+
+                result.Add(id, name);
+            }
+            Console.WriteLine(result.Count);
+            return result;
+
+        }
+
+        private Dictionary<string, Purchase> CreatePurchases()
+        {
+            var result = new Dictionary<string, Purchase>();
+            var table = Program.purchasesDataBase.GetAllPurchases();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                Purchase pur = new Purchase(table.Rows[i]);
+                result.Add(pur.id.ToString(), pur);
+            }
+            Console.WriteLine(result.Count);
+            return result;
+        }
+
+
     }
 
 }

@@ -101,7 +101,7 @@ namespace Aura_Server.Controller
 
         }
 
-        public DataTable GetAllUsers()
+        public DataTable GetUsersInTable()
         {
             return
                  dataBase.GetTable("SELECT * FROM Users");
@@ -132,7 +132,7 @@ namespace Aura_Server.Controller
 
 
             object ob = dataBase.GetValue("SELECT id FROM Users WHERE login = '" +
-                login + "' AND password = '" + password+ "' AND roleID != '-1'");
+                login + "' AND password = '" + password + "' AND roleID != '-1'");
 
 
             //object ob = dataBase.GetValue("SELECT id FROM Users WHERE password = " + password);

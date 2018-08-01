@@ -20,7 +20,7 @@ namespace Aura_Server.View
         {
             InitializeComponent();            
             this.adapter = adapter;
-            ReloadTable(adapter.GetAllUsers());
+            ReloadTable(adapter.GetUsersInTable());
             
         }
 
@@ -70,7 +70,7 @@ namespace Aura_Server.View
             if (result == DialogResult.OK)
             {
                 adapter.AddUser(form.returnUser);
-                ReloadTable(adapter.GetAllUsers());
+                ReloadTable(adapter.GetUsersInTable());
 
             }
 

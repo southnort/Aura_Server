@@ -105,6 +105,7 @@ namespace Aura_Server.Controller.Network
 
         protected internal void SendObject(object ob, string connectionID)
         {
+            Console.WriteLine("Sending obj " + ob.ToString());
             clients[connectionID].SendObject(ob);
         }
 

@@ -71,8 +71,9 @@ namespace Aura_Server.Controller.Network
                         server.HandleMessage(message, this);
                     }
 
-                    catch
+                    catch (Exception ex)
                     {
+                        Console.WriteLine(ex.ToString());
                         Close();
                         break;
                     }
@@ -120,6 +121,7 @@ namespace Aura_Server.Controller.Network
         protected internal void SendObject(object ob)
         {
             //сериализовать и отправить объект. Ответ не требуется
+            Console.WriteLine("Sending object ");
             BinaryFormatter bf = new BinaryFormatter();
             MemoryStream ms = new MemoryStream();
 
