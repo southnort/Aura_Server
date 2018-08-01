@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using Aura.Model;
+using Aura_Server.Model;
 
 namespace Aura_Server.Controller
 {
@@ -149,6 +150,28 @@ namespace Aura_Server.Controller
             }
         }
 
+        public List<User> GetAllUsers()
+        {
+            List<User> result = new List<User>();
+
+            DataTable table = dataBase.GetTable("SELECT * FROM Users");
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                var row = table.Rows[i];
+
+                User user = new User();
+                user.ID = int.Parse(row.ItemArray[0].ToString());
+                user.login = (string)row.ItemArray[1];
+                user.password = (string)row.ItemArray[2];
+                user.name = (string)row.ItemArray[3];
+                user.roleID = int.Parse(row.ItemArray[4].ToString());
+
+                result.Add(user);
+            }
+
+            return result;
+        }
+
     }
 
 
@@ -245,22 +268,19 @@ namespace Aura_Server.Controller
 
             foreach (DataRow row in table.Rows)
             {
-                try
-                {
-                    calendar.Add(new Purchase(row));
-                }
-
-                catch (Exception ex)
-                {
-                    Console.WriteLine(row.ToString());
-                    throw ex;
-                        
-                }
+                calendar.Add(new Purchase(row));
 
             }
 
             return calendar;
 
+        }
+
+        public Purchase GetPurchase(int id)
+        {
+            var table = dataBase.GetTable("SELECT * FROM Purchases WHERE ID= " + id);
+            var row = table.Rows[0];
+            return new Purchase(row);
         }
 
     }

@@ -29,49 +29,53 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.employeID = new System.Windows.Forms.ComboBox();
+            this.organizationID = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.purchaseMethodID = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.purchaseName = new System.Windows.Forms.TextBox();
+            this.statusID = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.purchacePrice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.purchaseEisNum = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.purchaseEisDate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.bidsStartDate = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.bidsEndDate = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.bidsOpenDate = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.bidsFirstPartDate = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
+            this.bidsSecondPartDate = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
-            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
+            this.auctionDate = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
-            this.dateTimePicker8 = new System.Windows.Forms.DateTimePicker();
+            this.bidsFinishDate = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
-            this.dateTimePicker9 = new System.Windows.Forms.DateTimePicker();
+            this.contractDatePlan = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
-            this.dateTimePicker10 = new System.Windows.Forms.DateTimePicker();
+            this.contractDateLast = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
-            this.dateTimePicker11 = new System.Windows.Forms.DateTimePicker();
+            this.contractDateReal = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
-            this.dateTimePicker12 = new System.Windows.Forms.DateTimePicker();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.reestrDateLast = new System.Windows.Forms.DateTimePicker();
+            this.reestrNumber = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.contractPrice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.comments = new System.Windows.Forms.RichTextBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.dateTimePicker14 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker15 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker16 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker18 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -84,21 +88,21 @@
             this.label1.Text = "Ответственный";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox1
+            // employeID
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(605, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(176, 21);
-            this.comboBox1.TabIndex = 1;
+            this.employeID.FormattingEnabled = true;
+            this.employeID.Location = new System.Drawing.Point(605, 42);
+            this.employeID.Name = "employeID";
+            this.employeID.Size = new System.Drawing.Size(176, 21);
+            this.employeID.TabIndex = 1;
             // 
-            // comboBox2
+            // organizationID
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(534, 69);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(248, 21);
-            this.comboBox2.TabIndex = 3;
+            this.organizationID.FormattingEnabled = true;
+            this.organizationID.Location = new System.Drawing.Point(534, 69);
+            this.organizationID.Name = "organizationID";
+            this.organizationID.Size = new System.Drawing.Size(248, 21);
+            this.organizationID.TabIndex = 3;
             // 
             // label2
             // 
@@ -110,13 +114,13 @@
             this.label2.Text = "Организация-заказчик";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox3
+            // purchaseMethodID
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(145, 43);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(248, 21);
-            this.comboBox3.TabIndex = 5;
+            this.purchaseMethodID.FormattingEnabled = true;
+            this.purchaseMethodID.Location = new System.Drawing.Point(145, 43);
+            this.purchaseMethodID.Name = "purchaseMethodID";
+            this.purchaseMethodID.Size = new System.Drawing.Size(248, 21);
+            this.purchaseMethodID.TabIndex = 5;
             // 
             // label3
             // 
@@ -138,20 +142,20 @@
             this.label4.Text = "Наименование закупки";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // purchaseName
             // 
-            this.textBox1.Location = new System.Drawing.Point(145, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(248, 20);
-            this.textBox1.TabIndex = 7;
+            this.purchaseName.Location = new System.Drawing.Point(145, 17);
+            this.purchaseName.Name = "purchaseName";
+            this.purchaseName.Size = new System.Drawing.Size(248, 20);
+            this.purchaseName.TabIndex = 7;
             // 
-            // comboBox4
+            // statusID
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(605, 15);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(176, 21);
-            this.comboBox4.TabIndex = 9;
+            this.statusID.FormattingEnabled = true;
+            this.statusID.Location = new System.Drawing.Point(605, 15);
+            this.statusID.Name = "statusID";
+            this.statusID.Size = new System.Drawing.Size(176, 21);
+            this.statusID.TabIndex = 9;
             // 
             // label5
             // 
@@ -163,12 +167,12 @@
             this.label5.Text = "Статус";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox2
+            // purchacePrice
             // 
-            this.textBox2.Location = new System.Drawing.Point(145, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(248, 20);
-            this.textBox2.TabIndex = 11;
+            this.purchacePrice.Location = new System.Drawing.Point(145, 70);
+            this.purchacePrice.Name = "purchacePrice";
+            this.purchacePrice.Size = new System.Drawing.Size(248, 20);
+            this.purchacePrice.TabIndex = 11;
             // 
             // label6
             // 
@@ -180,12 +184,12 @@
             this.label6.Text = "Сумма закупки";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox3
+            // purchaseEisNum
             // 
-            this.textBox3.Location = new System.Drawing.Point(145, 96);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(158, 20);
-            this.textBox3.TabIndex = 13;
+            this.purchaseEisNum.Location = new System.Drawing.Point(145, 96);
+            this.purchaseEisNum.Name = "purchaseEisNum";
+            this.purchaseEisNum.Size = new System.Drawing.Size(158, 20);
+            this.purchaseEisNum.TabIndex = 13;
             // 
             // label7
             // 
@@ -197,12 +201,14 @@
             this.label7.Text = "Номер извещения";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker1
+            // purchaseEisDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(145, 122);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker1.TabIndex = 14;
+            this.purchaseEisDate.CustomFormat = "\'\'";
+            this.purchaseEisDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.purchaseEisDate.Location = new System.Drawing.Point(145, 122);
+            this.purchaseEisDate.Name = "purchaseEisDate";
+            this.purchaseEisDate.Size = new System.Drawing.Size(158, 20);
+            this.purchaseEisDate.TabIndex = 14;
             // 
             // label8
             // 
@@ -224,12 +230,14 @@
             this.label9.Text = "Начало подачи заявок";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker2
+            // bidsStartDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(224, 179);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker2.TabIndex = 16;
+            this.bidsStartDate.CustomFormat = "\'\'";
+            this.bidsStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bidsStartDate.Location = new System.Drawing.Point(224, 179);
+            this.bidsStartDate.Name = "bidsStartDate";
+            this.bidsStartDate.Size = new System.Drawing.Size(158, 20);
+            this.bidsStartDate.TabIndex = 16;
             // 
             // label10
             // 
@@ -241,12 +249,14 @@
             this.label10.Text = "Окончание подачи заявок";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker3
+            // bidsEndDate
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(224, 205);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker3.TabIndex = 18;
+            this.bidsEndDate.CustomFormat = "\'\'";
+            this.bidsEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bidsEndDate.Location = new System.Drawing.Point(224, 205);
+            this.bidsEndDate.Name = "bidsEndDate";
+            this.bidsEndDate.Size = new System.Drawing.Size(158, 20);
+            this.bidsEndDate.TabIndex = 18;
             // 
             // label11
             // 
@@ -258,12 +268,14 @@
             this.label11.Text = "Дата вскрытия конвертов";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker4
+            // bidsOpenDate
             // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(224, 231);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker4.TabIndex = 20;
+            this.bidsOpenDate.CustomFormat = "\'\'";
+            this.bidsOpenDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bidsOpenDate.Location = new System.Drawing.Point(224, 231);
+            this.bidsOpenDate.Name = "bidsOpenDate";
+            this.bidsOpenDate.Size = new System.Drawing.Size(158, 20);
+            this.bidsOpenDate.TabIndex = 20;
             // 
             // label12
             // 
@@ -275,12 +287,14 @@
             this.label12.Text = "Рассмотрение первых частей";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker5
+            // bidsFirstPartDate
             // 
-            this.dateTimePicker5.Location = new System.Drawing.Point(570, 179);
-            this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker5.TabIndex = 22;
+            this.bidsFirstPartDate.CustomFormat = "\'\'";
+            this.bidsFirstPartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bidsFirstPartDate.Location = new System.Drawing.Point(570, 179);
+            this.bidsFirstPartDate.Name = "bidsFirstPartDate";
+            this.bidsFirstPartDate.Size = new System.Drawing.Size(158, 20);
+            this.bidsFirstPartDate.TabIndex = 22;
             // 
             // label13
             // 
@@ -292,12 +306,14 @@
             this.label13.Text = "Рассмотрение вторых частей";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker6
+            // bidsSecondPartDate
             // 
-            this.dateTimePicker6.Location = new System.Drawing.Point(570, 231);
-            this.dateTimePicker6.Name = "dateTimePicker6";
-            this.dateTimePicker6.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker6.TabIndex = 24;
+            this.bidsSecondPartDate.CustomFormat = "\'\'";
+            this.bidsSecondPartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bidsSecondPartDate.Location = new System.Drawing.Point(570, 231);
+            this.bidsSecondPartDate.Name = "bidsSecondPartDate";
+            this.bidsSecondPartDate.Size = new System.Drawing.Size(158, 20);
+            this.bidsSecondPartDate.TabIndex = 24;
             // 
             // label14
             // 
@@ -309,12 +325,14 @@
             this.label14.Text = "Дата проведения аукциона";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker7
+            // auctionDate
             // 
-            this.dateTimePicker7.Location = new System.Drawing.Point(570, 205);
-            this.dateTimePicker7.Name = "dateTimePicker7";
-            this.dateTimePicker7.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker7.TabIndex = 26;
+            this.auctionDate.CustomFormat = "\'\'";
+            this.auctionDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.auctionDate.Location = new System.Drawing.Point(570, 205);
+            this.auctionDate.Name = "auctionDate";
+            this.auctionDate.Size = new System.Drawing.Size(158, 20);
+            this.auctionDate.TabIndex = 26;
             // 
             // label15
             // 
@@ -326,12 +344,14 @@
             this.label15.Text = "Дата подведения итогов";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker8
+            // bidsFinishDate
             // 
-            this.dateTimePicker8.Location = new System.Drawing.Point(224, 257);
-            this.dateTimePicker8.Name = "dateTimePicker8";
-            this.dateTimePicker8.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker8.TabIndex = 28;
+            this.bidsFinishDate.CustomFormat = "\'\'";
+            this.bidsFinishDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bidsFinishDate.Location = new System.Drawing.Point(224, 257);
+            this.bidsFinishDate.Name = "bidsFinishDate";
+            this.bidsFinishDate.Size = new System.Drawing.Size(158, 20);
+            this.bidsFinishDate.TabIndex = 28;
             // 
             // label16
             // 
@@ -343,12 +363,14 @@
             this.label16.Text = "Планируемая дата подписания контракта";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker9
+            // contractDatePlan
             // 
-            this.dateTimePicker9.Location = new System.Drawing.Point(259, 330);
-            this.dateTimePicker9.Name = "dateTimePicker9";
-            this.dateTimePicker9.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker9.TabIndex = 30;
+            this.contractDatePlan.CustomFormat = "\'\'";
+            this.contractDatePlan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.contractDatePlan.Location = new System.Drawing.Point(259, 330);
+            this.contractDatePlan.Name = "contractDatePlan";
+            this.contractDatePlan.Size = new System.Drawing.Size(158, 20);
+            this.contractDatePlan.TabIndex = 30;
             // 
             // label17
             // 
@@ -360,12 +382,14 @@
             this.label17.Text = "Крайняя дата подписания контракта";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker10
+            // contractDateLast
             // 
-            this.dateTimePicker10.Location = new System.Drawing.Point(259, 356);
-            this.dateTimePicker10.Name = "dateTimePicker10";
-            this.dateTimePicker10.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker10.TabIndex = 32;
+            this.contractDateLast.CustomFormat = "\'\'";
+            this.contractDateLast.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.contractDateLast.Location = new System.Drawing.Point(259, 356);
+            this.contractDateLast.Name = "contractDateLast";
+            this.contractDateLast.Size = new System.Drawing.Size(158, 20);
+            this.contractDateLast.TabIndex = 32;
             // 
             // label18
             // 
@@ -377,12 +401,14 @@
             this.label18.Text = "Дата подписания контракта";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker11
+            // contractDateReal
             // 
-            this.dateTimePicker11.Location = new System.Drawing.Point(529, 436);
-            this.dateTimePicker11.Name = "dateTimePicker11";
-            this.dateTimePicker11.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker11.TabIndex = 34;
+            this.contractDateReal.CustomFormat = "\'\'";
+            this.contractDateReal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.contractDateReal.Location = new System.Drawing.Point(529, 436);
+            this.contractDateReal.Name = "contractDateReal";
+            this.contractDateReal.Size = new System.Drawing.Size(158, 20);
+            this.contractDateReal.TabIndex = 34;
             // 
             // label19
             // 
@@ -394,19 +420,21 @@
             this.label19.Text = "Крайняя дата для \r\nвнесения контракта в реестр";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker12
+            // reestrDateLast
             // 
-            this.dateTimePicker12.Location = new System.Drawing.Point(609, 330);
-            this.dateTimePicker12.Name = "dateTimePicker12";
-            this.dateTimePicker12.Size = new System.Drawing.Size(158, 20);
-            this.dateTimePicker12.TabIndex = 36;
+            this.reestrDateLast.CustomFormat = "\'\'";
+            this.reestrDateLast.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.reestrDateLast.Location = new System.Drawing.Point(609, 330);
+            this.reestrDateLast.Name = "reestrDateLast";
+            this.reestrDateLast.Size = new System.Drawing.Size(158, 20);
+            this.reestrDateLast.TabIndex = 36;
             // 
-            // textBox4
+            // reestrNumber
             // 
-            this.textBox4.Location = new System.Drawing.Point(197, 436);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(158, 20);
-            this.textBox4.TabIndex = 39;
+            this.reestrNumber.Location = new System.Drawing.Point(197, 436);
+            this.reestrNumber.Name = "reestrNumber";
+            this.reestrNumber.Size = new System.Drawing.Size(158, 20);
+            this.reestrNumber.TabIndex = 39;
             // 
             // label20
             // 
@@ -418,12 +446,12 @@
             this.label20.Text = "Реестровый номер контракта";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox5
+            // contractPrice
             // 
-            this.textBox5.Location = new System.Drawing.Point(197, 462);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(158, 20);
-            this.textBox5.TabIndex = 41;
+            this.contractPrice.Location = new System.Drawing.Point(197, 462);
+            this.contractPrice.Name = "contractPrice";
+            this.contractPrice.Size = new System.Drawing.Size(158, 20);
+            this.contractPrice.TabIndex = 41;
             // 
             // label21
             // 
@@ -435,15 +463,15 @@
             this.label21.Text = "Сумма заключенного контракта";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // richTextBox1
+            // comments
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 556);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(773, 172);
-            this.richTextBox1.TabIndex = 42;
-            this.richTextBox1.Text = "";
+            this.comments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.comments.Location = new System.Drawing.Point(12, 556);
+            this.comments.Name = "comments";
+            this.comments.Size = new System.Drawing.Size(773, 172);
+            this.comments.TabIndex = 42;
+            this.comments.Text = "";
             // 
             // label22
             // 
@@ -455,54 +483,94 @@
             this.label22.Text = "Комментарии:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // dateTimePicker14
+            // 
+            this.dateTimePicker14.CustomFormat = "\'\'";
+            this.dateTimePicker14.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker14.Location = new System.Drawing.Point(224, 205);
+            this.dateTimePicker14.Name = "dateTimePicker14";
+            this.dateTimePicker14.Size = new System.Drawing.Size(158, 20);
+            this.dateTimePicker14.TabIndex = 16;
+            // 
+            // dateTimePicker15
+            // 
+            this.dateTimePicker15.CustomFormat = "\'\'";
+            this.dateTimePicker15.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker15.Location = new System.Drawing.Point(224, 231);
+            this.dateTimePicker15.Name = "dateTimePicker15";
+            this.dateTimePicker15.Size = new System.Drawing.Size(158, 20);
+            this.dateTimePicker15.TabIndex = 18;
+            // 
+            // dateTimePicker16
+            // 
+            this.dateTimePicker16.CustomFormat = "\'\'";
+            this.dateTimePicker16.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker16.Location = new System.Drawing.Point(224, 257);
+            this.dateTimePicker16.Name = "dateTimePicker16";
+            this.dateTimePicker16.Size = new System.Drawing.Size(158, 20);
+            this.dateTimePicker16.TabIndex = 20;
+            // 
+            // dateTimePicker18
+            // 
+            this.dateTimePicker18.CustomFormat = "\'\'";
+            this.dateTimePicker18.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker18.Location = new System.Drawing.Point(259, 356);
+            this.dateTimePicker18.Name = "dateTimePicker18";
+            this.dateTimePicker18.Size = new System.Drawing.Size(158, 20);
+            this.dateTimePicker18.TabIndex = 30;
+            // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 791);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.comments);
+            this.Controls.Add(this.contractPrice);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.reestrNumber);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.dateTimePicker12);
+            this.Controls.Add(this.reestrDateLast);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.dateTimePicker11);
+            this.Controls.Add(this.contractDateReal);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.dateTimePicker10);
+            this.Controls.Add(this.contractDateLast);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.dateTimePicker9);
+            this.Controls.Add(this.dateTimePicker18);
+            this.Controls.Add(this.contractDatePlan);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.dateTimePicker8);
+            this.Controls.Add(this.bidsFinishDate);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.dateTimePicker7);
+            this.Controls.Add(this.auctionDate);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.dateTimePicker6);
+            this.Controls.Add(this.bidsSecondPartDate);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.dateTimePicker5);
+            this.Controls.Add(this.bidsFirstPartDate);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.dateTimePicker4);
+            this.Controls.Add(this.dateTimePicker16);
+            this.Controls.Add(this.bidsOpenDate);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.dateTimePicker3);
+            this.Controls.Add(this.dateTimePicker15);
+            this.Controls.Add(this.bidsEndDate);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker14);
+            this.Controls.Add(this.bidsStartDate);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.purchaseEisDate);
+            this.Controls.Add(this.purchaseEisNum);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.purchacePrice);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.statusID);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.purchaseName);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.purchaseMethodID);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.organizationID);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.employeID);
             this.Controls.Add(this.label1);
             this.Name = "PurchaseForm";
             this.Text = "PurchaseForm";
@@ -514,48 +582,52 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox employeID;
+        private System.Windows.Forms.ComboBox organizationID;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox purchaseMethodID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.TextBox purchaseName;
+        private System.Windows.Forms.ComboBox statusID;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox purchacePrice;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox purchaseEisNum;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker purchaseEisDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker bidsStartDate;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker bidsEndDate;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.DateTimePicker bidsOpenDate;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private System.Windows.Forms.DateTimePicker bidsFirstPartDate;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePicker6;
+        private System.Windows.Forms.DateTimePicker bidsSecondPartDate;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker7;
+        private System.Windows.Forms.DateTimePicker auctionDate;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DateTimePicker dateTimePicker8;
+        private System.Windows.Forms.DateTimePicker bidsFinishDate;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DateTimePicker dateTimePicker9;
+        private System.Windows.Forms.DateTimePicker contractDatePlan;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DateTimePicker dateTimePicker10;
+        private System.Windows.Forms.DateTimePicker contractDateLast;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DateTimePicker dateTimePicker11;
+        private System.Windows.Forms.DateTimePicker contractDateReal;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DateTimePicker dateTimePicker12;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.DateTimePicker reestrDateLast;
+        private System.Windows.Forms.TextBox reestrNumber;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox contractPrice;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox comments;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DateTimePicker dateTimePicker14;
+        private System.Windows.Forms.DateTimePicker dateTimePicker15;
+        private System.Windows.Forms.DateTimePicker dateTimePicker16;
+        private System.Windows.Forms.DateTimePicker dateTimePicker18;
     }
 }
