@@ -21,7 +21,9 @@ namespace Aura_Server
         {
             StartDataBases();
             StartNetwork();
-           // ShowForms();
+           // TestMethod();
+             ShowForms();
+
             Console.WriteLine("Server starting successfully");
            
         }
@@ -77,6 +79,26 @@ namespace Aura_Server
             PurchasesCalendarForm calendarForm = new PurchasesCalendarForm(purchasesDataBase);
             calendarForm.ShowDialog();
 
+        }
+
+        private static void TestMethod()
+        {
+            Aura.Model.Purchase pur1 = new Aura.Model.Purchase()
+            {
+                purchaseName = "тестовая закупка",
+                bidsStartDate = new DateTime(2018, 8, 5).ToString(),
+                bidsFinishDate = new DateTime(2018, 8, 9).ToString(),
+            };
+
+            Aura.Model.Purchase pur2 = new Aura.Model.Purchase()
+            {
+                purchaseName = "тестовая закупка 2",
+                bidsStartDate = new DateTime(2018, 8, 11).ToString(),
+                bidsFinishDate = new DateTime(2018, 8, 15).ToString(),
+            };
+
+            purchasesDataBase.AddNewPurchase(pur1);
+            purchasesDataBase.AddNewPurchase(pur2);
         }
 
     }

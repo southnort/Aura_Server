@@ -161,7 +161,7 @@ namespace Aura_Server.Controller
         {
         }
 
-        public string CreateNewPurchase(Purchase purchase)
+        public string AddNewPurchase(Purchase purchase)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO Purchases ('employeID', 'organizationID', 'purchaseMethodID', 'purchaseName', ");
@@ -245,7 +245,18 @@ namespace Aura_Server.Controller
 
             foreach (DataRow row in table.Rows)
             {
-                calendar.Add(new Purchase(row));
+                try
+                {
+                    calendar.Add(new Purchase(row));
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(row.ToString());
+                    throw ex;
+                        
+                }
+
             }
 
             return calendar;
