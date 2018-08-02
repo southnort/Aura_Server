@@ -10,15 +10,17 @@ namespace Aura_Server.Model
 {
     class DataBaseCreator
     {
-        //класс, отвечающий за создание баз данных
+        //класс, отвечающий за создание баз данных       
 
-
-        public void CreateDataBase(string dbFileName)
+        public void CreateMainDataBase(string dbFileName)
         {
             string commandString = CreateCommandString_UsersTable();
             CreateDataBase(dbFileName, commandString);
 
             commandString = CreateCommandString_PurchasesTable();
+            CreateDataBase(dbFileName, commandString);
+
+            commandString = CreateCommandString_OrganizationsTable();
             CreateDataBase(dbFileName, commandString);
 
         }
@@ -29,6 +31,10 @@ namespace Aura_Server.Model
             CreateDataBase(dbFileName, commandString);
 
         }
+
+       
+
+
 
         private void CreateDataBase(string dbFileName, string commandString)
         {
@@ -124,6 +130,28 @@ namespace Aura_Server.Model
 
             return sb.ToString();
         }
+
+        private string CreateCommandString_OrganizationsTable()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IF NOT EXISTS Organisations (");
+
+            sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+            sb.Append("name TEXT, ");
+            sb.Append("inn TEXT, ");
+            sb.Append("phoneNumber TEXT, ");
+            sb.Append("contactName TEXT, ");
+            sb.Append("email TEXT, ");
+            sb.Append("originalID INTEGER, ");
+            sb.Append("contractNumber TEXT, ");
+            sb.Append("contractStart TEXT, ");
+            sb.Append("contractEnd TEXT, ");
+            sb.Append("comments TEXT)");
+
+            return sb.ToString();
+
+        }
+
 
     }
 

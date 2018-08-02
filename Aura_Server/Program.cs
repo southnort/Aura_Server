@@ -36,7 +36,7 @@ namespace Aura_Server
 
             DataBaseCreator creator = new DataBaseCreator();
             creator.CreateDataBaseForLogs(dbForLogsFileName);
-            creator.CreateDataBase(dbFileName);
+            creator.CreateMainDataBase(dbFileName);
             creator = null;
 
             LogManager.Instance.InitializeLogManager(dbForLogsFileName);
