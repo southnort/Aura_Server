@@ -22,7 +22,7 @@ namespace Aura_Server.Controller
             dataBase = manager;
             logManager = new LogManager();
         }
-
+                
         protected string ExecuteCommand(string sqlCommand)
         {
             return dataBase.ExecuteCommand(sqlCommand);

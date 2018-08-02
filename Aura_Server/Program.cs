@@ -138,11 +138,7 @@ namespace Aura_Server
 
             };
 
-            purchasesDataBase.AddNewPurchase(pur1);
-            purchasesDataBase.AddNewPurchase(pur2);
-            purchasesDataBase.AddNewPurchase(pur3);
-            purchasesDataBase.AddNewPurchase(pur4);
-            purchasesDataBase.AddNewPurchase(pur8);
+           
         }
 
     }

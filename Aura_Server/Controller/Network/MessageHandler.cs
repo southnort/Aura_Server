@@ -21,6 +21,7 @@ namespace Aura_Server.Controller.Network
             switch (message[2])
             {
                 case "USER": ReceiveUser(message); break;
+                case "NEWPURCHASE": ReceiveNewPurchase(message); break;
 
                 default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
             }
@@ -149,6 +150,12 @@ namespace Aura_Server.Controller.Network
 
             Program.usersDataBase.AddUser(user, clientID);
 
+        }
+
+        private void ReceiveNewPurchase(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+            Program.purchasesDataBase.AddNewPurchase(message[3], clientID);
         }
     }
 

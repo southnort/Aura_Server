@@ -18,7 +18,7 @@ namespace Aura_Server.Controller
         {
         }
 
-        public string AddNewPurchase(Purchase purchase)
+        public string AddNewPurchase(Purchase purchase, int tryingUserID)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO Purchases ('employeID', 'organizationID', 'purchaseMethodID', 'purchaseName', ");
@@ -74,8 +74,8 @@ namespace Aura_Server.Controller
 
             try
             {
-                return ExecuteCommand(sb.ToString());
-
+                LogManager.Log(tryingUserID, "Создание новой закупки " + purchase.purchaseName);
+                return ExecuteCommand(sb.ToString());                
             }
 
             catch (Exception ex)
@@ -84,6 +84,21 @@ namespace Aura_Server.Controller
                     + sb.ToString()));
             }
 
+        }
+
+        public string AddNewPurchase(string sqlCommand, int tryingUserID)
+        {
+            try
+            {
+                LogManager.Log(tryingUserID, "Создание новой закупки ");
+                return ExecuteCommand(sqlCommand);
+            }
+
+            catch (Exception ex)
+            {
+                throw (new Exception(ex.ToString() + "\n"
+                    + sqlCommand));
+            }
 
         }
 
