@@ -61,7 +61,7 @@ namespace Aura_Server.View
             }
         }
 
-        
+
         private void ShowUser(User user)
         {
             //открыть форму просмотра юзера
@@ -69,7 +69,7 @@ namespace Aura_Server.View
             var result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                adapter.AddUser(form.returnUser);
+                adapter.AddUser(form.returnUser, -1);
                 ReloadTable(adapter.GetUsersInTable());
 
             }

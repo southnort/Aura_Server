@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aura_DLL">
-      <HintPath>.\Aura_DLL.dll</HintPath>
+    <Reference Include="Aura_DLL, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Aura_Client\Aura_Client\bin\Debug\Aura_DLL.dll</HintPath>
     </Reference>
     <Reference Include="SQLite.Designer, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -78,7 +79,6 @@
     <Compile Include="Model\Catalog.cs" />
     <Compile Include="Model\DataBaseCreator.cs" />
     <Compile Include="Model\LogNode.cs" />
-    <Compile Include="Model\Organisation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\DayInCalendarForm.cs">

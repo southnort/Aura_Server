@@ -18,8 +18,10 @@ namespace Aura_Server.Controller.Network
         protected override void HandleMessage(List<string> message)
         {
             //обработать запрос, не требующий ответа      
-            switch (message[1])
+            switch (message[2])
             {
+                case "USER": ReceiveUser(message); break;
+
                 default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
             }
 
@@ -30,7 +32,7 @@ namespace Aura_Server.Controller.Network
             //обработать запрос, требующий ответа
             string response = "";
 
-            switch (message[1])
+            switch (message[2])
             {
                 case "LOGIN": response = TryLogin(message); break;
 
@@ -45,19 +47,21 @@ namespace Aura_Server.Controller.Network
         protected override void ReceiveObject(List<string> message, string connectionID)
         {
             //получить объект от клиента
-            switch (message[1])
+            switch (message[2])
             {
+               
                 default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
             }
         }
 
         protected override void SendObject(List<string> message, string connectionID)
-        {                     
+        {
             //клиент запрашивает объект
-            switch (message[1])
+            switch (message[2])
             {
                 case ("USERNAMES"): server.SendObject(CreateUserNames(), connectionID); break;
-                case ("ALLPURCHASES"): server.SendObject(CreatePurchases(), connectionID);break;
+                case ("ALLPURCHASES"): server.SendObject(CreatePurchases(), connectionID); break;
+                case ("ALLUSERS"): server.SendObject(GetAllUsers(), connectionID);break;
 
                 default:
                     {
@@ -75,7 +79,7 @@ namespace Aura_Server.Controller.Network
 
         private string TryLogin(List<string> str)
         {
-            int id = Program.usersDataBase.CheckLoginAndPassword(str[2], str[3]);
+            int id = Program.usersDataBase.CheckLoginAndPassword(str[3], str[4]);
             if (id == -1)
             {
                 return "LOGINFAILED";
@@ -124,7 +128,29 @@ namespace Aura_Server.Controller.Network
             return result;
         }
 
+        private List<User> GetAllUsers()
+        {
+            return Program.usersDataBase.GetAllUsers();
+        }
 
+
+
+        private void ReceiveUser(List<string> message)
+        {
+            //от клиента получены данные юзера для создания или изменения
+            int clientID = int.Parse(message[1]);
+
+            User user = new User();
+            user.ID = int.Parse(message[3]);
+            user.name = message[4];
+            user.login = message[5];
+            user.password = message[6];
+            user.roleID = int.Parse(message[7]);
+
+            Program.usersDataBase.AddUser(user, clientID);
+
+        }
     }
+
 
 }

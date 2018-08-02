@@ -18,18 +18,19 @@ namespace Aura_Server.Controller
 
         }
 
-        public string AddUser(User user)
+        public string AddUser(User user, int tryingUserID)
         {
+            //tryingUserID - ID юзера, от которого поступила команда
             if (user.ID < 1)
-                return CreateNewUser(user);
+                return CreateNewUser(user, tryingUserID);
 
             else
-                return RefreshUser(user);
+                return RefreshUser(user, tryingUserID);
         }
 
 
 
-        private string CreateNewUser(User user)
+        private string CreateNewUser(User user, int tryingUserID)
         {
             //добавить нового юзера в БД
             StringBuilder sb = new StringBuilder();
@@ -46,13 +47,15 @@ namespace Aura_Server.Controller
             sb.Append("', '");
             sb.Append(user.dateOfLastEnter);
             sb.Append("')");
+
+            LogManager.Log(tryingUserID, "Создание пользователя " + user.name);
             return ExecuteCommand(sb.ToString());
 
         }
 
-        private string RefreshUser(User user)
+        private string RefreshUser(User user, int tryingUserID)
         {
-            //изменить данные в таблице БД
+            //изменить данные в таблице БД           
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE Users SET login = '");
             sb.Append(user.login);
@@ -68,9 +71,13 @@ namespace Aura_Server.Controller
             sb.Append(user.dateOfLastEnter);
             sb.Append("' WHERE ID = ");
             sb.Append(user.ID);
+
+            LogManager.Log(tryingUserID, "Редактирование пользователя " + user.name);
             return ExecuteCommand(sb.ToString());
 
         }
+
+
 
         public DataTable GetUsersInTable()
         {
@@ -104,9 +111,6 @@ namespace Aura_Server.Controller
 
             object ob = dataBase.GetValue("SELECT id FROM Users WHERE login = '" +
                 login + "' AND password = '" + password + "' AND roleID != '-1'");
-
-
-            //object ob = dataBase.GetValue("SELECT id FROM Users WHERE password = " + password);
 
             if (ob != null)
             {

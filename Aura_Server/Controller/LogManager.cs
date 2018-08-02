@@ -19,6 +19,8 @@ namespace Aura_Server.Controller
 
         public static void Log(int userId, string message, int idOfPurchase = -1)
         {
+            //userID - ID пользователя, совершившего действие
+            //idOfPurchase - ID изменяемой закупки
             LogNode node = new LogNode
             {
                 userID = userId,
