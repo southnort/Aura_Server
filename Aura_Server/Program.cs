@@ -21,11 +21,11 @@ namespace Aura_Server
         {
             StartDataBases();
             StartNetwork();
-           // TestMethod();
-             ShowForms();
+          //  TestMethod();
+            ShowForms();
 
             Console.WriteLine("Server starting successfully");
-           
+
         }
 
         private static void StartDataBases()
@@ -62,7 +62,7 @@ namespace Aura_Server
                 listeningThread.Start();
             }
             catch (Exception ex)
-            {                
+            {
                 Console.WriteLine(ex.ToString());
             }
 
@@ -87,20 +87,62 @@ namespace Aura_Server
         {
             Aura.Model.Purchase pur1 = new Aura.Model.Purchase()
             {
-                purchaseName = "тестовая закупка",
-                bidsStartDate = new DateTime(2018, 8, 5).ToString(),
-                bidsFinishDate = new DateTime(2018, 8, 9).ToString(),
+                purchaseName = "Техобслуживание",
+                purchaseMethodID = 1,
+                purchacePrice = 50000f,
+                statusID  =0,
+                employeID = 1,
+                organizationID = 2,
+
+                bidsStartDate = new DateTime(2018,8,13).ToString(),
+                bidsEndDate = new DateTime(2018,8,20).ToString(),
+                bidsFinishDate = new DateTime(2018,8,23).ToString(),
+
             };
 
             Aura.Model.Purchase pur2 = new Aura.Model.Purchase()
             {
-                purchaseName = "тестовая закупка 2",
-                bidsStartDate = new DateTime(2018, 8, 11).ToString(),
-                bidsFinishDate = new DateTime(2018, 8, 15).ToString(),
+                purchaseName = "Мягкий инвентарь",
+                purchaseMethodID = 2,
+                purchacePrice = 32504.54f,
+                statusID = 2,
+                employeID = 2,
+                organizationID = 1,
+
+                bidsStartDate = new DateTime(2018, 8, 15).ToString(),
+                bidsEndDate = new DateTime(2018, 8, 16).ToString(),
+                bidsFinishDate = new DateTime(2018, 8, 23).ToString(),
+            
+            };
+
+            Aura.Model.Purchase pur3 = new Aura.Model.Purchase()
+            {
+                purchaseName = "Testing",
+                purchaseMethodID = 3,
+                statusID = 0,
+                employeID = 0,
+                organizationID = 3,
+
+                purchaseEisDate = new DateTime(2018, 8, 15).ToString(),
+                
+
+            };
+
+            Aura.Model.Purchase pur4 = new Aura.Model.Purchase()
+            {
+
+            };            
+
+            Aura.Model.Purchase pur8 = new Aura.Model.Purchase()
+            {
+
             };
 
             purchasesDataBase.AddNewPurchase(pur1);
             purchasesDataBase.AddNewPurchase(pur2);
+            purchasesDataBase.AddNewPurchase(pur3);
+            purchasesDataBase.AddNewPurchase(pur4);
+            purchasesDataBase.AddNewPurchase(pur8);
         }
 
     }
