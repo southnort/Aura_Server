@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="Aura_DLL, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Aura_Client\Aura_Client\bin\Debug\Aura_DLL.dll</HintPath>
+      <HintPath>bin\Debug\Aura_DLL.dll</HintPath>
     </Reference>
     <Reference Include="SQLite.Designer, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

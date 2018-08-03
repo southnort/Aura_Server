@@ -18,10 +18,10 @@ namespace Aura_Server.View
 
         public PurchasesDataBaseForm(PurchasesTableAdapter adapter)
         {
-            InitializeComponent();            
+            InitializeComponent();
             this.adapter = adapter;
             ReloadTable(adapter.GetAllPurchases());
-            
+
         }
 
         private void ReloadTable(DataTable table)
@@ -63,13 +63,15 @@ namespace Aura_Server.View
             }
         }
 
-        
+
         private void ShowPurchase(Purchase purchase)
         {
             //открыть форму просмотра закупки
 
+
             PurchaseForm form = new PurchaseForm(purchase);
             var result = form.ShowDialog();
+
             //if (result == DialogResult.OK)
             //{
             //    adapter.AddUser(form.returnUser);
@@ -92,9 +94,10 @@ namespace Aura_Server.View
         {
             DataGridView dg = (DataGridView)sender;
             int purchaseID = (int)(long)dg.Rows[e.RowIndex].Cells[0].Value;
-            Purchase purchase = adapter.GetPurchase(purchaseID);
 
+            Purchase purchase = adapter.GetPurchase(purchaseID);
             ShowPurchase(purchase);
+            
         }
     }
 }

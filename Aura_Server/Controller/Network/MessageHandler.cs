@@ -105,6 +105,7 @@ namespace Aura_Server.Controller.Network
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
             var table = Program.usersDataBase.GetUsersInTable();
+           
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 string id = table.Rows[i][0].ToString();

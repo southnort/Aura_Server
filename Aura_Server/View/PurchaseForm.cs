@@ -78,6 +78,8 @@ namespace Aura_Server.View
             contractPrice.Text = purchase.contractPrice.ToString("### ### ### ### ###.##");
             SetDate(contractDateReal, purchase.contractDateReal);
 
+            comments.Text = purchase.comments;
+
         }
 
         private void SetDate(DateTimePicker picker, string date)
