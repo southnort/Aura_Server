@@ -102,6 +102,21 @@ namespace Aura_Server.Controller
 
         }
 
+        public string UpdatePurchase(string sqlCommand, int tryingUserID)
+        {
+            try
+            {
+                LogManager.Log(tryingUserID, "Редактирование закупки ");
+                return ExecuteCommand(sqlCommand);
+            }
+
+            catch (Exception ex)
+            {
+                throw (new Exception(ex.ToString() + "\n"
+                    + sqlCommand));
+            }
+        }
+
         public DataTable GetAllPurchases()
         {
             //возвращает все закупки в виде таблицы

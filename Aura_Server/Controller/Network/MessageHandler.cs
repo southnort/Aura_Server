@@ -22,6 +22,7 @@ namespace Aura_Server.Controller.Network
             {
                 case "USER": ReceiveUser(message); break;
                 case "NEWPURCHASE": ReceiveNewPurchase(message); break;
+                case "UPDATEPURCHASE":
 
                 default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
             }
@@ -50,7 +51,7 @@ namespace Aura_Server.Controller.Network
             //получить объект от клиента
             switch (message[2])
             {
-               
+
                 default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
             }
         }
@@ -62,7 +63,7 @@ namespace Aura_Server.Controller.Network
             {
                 case ("USERNAMES"): server.SendObject(CreateUserNames(), connectionID); break;
                 case ("ALLPURCHASES"): server.SendObject(CreatePurchases(), connectionID); break;
-                case ("ALLUSERS"): server.SendObject(GetAllUsers(), connectionID);break;
+                case ("ALLUSERS"): server.SendObject(GetAllUsers(), connectionID); break;
 
                 default:
                     {
@@ -156,6 +157,12 @@ namespace Aura_Server.Controller.Network
         {
             int clientID = int.Parse(message[1]);
             Program.purchasesDataBase.AddNewPurchase(message[3], clientID);
+        }
+
+        private void ReceiveUpdatePurchase(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+            Program.purchasesDataBase.UpdatePurchase(message[3], clientID);
         }
     }
 
