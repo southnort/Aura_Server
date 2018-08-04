@@ -5,6 +5,8 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Aura_Server.Controller.Network
 {
@@ -89,6 +91,7 @@ namespace Aura_Server.Controller.Network
         protected internal void BroadcastMessage(string message)
         {
             //трансляция сообщения всем подключенным клиентам
+            Console.WriteLine("######## BROADCASTING "+message);
             byte[] data = Encoding.Unicode.GetBytes(message);
 
             foreach (var pair in clients)
@@ -96,6 +99,20 @@ namespace Aura_Server.Controller.Network
                 pair.Value.broadcastStream.Write(data, 0, data.Length); //передача данных
             }
 
+        }
+
+        protected internal void SendObjectToAll(object ob)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+            bf.Serialize(ms, ob);
+            byte[] data = ms.GetBuffer();
+
+            foreach (var pair in clients)
+            {
+                pair.Value.broadcastStream.Write(data, 0, data.Length);
+
+            }
         }
 
         protected internal void SendMessage(string message, string connectionID)

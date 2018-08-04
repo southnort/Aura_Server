@@ -157,7 +157,13 @@ namespace Aura_Server.Controller.Network
         private void ReceiveNewPurchase(List<string> message)
         {
             int clientID = int.Parse(message[1]);
-            Program.purchasesDataBase.AddNewPurchase(message[3], clientID);
+
+            Purchase newPurchase = Program.purchasesDataBase
+                .AddNewPurchase(message[3], clientID);
+
+            server.BroadcastMessage("ADDNEWPURCHASE");            
+            server.SendObjectToAll(newPurchase);
+
         }
 
         private void ReceiveUpdatePurchase(List<string> message)

@@ -86,12 +86,18 @@ namespace Aura_Server.Controller
 
         }
 
-        public string AddNewPurchase(string sqlCommand, int tryingUserID)
+        public Purchase AddNewPurchase(string sqlCommand, int tryingUserID)
         {
             try
             {
                 LogManager.Log(tryingUserID, "Создание новой закупки ");
-                return ExecuteCommand(sqlCommand);
+                string result = ExecuteCommand(sqlCommand);
+
+                //возвращаем только что добавленную закупку
+                var table = dataBase.GetTable("SELECT * FROM Purchases WHERE ID=last_insert_rowid()");                
+                var row = table.Rows[0];
+                return new Purchase(row);
+
             }
 
             catch (Exception ex)
@@ -146,6 +152,7 @@ namespace Aura_Server.Controller
             var row = table.Rows[0];
             return new Purchase(row);
         }
+        
 
     }
 
