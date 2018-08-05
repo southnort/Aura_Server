@@ -22,9 +22,9 @@ namespace Aura_Server.Controller.Network
             {
                 case "USER": ReceiveUser(message); break;
                 case "NEWPURCHASE": ReceiveNewPurchase(message); break;
-                case "UPDATEPURCHASE":
+                case "UPDATEPURCHASE": ReceiveUpdatePurchase(message); break;
 
-                default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
+                default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
             }
 
         }
@@ -94,9 +94,11 @@ namespace Aura_Server.Controller.Network
 
                 sb.Append("LOGINSUCCESS#");
                 sb.Append(user.name + "#");
-                sb.Append(user.roleID);
+                sb.Append(user.roleID+"#");
+                sb.Append(user.ID);
 
                 return sb.ToString();
+
             }
 
         }
@@ -105,7 +107,7 @@ namespace Aura_Server.Controller.Network
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
             var table = Program.usersDataBase.GetUsersInTable();
-           
+
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 string id = table.Rows[i][0].ToString();
@@ -161,14 +163,22 @@ namespace Aura_Server.Controller.Network
             Purchase newPurchase = Program.purchasesDataBase
                 .AddNewPurchase(message[3], clientID);
 
-            server.BroadcastMessage("ADDNEWPURCHASE", newPurchase);            
-           
+            server.BroadcastMessage("ADDNEWPURCHASE", newPurchase);
+
         }
 
         private void ReceiveUpdatePurchase(List<string> message)
         {
             int clientID = int.Parse(message[1]);
-            Program.purchasesDataBase.UpdatePurchase(message[3], clientID);
+            Purchase newPurchase = Program.purchasesDataBase
+                .UpdatePurchase(message[3], clientID);
+
+            
+            int startIndex = message[3].IndexOf("WHERE ID = ");
+            string result = message[3].Substring(startIndex).Replace("WHERE ID = ", "");
+
+
+            server.BroadcastMessage("UPDATEPURCHASE", newPurchase);
         }
     }
 

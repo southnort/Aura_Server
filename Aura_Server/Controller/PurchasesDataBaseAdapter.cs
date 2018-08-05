@@ -75,7 +75,7 @@ namespace Aura_Server.Controller
             try
             {
                 LogManager.Log(tryingUserID, "Создание новой закупки " + purchase.purchaseName);
-                return ExecuteCommand(sb.ToString());                
+                return ExecuteCommand(sb.ToString());
             }
 
             catch (Exception ex)
@@ -90,13 +90,15 @@ namespace Aura_Server.Controller
         {
             try
             {
-                LogManager.Log(tryingUserID, "Создание новой закупки ");
                 string result = ExecuteCommand(sqlCommand);
 
                 //возвращаем только что добавленную закупку
-                var table = dataBase.GetTable("SELECT * FROM Purchases WHERE ID=last_insert_rowid()");                
+                var table = dataBase.GetTable("SELECT * FROM Purchases WHERE ID=last_insert_rowid()");
                 var row = table.Rows[0];
-                return new Purchase(row);
+
+                Purchase newPurchase = new Purchase(row);
+                LogManager.Log(tryingUserID, sqlCommand, newPurchase.id);
+                return newPurchase;
 
             }
 
@@ -108,12 +110,18 @@ namespace Aura_Server.Controller
 
         }
 
-        public string UpdatePurchase(string sqlCommand, int tryingUserID)
+        public Purchase UpdatePurchase(string sqlCommand, int tryingUserID)
         {
             try
             {
-                LogManager.Log(tryingUserID, "Редактирование закупки ");
-                return ExecuteCommand(sqlCommand);
+                //поиск в строке ID меняемой закупки
+                int startIndex = sqlCommand.IndexOf("WHERE ID = ");
+                string purchaseIDstr = sqlCommand.Substring(startIndex).Replace("WHERE ID = ", "");
+                int purchaseID = int.Parse(purchaseIDstr);
+                LogManager.Log(tryingUserID, sqlCommand, purchaseID);
+
+                ExecuteCommand(sqlCommand);
+                return GetPurchase(purchaseID);
             }
 
             catch (Exception ex)
@@ -152,7 +160,7 @@ namespace Aura_Server.Controller
             var row = table.Rows[0];
             return new Purchase(row);
         }
-        
+
 
     }
 
