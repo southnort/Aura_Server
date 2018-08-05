@@ -138,6 +138,21 @@ namespace Aura_Server.Controller
 
         }
 
+        public List<Purchase> GetPurchases()
+        {
+            //вернуть все закупки в виде List
+            var result = new List<Purchase>();
+            var table = GetAllPurchases();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                Purchase pur = new Purchase(table.Rows[i]);
+                result.Add(pur);
+            }
+            
+            return result;
+
+        }
+
         public Calendar GetCalendar()
         {
             //возвращает все закупки из БД в виде календаря
@@ -159,6 +174,7 @@ namespace Aura_Server.Controller
             var table = dataBase.GetTable("SELECT * FROM Purchases WHERE ID= " + id);
             var row = table.Rows[0];
             return new Purchase(row);
+
         }
 
 

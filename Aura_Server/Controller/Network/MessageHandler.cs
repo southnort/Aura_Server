@@ -24,6 +24,10 @@ namespace Aura_Server.Controller.Network
                 case "NEWPURCHASE": ReceiveNewPurchase(message); break;
                 case "UPDATEPURCHASE": ReceiveUpdatePurchase(message); break;
 
+                case "NEWORGANISATION": ReceiveNewOrganisation(message); break;
+                case "UPDATEORGANISATION": ReveiveUpdateOrganisation(message); break;
+
+
                 default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
             }
 
@@ -64,6 +68,7 @@ namespace Aura_Server.Controller.Network
                 case ("USERNAMES"): server.SendObject(CreateUserNames(), connectionID); break;
                 case ("ALLPURCHASES"): server.SendObject(CreatePurchases(), connectionID); break;
                 case ("ALLUSERS"): server.SendObject(GetAllUsers(), connectionID); break;
+                case ("ALLORGANISATIONS"): server.SendObject(GetAllOrganisations(), connectionID); break;
 
                 default:
                     {
@@ -94,7 +99,7 @@ namespace Aura_Server.Controller.Network
 
                 sb.Append("LOGINSUCCESS#");
                 sb.Append(user.name + "#");
-                sb.Append(user.roleID+"#");
+                sb.Append(user.roleID + "#");
                 sb.Append(user.ID);
 
                 return sb.ToString();
@@ -122,20 +127,18 @@ namespace Aura_Server.Controller.Network
 
         private List<Purchase> CreatePurchases()
         {
-            var result = new List<Purchase>();
-            var table = Program.purchasesDataBase.GetAllPurchases();
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                Purchase pur = new Purchase(table.Rows[i]);
-                result.Add(pur);
-            }
-            Console.WriteLine(result.Count);
-            return result;
+            return Program.purchasesDataBase.GetPurchases();
+
         }
 
         private List<User> GetAllUsers()
         {
             return Program.usersDataBase.GetAllUsers();
+        }
+
+        private List<Organisation> GetAllOrganisations()
+        {
+            return Program.organisationsDataBase.GetOrganisations();
         }
 
 
@@ -163,7 +166,7 @@ namespace Aura_Server.Controller.Network
             Purchase newPurchase = Program.purchasesDataBase
                 .AddNewPurchase(message[3], clientID);
 
-            server.BroadcastMessage("ADDNEWPURCHASE", newPurchase);
+            server.BroadcastMessage(message[2], newPurchase);
 
         }
 
@@ -173,12 +176,36 @@ namespace Aura_Server.Controller.Network
             Purchase newPurchase = Program.purchasesDataBase
                 .UpdatePurchase(message[3], clientID);
 
-            
+
             int startIndex = message[3].IndexOf("WHERE ID = ");
             string result = message[3].Substring(startIndex).Replace("WHERE ID = ", "");
 
 
-            server.BroadcastMessage("UPDATEPURCHASE", newPurchase);
+            server.BroadcastMessage(message[2], newPurchase);
+        }
+
+
+        private void ReceiveNewOrganisation(List<string> message)
+        {
+            int clietnID = int.Parse(message[1]);
+
+            Organisation org = Program.organisationsDataBase
+                .AddNewOrganisation(message[3], clietnID);
+
+            server.BroadcastMessage("ADDNEWORGANISATION", org);
+
+        }
+
+        private void ReveiveUpdateOrganisation(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+            Organisation org = Program.organisationsDataBase
+                .UpdateOrganisation(message[3], clientID);
+
+            int startIndex = message[3].IndexOf("WHERE ID = ");
+            string result = message[3].Substring(startIndex).Replace("WHERE ID = ", "");
+
+            server.BroadcastMessage(message[2], org);
         }
     }
 
