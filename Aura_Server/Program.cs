@@ -32,8 +32,8 @@ namespace Aura_Server
         private static void StartDataBases()
         {
             //настраиваем соединения с БД            
-            string dbForLogsFileName = "tempDataBaseForLogs.sqlite";
-            string dbFileName = "tempDataBase.sqlite";
+            string dbForLogsFileName = "AuraDataBase_ForLogs.sqlite";
+            string dbFileName = "AuraDataBase.sqlite";
 
             DataBaseCreator creator = new DataBaseCreator();
             creator.CreateDataBaseForLogs(dbForLogsFileName);

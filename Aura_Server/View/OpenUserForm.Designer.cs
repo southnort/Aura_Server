@@ -110,7 +110,7 @@
             this.accessLevelNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.accessLevelNumericUpDown.Location = new System.Drawing.Point(217, 161);
             this.accessLevelNumericUpDown.Maximum = new decimal(new int[] {
-            1,
+            2,
             0,
             0,
             0});
@@ -129,10 +129,10 @@
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(94, 190);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(243, 86);
+            this.richTextBox1.Size = new System.Drawing.Size(243, 98);
             this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "-1: Заблокированный пользователь\n 0: Права администратора\n 1: Стандартные права п" +
-    "ользователя\n\nИспользоване других цифр может вызвать ошибки";
+            this.richTextBox1.Text = "-1: Заблокированный пользователь\n 0: Права администратора\n 1: Пользователь по 44-" +
+    "ФЗ\n 2: Пользователь по 223-ФЗ\n\nИспользоване других цифр может вызвать ошибки";
             // 
             // saveButton
             // 

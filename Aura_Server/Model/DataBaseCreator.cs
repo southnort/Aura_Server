@@ -90,7 +90,8 @@ namespace Aura_Server.Model
             sb.Append("name TEXT UNIQUE, ");
             sb.Append("roleID INTEGER, ");
             sb.Append("dateOfCreation TEXT, ");
-            sb.Append("dateOfLastEnter TEXT)");
+            sb.Append("dateOfLastEnter TEXT, ");
+            sb.Append("law INTEGER)");
 
             return sb.ToString();
 
@@ -126,7 +127,8 @@ namespace Aura_Server.Model
             sb.Append("contractDateReal TEXT, ");
             sb.Append("reestrDateLast TEXT, ");
             sb.Append("reestrNumber TEXT, ");
-            sb.Append("comments TEXT)");
+            sb.Append("comments TEXT, ");
+            sb.Append("law INTEGER)");
 
             return sb.ToString();
         }
@@ -146,7 +148,9 @@ namespace Aura_Server.Model
             sb.Append("contractNumber TEXT, ");
             sb.Append("contractStart TEXT, ");
             sb.Append("contractEnd TEXT, ");
-            sb.Append("comments TEXT)");
+            sb.Append("comments TEXT, ");
+            sb.Append("contractCondition, INTEGER, ");
+            sb.Append("law INTEGER)");
 
             return sb.ToString();
 
