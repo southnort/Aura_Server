@@ -118,14 +118,14 @@ namespace Aura_Server.Controller.Network
 
         }
 
-        private Dictionary<string, Purchase> CreatePurchases()
+        private List<Purchase> CreatePurchases()
         {
-            var result = new Dictionary<string, Purchase>();
+            var result = new List<Purchase>();
             var table = Program.purchasesDataBase.GetAllPurchases();
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 Purchase pur = new Purchase(table.Rows[i]);
-                result.Add(pur.id.ToString(), pur);
+                result.Add(pur);
             }
             Console.WriteLine(result.Count);
             return result;
@@ -161,9 +161,8 @@ namespace Aura_Server.Controller.Network
             Purchase newPurchase = Program.purchasesDataBase
                 .AddNewPurchase(message[3], clientID);
 
-            server.BroadcastMessage("ADDNEWPURCHASE");            
-            server.SendObjectToAll(newPurchase);
-
+            server.BroadcastMessage("ADDNEWPURCHASE", newPurchase);            
+           
         }
 
         private void ReceiveUpdatePurchase(List<string> message)

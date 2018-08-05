@@ -88,10 +88,10 @@ namespace Aura_Server.Controller.Network
 
 
 
-        protected internal void BroadcastMessage(string message)
+        protected internal void BroadcastMessage(string message, object ob)
         {
             //трансляция сообщения всем подключенным клиентам
-            Console.WriteLine("######## BROADCASTING "+message);
+            Console.WriteLine("######## BROADCASTING " + message + " " + ob.GetType());
             byte[] data = Encoding.Unicode.GetBytes(message);
 
             foreach (var pair in clients)
@@ -99,22 +99,19 @@ namespace Aura_Server.Controller.Network
                 pair.Value.broadcastStream.Write(data, 0, data.Length); //передача данных
             }
 
-        }
-
-        protected internal void SendObjectToAll(object ob)
-        {
             BinaryFormatter bf = new BinaryFormatter();
             MemoryStream ms = new MemoryStream();
             bf.Serialize(ms, ob);
-            byte[] data = ms.GetBuffer();
+            data = ms.GetBuffer();
 
             foreach (var pair in clients)
             {
-                pair.Value.broadcastStream.Write(data, 0, data.Length);
-
+                pair.Value.broadcastStream.Write(data, 0, data.Length); //передача сериализованного объекта
             }
-        }
 
+
+        }
+       
         protected internal void SendMessage(string message, string connectionID)
         {
             clients[connectionID].SendMessage(message);
