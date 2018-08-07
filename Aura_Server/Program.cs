@@ -38,6 +38,7 @@ namespace Aura_Server
             DataBaseCreator creator = new DataBaseCreator();
             creator.CreateDataBaseForLogs(dbForLogsFileName);
             creator.CreateMainDataBase(dbFileName);
+            creator.UpdateTables(dbFileName);
             creator = null;
 
             LogManager.Instance.InitializeLogManager(dbForLogsFileName);
@@ -74,14 +75,14 @@ namespace Aura_Server
         {
             //открываем формы 
 
-            LoginWindow loginWindow = new LoginWindow(usersDataBase);
-            loginWindow.ShowDialog();
+            //LoginWindow loginWindow = new LoginWindow(usersDataBase);
+            //loginWindow.ShowDialog();
 
             //PurchasesCalendarForm calendarForm = new PurchasesCalendarForm(purchasesDataBase);
             //calendarForm.ShowDialog();
 
-            PurchasesDataBaseForm purchasesDataBaseForm = new PurchasesDataBaseForm(purchasesDataBase);
-            purchasesDataBaseForm.ShowDialog();
+            //PurchasesDataBaseForm purchasesDataBaseForm = new PurchasesDataBaseForm(purchasesDataBase);
+            //purchasesDataBaseForm.ShowDialog();
 
         }
 

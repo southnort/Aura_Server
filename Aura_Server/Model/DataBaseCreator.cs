@@ -32,6 +32,32 @@ namespace Aura_Server.Model
 
         }
 
+        public void UpdateTables(string dbFileName)
+        {
+            //обновить существующие таблицы, добавить в них новые колонки
+
+            
+            SQLiteConnection m_dbConn = new SQLiteConnection("Data Source=" + dbFileName + ";Version=3;");
+            m_dbConn.Open();
+
+            SQLiteCommand m_sqlCmd = new SQLiteCommand();
+            m_sqlCmd.Connection = m_dbConn;
+
+            //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
+
+            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN protocolStatusID INTEGER";
+            //m_sqlCmd.ExecuteNonQuery();
+
+            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN bidsReviewDate TEXT";
+            //m_sqlCmd.ExecuteNonQuery();
+
+            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN bidsRatingDate TEXT";
+            //m_sqlCmd.ExecuteNonQuery();
+
+            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN controlStatus INTEGER";
+            //m_sqlCmd.ExecuteNonQuery();
+        }
+
        
 
 
@@ -129,7 +155,15 @@ namespace Aura_Server.Model
             sb.Append("reestrNumber TEXT, ");
             sb.Append("comments TEXT, ");
             sb.Append("law INTEGER, ");
-            sb.Append("withAZK INTEGER)");
+            sb.Append("withAZK INTEGER, ");
+            sb.Append("employeDocumentationID INTEGER, ");
+            sb.Append("resultOfControl TEXT, ");
+            sb.Append("protocolStatusID INTEGER, ");
+            sb.Append("bidsReviewDate TEXT, ");
+            sb.Append("bidsRatingDate TEXT, ");
+            sb.Append("controlStatus INTEGER");
+
+            sb.Append(")");
 
             return sb.ToString();
         }
