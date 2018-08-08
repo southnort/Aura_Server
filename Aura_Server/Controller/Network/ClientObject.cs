@@ -41,7 +41,7 @@ namespace Aura_Server.Controller.Network
         {
             try
             {
-                broadcastClient = new TcpClient();                
+                broadcastClient = new TcpClient();
                 string clientIP = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
                 broadcastClient.Connect(clientIP, broadcastPort);
                 broadcastStream = broadcastClient.GetStream();
@@ -143,13 +143,14 @@ namespace Aura_Server.Controller.Network
             //метод получения одного сообщения
             byte[] data = new byte[64]; // буфер для получаемых данных
             StringBuilder builder = new StringBuilder();
-            int bytes = 0;
+            int bytes = stream.Read(data, 0, 4);    //прочитать первые 6 байт - размер сообщения
+            int size = BitConverter.ToInt32(data, 0);
             do
             {
                 bytes = stream.Read(data, 0, data.Length);
                 builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
             }
-            while (stream.DataAvailable);
+            while (bytes != size);
             string message = builder.ToString();
 
             Console.WriteLine("Recieving message: " + message);
@@ -160,19 +161,20 @@ namespace Aura_Server.Controller.Network
         {
             //метод получения сериализованного объекта
             byte[] data = new byte[64];
-            int bytes = 0;
             BinaryFormatter bf = new BinaryFormatter();
             MemoryStream ms = new MemoryStream();
 
             //получаем
             try
             {
+                int bytes = stream.Read(data, 0, 4);    //прочитать первые 6 байт - размер сообщения
+                int size = BitConverter.ToInt32(data, 0); 
                 do
                 {
                     bytes = stream.Read(data, 0, data.Length);
                     ms.Write(data, 0, bytes);
                 }
-                while (stream.DataAvailable);
+                while (bytes != size);
 
                 ms.Seek(0, SeekOrigin.Begin);
             }
@@ -204,6 +206,11 @@ namespace Aura_Server.Controller.Network
         {
             try
             {
+                int size = data.Length;
+                Console.WriteLine("Sending message size is - " + size);
+                byte[] preparedSize = BitConverter.GetBytes(size);
+                stream.Write(preparedSize, 0, preparedSize.Length);
+
                 stream.Write(data, 0, data.Length);
 
             }
