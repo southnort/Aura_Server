@@ -45,7 +45,7 @@ namespace Aura_Server.Model
 
             //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
 
-            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN protocolStatusID INTEGER";
+            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN colorMark INTEGER";
             //m_sqlCmd.ExecuteNonQuery();
 
             //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN bidsReviewDate TEXT";
@@ -161,7 +161,8 @@ namespace Aura_Server.Model
             sb.Append("protocolStatusID INTEGER, ");
             sb.Append("bidsReviewDate TEXT, ");
             sb.Append("bidsRatingDate TEXT, ");
-            sb.Append("controlStatus INTEGER");
+            sb.Append("controlStatus INTEGER, ");
+            sb.Append("colorMark INTEGER");
 
             sb.Append(")");
 

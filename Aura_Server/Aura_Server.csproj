@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aura_DLL, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Aura_DLL, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Aura_DLL.dll</HintPath>
     </Reference>
