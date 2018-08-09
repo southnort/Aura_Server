@@ -41,7 +41,7 @@ namespace Aura_Server.Controller.Network
         {
             try
             {
-                broadcastClient = new TcpClient();
+                broadcastClient = new TcpClient();                
                 string clientIP = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
                 broadcastClient.Connect(clientIP, broadcastPort);
                 broadcastStream = broadcastClient.GetStream();
@@ -66,7 +66,7 @@ namespace Aura_Server.Controller.Network
                 {
                     try
                     {
-                        string message = ReceiveString();
+                        string message = ReceiveString(stream);
                         Console.WriteLine(message);
                         server.HandleMessage(message, this);
                     }
@@ -138,64 +138,80 @@ namespace Aura_Server.Controller.Network
 
         }
 
-        protected internal string ReceiveString()
+        private string ReceiveString(NetworkStream st)
         {
             //метод получения одного сообщения
-            byte[] data = new byte[64]; // буфер для получаемых данных
-            StringBuilder builder = new StringBuilder();
-            int bytes = stream.Read(data, 0, 4);    //прочитать первые 4 байт - размер сообщения
-            foreach (var i in data)
-                Console.Write(i + " ");
-            int size = BitConverter.ToInt32(data, 0);
-            do
+            try
             {
-                bytes = stream.Read(data, 0, data.Length);
-                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-            }
-            while (bytes != size);
-            string message = builder.ToString();
+                StringBuilder sb = new StringBuilder();
 
-            Console.WriteLine("Recieving message: " + message);
-            return message;
+                var data = new byte[64];
+                var size = new byte[4];
+                int readCount;
+                int totalReadMessageBytes = 0;
+
+                st.Read(size, 0, 4);
+                int messageLenght = BitConverter.ToInt32(size, 0);
+
+                while ((readCount = st.Read(data, 0, data.Length)) != 0)
+                {
+                    sb.Append(Encoding.Unicode.GetString(data, 0, readCount));
+                    totalReadMessageBytes += readCount;
+                    if (totalReadMessageBytes >= messageLenght)
+                        break;
+                }
+                return sb.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return "ERROR";
+            }
         }
 
-        protected internal object ReceiveObject()
+        private object ReceiveObject(NetworkStream st)
         {
             //метод получения сериализованного объекта
-            byte[] data = new byte[64];
-            BinaryFormatter bf = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream();
-
-            //получаем
             try
             {
-                int bytes = stream.Read(data, 0, 4);    //прочитать первые 6 байт - размер сообщения
-                int size = BitConverter.ToInt32(data, 0); 
-                do
+                var ms = new MemoryStream();
+                var binaryWriter = new BinaryWriter(ms);
+
+                var data = new byte[64];
+                var size = new byte[4];
+                int readCount;
+                int totalReadMessageBytes = 0;
+
+                st.Read(size, 0, 4);
+                int messageLenght = BitConverter.ToInt32(size, 0);
+                Console.WriteLine("Object size -:" + messageLenght);
+
+                while ((readCount = st.Read(data, 0, data.Length)) != 0)
                 {
-                    bytes = stream.Read(data, 0, data.Length);
-                    ms.Write(data, 0, bytes);
+                    binaryWriter.Write(data, 0, readCount);
+                    totalReadMessageBytes += readCount;
+                    if (totalReadMessageBytes >= messageLenght)
+                        break;
                 }
-                while (bytes != size);
 
-                ms.Seek(0, SeekOrigin.Begin);
+                if (ms.Length > 0)
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    Console.WriteLine(ms.Length);
+                    ms.Seek(0, SeekOrigin.Begin);
+                    object ob = bf.Deserialize(ms);
+                    return ob;
+                }
+                else
+                {
+                    return null;
+                }
             }
 
             catch (Exception ex)
             {
-                Console.WriteLine(ToString() + "ReceiveObject Exception: " + ex.Message);
-                return null;
-            }
-
-            //десериализуем
-            try
-            {
-                object ob = bf.Deserialize(ms);
-                return ob;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ToString() + "ReceiveObject.Deserialize Exception: " + ex.Message);
+                Console.WriteLine(ex.ToString());
                 return null;
             }
 
@@ -209,17 +225,9 @@ namespace Aura_Server.Controller.Network
             try
             {
                 int size = data.Length;
-                Console.WriteLine("Sending message size is - " + size);
                 byte[] preparedSize = BitConverter.GetBytes(size);
-                Console.Write("\n");
-                foreach (var i in preparedSize)
-                {
-                    Console.Write(i + " ");
-                }
-                foreach (var i in preparedSize)
-                    Console.Write(i + " ");
+                Console.WriteLine("Size is - : "+size);
                 stream.Write(preparedSize, 0, preparedSize.Length);
-
                 stream.Write(data, 0, data.Length);
 
             }

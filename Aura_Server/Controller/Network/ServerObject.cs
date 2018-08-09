@@ -94,22 +94,25 @@ namespace Aura_Server.Controller.Network
             Console.WriteLine("######## BROADCASTING " + message + " " + ob.GetType());
             byte[] data = Encoding.Unicode.GetBytes(message);
             int size = data.Length;
-            Console.WriteLine("Sending message size is - " + size);
             byte[] preparedSize = BitConverter.GetBytes(size);
-
 
             foreach (var pair in clients)
             {
-                pair.Value.broadcastStream.Write(preparedSize, 0, preparedSize.Length);               
+                pair.Value.broadcastStream.Write(preparedSize, 0, preparedSize.Length);
+                pair.Value.broadcastStream.Write(data, 0, data.Length); //передача данных
             }
 
             BinaryFormatter bf = new BinaryFormatter();
             MemoryStream ms = new MemoryStream();
             bf.Serialize(ms, ob);
             data = ms.GetBuffer();
+            size = data.Length;
+            preparedSize = BitConverter.GetBytes(size);
+
 
             foreach (var pair in clients)
             {
+                pair.Value.broadcastStream.Write(preparedSize, 0, preparedSize.Length);
                 pair.Value.broadcastStream.Write(data, 0, data.Length); //передача сериализованного объекта
             }
 
