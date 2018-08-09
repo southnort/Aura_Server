@@ -143,7 +143,9 @@ namespace Aura_Server.Controller.Network
             //метод получения одного сообщения
             byte[] data = new byte[64]; // буфер для получаемых данных
             StringBuilder builder = new StringBuilder();
-            int bytes = stream.Read(data, 0, 4);    //прочитать первые 6 байт - размер сообщения
+            int bytes = stream.Read(data, 0, 4);    //прочитать первые 4 байт - размер сообщения
+            foreach (var i in data)
+                Console.Write(i + " ");
             int size = BitConverter.ToInt32(data, 0);
             do
             {
@@ -209,6 +211,13 @@ namespace Aura_Server.Controller.Network
                 int size = data.Length;
                 Console.WriteLine("Sending message size is - " + size);
                 byte[] preparedSize = BitConverter.GetBytes(size);
+                Console.Write("\n");
+                foreach (var i in preparedSize)
+                {
+                    Console.Write(i + " ");
+                }
+                foreach (var i in preparedSize)
+                    Console.Write(i + " ");
                 stream.Write(preparedSize, 0, preparedSize.Length);
 
                 stream.Write(data, 0, data.Length);

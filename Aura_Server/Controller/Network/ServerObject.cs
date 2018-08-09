@@ -93,10 +93,14 @@ namespace Aura_Server.Controller.Network
             //трансляция сообщения всем подключенным клиентам
             Console.WriteLine("######## BROADCASTING " + message + " " + ob.GetType());
             byte[] data = Encoding.Unicode.GetBytes(message);
+            int size = data.Length;
+            Console.WriteLine("Sending message size is - " + size);
+            byte[] preparedSize = BitConverter.GetBytes(size);
+
 
             foreach (var pair in clients)
             {
-                pair.Value.broadcastStream.Write(data, 0, data.Length); //передача данных
+                pair.Value.broadcastStream.Write(preparedSize, 0, preparedSize.Length);               
             }
 
             BinaryFormatter bf = new BinaryFormatter();
