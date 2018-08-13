@@ -166,8 +166,6 @@ namespace Aura_Server.Controller.Network
             Purchase newPurchase = Program.purchasesDataBase
                 .AddNewPurchase(message[3], clientID);
 
-            server.BroadcastMessage(message[2], newPurchase);
-
         }
 
         private void ReceiveUpdatePurchase(List<string> message)
@@ -180,8 +178,6 @@ namespace Aura_Server.Controller.Network
             int startIndex = message[3].IndexOf("WHERE ID = ");
             string result = message[3].Substring(startIndex).Replace("WHERE ID = ", "");
 
-
-            server.BroadcastMessage(message[2], newPurchase);
         }
 
 
@@ -191,8 +187,6 @@ namespace Aura_Server.Controller.Network
 
             Organisation org = Program.organisationsDataBase
                 .AddNewOrganisation(message[3], clietnID);
-
-            server.BroadcastMessage("ADDNEWORGANISATION", org);
 
         }
 
@@ -205,7 +199,6 @@ namespace Aura_Server.Controller.Network
             int startIndex = message[3].IndexOf("WHERE ID = ");
             string result = message[3].Substring(startIndex).Replace("WHERE ID = ", "");
 
-            server.BroadcastMessage(message[2], org);
         }
     }
 
