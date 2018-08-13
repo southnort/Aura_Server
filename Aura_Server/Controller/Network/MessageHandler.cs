@@ -70,13 +70,19 @@ namespace Aura_Server.Controller.Network
                 case ("ALLUSERS"): server.SendObject(GetAllUsers(), connectionID); break;
                 case ("ALLORGANISATIONS"): server.SendObject(GetAllOrganisations(), connectionID); break;
 
+                case ("GETUSER"): server.SendObject(GetUser(message), connectionID); break;
+                case ("GETPURCHASE"): server.SendObject(GetPurchase(message), connectionID); break;
+                case ("GETORGANISATION"): server.SendObject(GetOrganisation(message), connectionID); break;
+
                 default:
                     {
                         server.SendObject(null, connectionID);
                         Console.WriteLine(ToString() + " invalid command " + message[1]);
                     }
                     break;
+
             }
+
         }
 
 
@@ -200,6 +206,34 @@ namespace Aura_Server.Controller.Network
             string result = message[3].Substring(startIndex).Replace("WHERE ID = ", "");
 
         }
+
+
+        private User GetUser(List<string> message)
+        {
+            //отослать клиенту запрашиваемого юзера
+            int id = int.Parse(message[3]);
+            return Program.usersDataBase.GetUser(id);
+
+        }
+
+        private Purchase GetPurchase(List<string> message)
+        {
+            //отослать клиенту запрашиваемую закупку
+            int id = int.Parse(message[3]);
+            return Program.purchasesDataBase.GetPurchase(id);        
+
+        }
+
+        private Organisation GetOrganisation(List<string> message)
+        {
+            //отослать клиенту запрашиваемую организацию
+            int id = int.Parse(message[3]);
+            return Program.organisationsDataBase.GetOrganisation(id);
+
+        }
+
+
+
     }
 
 

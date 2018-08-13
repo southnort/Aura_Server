@@ -69,12 +69,15 @@ namespace Aura_Server.Controller.Network
                     Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
                     clientThread.Start();
                 }
+
             }
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Disconnect();
             }
+
         }
 
 
