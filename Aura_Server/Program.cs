@@ -75,8 +75,8 @@ namespace Aura_Server
         {
             //открываем формы 
 
-            //LoginWindow loginWindow = new LoginWindow(usersDataBase);
-            //loginWindow.ShowDialog();
+            LoginWindow loginWindow = new LoginWindow(usersDataBase);
+            loginWindow.ShowDialog();
 
             //PurchasesCalendarForm calendarForm = new PurchasesCalendarForm(purchasesDataBase);
             //calendarForm.ShowDialog();
