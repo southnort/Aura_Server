@@ -83,6 +83,7 @@ namespace Aura_Server.Controller.Network
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Close();
             }
             finally
             {
@@ -146,10 +147,10 @@ namespace Aura_Server.Controller.Network
                 StringBuilder sb = new StringBuilder();
 
                 var data = new byte[64];
-                var size = new byte[4];
+                var size = new byte[4];                
                 int readCount;
                 int totalReadMessageBytes = 0;
-
+               
                 st.Read(size, 0, 4);
                 int messageLenght = BitConverter.ToInt32(size, 0);
 
@@ -166,7 +167,7 @@ namespace Aura_Server.Controller.Network
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return "ERROR";
+                throw ex;
             }
         }
 
@@ -212,7 +213,7 @@ namespace Aura_Server.Controller.Network
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return null;
+                throw ex;
             }
 
         }
