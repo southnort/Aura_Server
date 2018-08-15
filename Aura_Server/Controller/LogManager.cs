@@ -17,7 +17,7 @@ namespace Aura_Server.Controller
         public static LogManager Instance = new LogManager();
         private DataBaseManager dataBase;       //БД для хранения логов. Она отделена от основной БД
 
-        public static void Log(int userId, string message, int idOfPurchase = -1)
+        public static void Log(int userId, string message, int idOfPurchase = -1, int idOfOrganisation = -1)
         {
             //userID - ID пользователя, совершившего действие
             //idOfPurchase - ID изменяемой закупки
@@ -27,6 +27,7 @@ namespace Aura_Server.Controller
                 message = message,
                 logDateTime = DateTime.Now.ToString(),
                 purchaseID = idOfPurchase,
+                organisationID = idOfOrganisation,
 
             };
 
@@ -37,7 +38,27 @@ namespace Aura_Server.Controller
 
         private void Log(LogNode node)
         {
-            Console.WriteLine(node.ToString() + "\n");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO Logs (userID, message, logDateTime, organisationID) ");
+            sb.Append("VALUES ('");
+            sb.Append(node.userID);
+            sb.Append("', '");
+            sb.Append(node.message);
+            sb.Append("', '");
+            sb.Append(node.logDateTime);
+            sb.Append("', '");
+            sb.Append(node.organisationID);
+            sb.Append("')");
+
+            try
+            {
+                dataBase.ExecuteCommand(sb.ToString());
+                Console.WriteLine("LogManaget log successful " + sb.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("LogManager Exception: \n" + sb.ToString() + "\n" + ex.ToString());
+            }
         }
 
 
@@ -46,7 +67,7 @@ namespace Aura_Server.Controller
             dataBase = new DataBaseManager();
             dataBase.ConnectToDataBase(dbForLogFileName);
 
-            Log(-1, "DBs initialized. Log Manager activated");
+           Console.WriteLine("DBs initialized. Log Manager activated");
 
         }
 

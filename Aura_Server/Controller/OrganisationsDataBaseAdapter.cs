@@ -70,7 +70,7 @@ namespace Aura_Server.Controller
                 var row = table.Rows[0];
 
                 Organisation newOrg = new Organisation(row);
-                LogManager.Log(tryingUserID, sqlCommand, newOrg.id);
+                LogManager.Log(tryingUserID, sqlCommand, -1, newOrg.id);
                 return newOrg;
 
             }

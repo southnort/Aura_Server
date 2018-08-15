@@ -67,6 +67,7 @@ namespace Aura_Server.Controller.Network
                     try
                     {
                         string message = ReceiveString(stream);
+                        Console.WriteLine("\n\n***********************************");
                         Console.WriteLine(message);
                         server.HandleMessage(message, this);
                     }

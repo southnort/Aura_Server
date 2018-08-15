@@ -50,7 +50,7 @@ namespace Aura_Server
             purchasesDataBase = new PurchasesTableAdapter(dataBase);
             organisationsDataBase = new OrganisationsDataBaseAdapter(dataBase);
 
-            LogManager.Log(-1, "Connection to DBs established successfully");
+            Console.WriteLine("Connection to DBs established successfully");
         }
 
         private static void StartNetwork()
@@ -75,8 +75,8 @@ namespace Aura_Server
         {
             //открываем формы 
 
-            //LoginWindow loginWindow = new LoginWindow(usersDataBase);
-            //loginWindow.ShowDialog();
+            LoginWindow loginWindow = new LoginWindow(usersDataBase);
+            loginWindow.ShowDialog();
 
             //PurchasesCalendarForm calendarForm = new PurchasesCalendarForm(purchasesDataBase);
             //calendarForm.ShowDialog();
@@ -88,58 +88,58 @@ namespace Aura_Server
 
         private static void TestMethod()
         {
-            Aura.Model.Purchase pur1 = new Aura.Model.Purchase()
-            {
-                purchaseName = "Техобслуживание",
-                purchaseMethodID = 1,
-                purchacePrice = 50000f,
-                statusID  =0,
-                employeID = 1,
-                organizationID = 2,
+            //Aura.Model.Purchase pur1 = new Aura.Model.Purchase()
+            //{
+            //    purchaseName = "Техобслуживание",
+            //    purchaseMethodID = 1,
+            //    purchacePrice = 50000f,
+            //    statusID = 0,
+            //    employeID = 1,
+            //    organizationID = 2,
 
-                bidsStartDate = new DateTime(2018,8,13).ToString(),
-                bidsEndDate = new DateTime(2018,8,20).ToString(),
-                bidsFinishDate = new DateTime(2018,8,23).ToString(),
+            //    bidsStartDate = new DateTime(2018, 8, 13).ToString(),
+            //    bidsEndDate = new DateTime(2018, 8, 20).ToString(),
+            //    bidsFinishDate = new DateTime(2018, 8, 23).ToString(),
 
-            };
+            //};
 
-            Aura.Model.Purchase pur2 = new Aura.Model.Purchase()
-            {
-                purchaseName = "Мягкий инвентарь",
-                purchaseMethodID = 2,
-                purchacePrice = 32504.54f,
-                statusID = 2,
-                employeID = 2,
-                organizationID = 1,
+            //Aura.Model.Purchase pur2 = new Aura.Model.Purchase()
+            //{
+            //    purchaseName = "Мягкий инвентарь",
+            //    purchaseMethodID = 2,
+            //    purchacePrice = 32504.54f,
+            //    statusID = 2,
+            //    employeID = 2,
+            //    organizationID = 1,
 
-                bidsStartDate = new DateTime(2018, 8, 15).ToString(),
-                bidsEndDate = new DateTime(2018, 8, 16).ToString(),
-                bidsFinishDate = new DateTime(2018, 8, 23).ToString(),
+            //    bidsStartDate = new DateTime(2018, 8, 15).ToString(),
+            //    bidsEndDate = new DateTime(2018, 8, 16).ToString(),
+            //    bidsFinishDate = new DateTime(2018, 8, 23).ToString(),
             
-            };
+            //};
 
-            Aura.Model.Purchase pur3 = new Aura.Model.Purchase()
-            {
-                purchaseName = "Testing",
-                purchaseMethodID = 3,
-                statusID = 0,
-                employeID = 0,
-                organizationID = 3,
+            //Aura.Model.Purchase pur3 = new Aura.Model.Purchase()
+            //{
+            //    purchaseName = "Testing",
+            //    purchaseMethodID = 3,
+            //    statusID = 0,
+            //    employeID = 0,
+            //    organizationID = 3,
 
-                purchaseEisDate = new DateTime(2018, 8, 15).ToString(),
+            //    purchaseEisDate = new DateTime(2018, 8, 15).ToString(),
                 
 
-            };
+            //};
 
-            Aura.Model.Purchase pur4 = new Aura.Model.Purchase()
-            {
+            //Aura.Model.Purchase pur4 = new Aura.Model.Purchase()
+            //{
 
-            };            
+            //};            
 
-            Aura.Model.Purchase pur8 = new Aura.Model.Purchase()
-            {
+            //Aura.Model.Purchase pur8 = new Aura.Model.Purchase()
+            //{
 
-            };
+            //};
 
            
         }

@@ -92,7 +92,9 @@ namespace Aura_Server.Model
             sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
             sb.Append("userID INTEGER, ");
             sb.Append("message TEXT, ");
-            sb.Append("logDateTime TEXT)");
+            sb.Append("logDateTime TEXT, ");
+            sb.Append("organisationID INTEGER");
+            sb.Append(")");
 
             return sb.ToString();
 
