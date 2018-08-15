@@ -49,9 +49,7 @@ namespace Aura_Server.Controller
 
         public string ExecuteCommand(string commandString)
         {
-            //запрос к БД не возвращающий значений
-            LogManager.Log(-1, commandString);
-
+            //запрос к БД не возвращающий значений            
             command.CommandText = commandString;
             command.ExecuteNonQuery();
             return "Success";
@@ -60,9 +58,7 @@ namespace Aura_Server.Controller
 
         public object GetValue(string queryString)
         {
-            //запрос к БД, предполагающий возвращение единственного значения
-            LogManager.Log(-1, queryString);
-
+            //запрос к БД, предполагающий возвращение единственного значения            
             command.CommandText = queryString;
             return command.ExecuteScalar();
 
@@ -70,9 +66,7 @@ namespace Aura_Server.Controller
 
         public DataTable GetTable(string queryString)
         {
-            //запрос к БД, предполагающий возвращение множества значений в виде таблицы
-            LogManager.Log(-1, queryString);
-
+            //запрос к БД, предполагающий возвращение множества значений в виде таблицы            
             command.CommandText = queryString;
             DataSet dataSet = new DataSet();
             dataSet.Reset();

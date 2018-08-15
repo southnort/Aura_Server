@@ -48,7 +48,7 @@ namespace Aura_Server.Controller
             sb.Append(user.dateOfLastEnter);
             sb.Append("')");
 
-            LogManager.Log(tryingUserID, "Создание пользователя " + user.name);
+           // LogManager.Log(tryingUserID, "Создание пользователя " + user.name);
             return ExecuteCommand(sb.ToString());
 
         }
@@ -72,7 +72,7 @@ namespace Aura_Server.Controller
             sb.Append("' WHERE ID = ");
             sb.Append(user.ID);
 
-            LogManager.Log(tryingUserID, "Редактирование пользователя " + user.name);
+          //  LogManager.Log(tryingUserID, "Редактирование пользователя " + user.name);
             return ExecuteCommand(sb.ToString());
 
         }
@@ -113,8 +113,7 @@ namespace Aura_Server.Controller
                 login + "' AND password = '" + password + "' AND roleID != '-1'");
 
             if (ob != null)
-            {
-                LogManager.Log(-1, ob.ToString());
+            {                
                 return (int)(long)ob;
             }
 

@@ -84,16 +84,17 @@ namespace Aura_Server.Model
 
         private string CreateCommandString_LogTable()
         {
-            //создать commandString для таблицы логов
-
-
+            //создать commandString для таблицы логов           
             StringBuilder sb = new StringBuilder();
             sb.Append("CREATE TABLE IF NOT EXISTS Logs (");
             sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
             sb.Append("userID INTEGER, ");
+            sb.Append("tableName TEXT, ");
+            sb.Append("itemID INTEGER, ");
+            sb.Append("date TEXT, ");
+            sb.Append("time TEXT, ");
             sb.Append("message TEXT, ");
-            sb.Append("logDateTime TEXT, ");
-            sb.Append("organisationID INTEGER");
+            sb.Append("dataBaseQuery TEXT");
             sb.Append(")");
 
             return sb.ToString();

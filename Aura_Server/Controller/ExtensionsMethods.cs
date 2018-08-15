@@ -18,8 +18,7 @@ namespace Aura_Server.Controller
             }
 
             catch (Exception ex)
-            {
-                LogManager.Log(-1,ex.Message);
+            {                
                 return DateTime.MinValue;
             }
           

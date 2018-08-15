@@ -15,48 +15,48 @@ namespace Aura_Server.Controller
         {
         }
 
-        public string AddNewOrganisation(Organisation org, int tryingUserID)
-        {
-            //создание и добавление новой организации в БД
-            StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO Organisations ('name', 'inn', 'phoneNumber', 'contactName', 'email', 'originalID', 'contractNumber', 'contractStart', 'contractEnd', 'comments', 'contractCondition') values ('");
-            sb.Append(org.name);
-            sb.Append("', '");
-            sb.Append(org.inn);
-            sb.Append("', '");
-            sb.Append(org.phoneNumber);
-            sb.Append("', '");
-            sb.Append(org.contactName);
-            sb.Append("', '");
-            sb.Append(org.email);
-            sb.Append("', '");
-            sb.Append(org.originalID);
-            sb.Append("', '");
-            sb.Append(org.contractNumber);
-            sb.Append("', '");
-            sb.Append(org.contractStart);
-            sb.Append("', '");
-            sb.Append(org.contractEnd);
-            sb.Append("', '");
-            sb.Append(org.comments);
-            sb.Append("', '");
-            sb.Append(org.contractCondition);
-            sb.Append("')");
+        //public string AddNewOrganisation(Organisation org, int tryingUserID)
+        //{
+        //    //создание и добавление новой организации в БД
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.Append("INSERT INTO Organisations ('name', 'inn', 'phoneNumber', 'contactName', 'email', 'originalID', 'contractNumber', 'contractStart', 'contractEnd', 'comments', 'contractCondition') values ('");
+        //    sb.Append(org.name);
+        //    sb.Append("', '");
+        //    sb.Append(org.inn);
+        //    sb.Append("', '");
+        //    sb.Append(org.phoneNumber);
+        //    sb.Append("', '");
+        //    sb.Append(org.contactName);
+        //    sb.Append("', '");
+        //    sb.Append(org.email);
+        //    sb.Append("', '");
+        //    sb.Append(org.originalID);
+        //    sb.Append("', '");
+        //    sb.Append(org.contractNumber);
+        //    sb.Append("', '");
+        //    sb.Append(org.contractStart);
+        //    sb.Append("', '");
+        //    sb.Append(org.contractEnd);
+        //    sb.Append("', '");
+        //    sb.Append(org.comments);
+        //    sb.Append("', '");
+        //    sb.Append(org.contractCondition);
+        //    sb.Append("')");
 
-            try
-            {
-                LogManager.Log(tryingUserID, "Создание новой организации " + org.name);
-                return ExecuteCommand(sb.ToString());
-            }
+        //    try
+        //    {
+        //        LogManager.Log(tryingUserID, "Создание новой организации " + org.name);
+        //        return ExecuteCommand(sb.ToString());
+        //    }
 
-            catch (Exception ex)
-            {
-                throw (new Exception(ex.ToString() + "\n"
-                    + sb.ToString()));
-            }
+        //    catch (Exception ex)
+        //    {
+        //        throw (new Exception(ex.ToString() + "\n"
+        //            + sb.ToString()));
+        //    }
 
 
-        }
+        //}
 
         public Organisation AddNewOrganisation(string sqlCommand, int tryingUserID)
         {
@@ -70,7 +70,7 @@ namespace Aura_Server.Controller
                 var row = table.Rows[0];
 
                 Organisation newOrg = new Organisation(row);
-                LogManager.Log(tryingUserID, sqlCommand, -1, newOrg.id);
+                LogManager.LogOrganisationAdding(tryingUserID, newOrg.id, sqlCommand);
                 return newOrg;
 
             }
@@ -90,8 +90,8 @@ namespace Aura_Server.Controller
                 int startIndex = sqlCommand.IndexOf("WHERE ID = ");
                 string orgIDstr = sqlCommand.Substring(startIndex).Replace("WHERE ID = ", "");
                 int orgID = int.Parse(orgIDstr);
-                LogManager.Log(tryingUserID, sqlCommand);
 
+                LogManager.LogOrganisationUpdate(tryingUserID, orgID, sqlCommand);
                 ExecuteCommand(sqlCommand);
                 return GetOrganisation(orgID);
 

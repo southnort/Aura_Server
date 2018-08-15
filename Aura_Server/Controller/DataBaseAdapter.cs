@@ -14,13 +14,11 @@ namespace Aura_Server.Controller
         //переводит пользовательские команды в запросы SQL и наоборот
 
 
-        protected DataBaseManager dataBase;
-        protected LogManager logManager;
+        protected DataBaseManager dataBase;        
 
         public DataBaseAdapter(DataBaseManager manager)
         {
-            dataBase = manager;
-            logManager = new LogManager();
+            dataBase = manager;            
         }
                 
         protected string ExecuteCommand(string sqlCommand)

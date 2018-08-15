@@ -5,7 +5,6 @@ using System.Text;
 using Aura_Server.Model;
 
 
-
 namespace Aura_Server.Controller
 {
     public class LogManager
@@ -17,47 +16,80 @@ namespace Aura_Server.Controller
         public static LogManager Instance = new LogManager();
         private DataBaseManager dataBase;       //БД для хранения логов. Она отделена от основной БД
 
-        public static void Log(int userId, string message, int idOfPurchase = -1, int idOfOrganisation = -1)
+
+        public static void LogPurchaseAdding(int userId, int purchaseID, string dataBaseQuery)
         {
-            //userID - ID пользователя, совершившего действие
-            //idOfPurchase - ID изменяемой закупки
+            //залогировать добавление новой закупки
             LogNode node = new LogNode
             {
                 userID = userId,
-                message = message,
-                logDateTime = DateTime.Now.ToString(),
-                purchaseID = idOfPurchase,
-                organisationID = idOfOrganisation,
+                tableName = "Purchases",
+                itemID = purchaseID,                
+                message = "Создание закупки",
+                dataBaseQuery = dataBaseQuery,
 
             };
 
+            Instance.Log(node);
+        }
+
+        public static void LogPurchaseUpdate(int userId, int purchaseID, string dataBaseQuery)
+        {
+            LogNode node = new LogNode
+            {
+                userID = userId,
+                tableName = "Purchases",
+                itemID = purchaseID,               
+                message = "Редактирование закупки",
+                dataBaseQuery = dataBaseQuery,
+
+            };
 
             Instance.Log(node);
-
         }
+
+
+        public static void LogOrganisationAdding(int userId, int organisationID, string dataBaseQuery)
+        {
+            LogNode node = new LogNode
+            {
+                userID = userId,
+                tableName = "Organisations",
+                itemID = organisationID,                
+                message = "Создание организации",
+                dataBaseQuery = dataBaseQuery,
+
+            };
+
+            Instance.Log(node);
+        }
+
+        public static void LogOrganisationUpdate(int userId, int organisationID, string dataBaseQuery)
+        {
+            LogNode node = new LogNode
+            {
+                userID = userId,
+                tableName = "Organisations",
+                itemID = organisationID,               
+                message = "Редактирование организации",
+                dataBaseQuery = dataBaseQuery,
+
+            };
+
+            Instance.Log(node);
+        }
+
 
         private void Log(LogNode node)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO Logs (userID, message, logDateTime, organisationID) ");
-            sb.Append("VALUES ('");
-            sb.Append(node.userID);
-            sb.Append("', '");
-            sb.Append(node.message);
-            sb.Append("', '");
-            sb.Append(node.logDateTime);
-            sb.Append("', '");
-            sb.Append(node.organisationID);
-            sb.Append("')");
-
             try
             {
-                dataBase.ExecuteCommand(sb.ToString());
-                Console.WriteLine("LogManaget log successful " + sb.ToString());
+                dataBase.ExecuteCommand(node.ToDataBaseCommand());
+                Console.WriteLine("LogManaget log successful " + node.ToDataBaseCommand());               
             }
             catch (Exception ex)
             {
-                Console.WriteLine("LogManager Exception: \n" + sb.ToString() + "\n" + ex.ToString());
+                Console.WriteLine("LogManager Exception: \n" + node.ToDataBaseCommand() + "\n" + ex.ToString());
             }
         }
 
@@ -67,7 +99,7 @@ namespace Aura_Server.Controller
             dataBase = new DataBaseManager();
             dataBase.ConnectToDataBase(dbForLogFileName);
 
-           Console.WriteLine("DBs initialized. Log Manager activated");
+            Console.WriteLine("DBs initialized. Log Manager activated");
 
         }
 

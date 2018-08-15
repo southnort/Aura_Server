@@ -18,73 +18,72 @@ namespace Aura_Server.Controller
         {
         }
 
-        public string AddNewPurchase(Purchase purchase, int tryingUserID)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO Purchases ('employeID', 'organizationID', 'purchaseMethodID', 'purchaseName', ");
-            sb.Append("'statusID', 'purchacePrice', 'purchaseEisNum', 'purchaseEisDate', 'bidsStartDate', ");
-            sb.Append("'bidsEndDate', 'bidsOpenDate', 'bidsFirstPartDate', 'auctionDate', 'bidsSecondPartDate', ");
-            sb.Append("'bidsFinishDate', 'contractPrice', 'contractDatePlan', 'contractDateLast', ");
-            sb.Append("'contractDateReal', 'reestrDateLast', 'reestrNumber', 'comments') values ('");
+        //public string AddNewPurchase(Purchase purchase, int tryingUserID)
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.Append("INSERT INTO Purchases ('employeID', 'organizationID', 'purchaseMethodID', 'purchaseName', ");
+        //    sb.Append("'statusID', 'purchacePrice', 'purchaseEisNum', 'purchaseEisDate', 'bidsStartDate', ");
+        //    sb.Append("'bidsEndDate', 'bidsOpenDate', 'bidsFirstPartDate', 'auctionDate', 'bidsSecondPartDate', ");
+        //    sb.Append("'bidsFinishDate', 'contractPrice', 'contractDatePlan', 'contractDateLast', ");
+        //    sb.Append("'contractDateReal', 'reestrDateLast', 'reestrNumber', 'comments') values ('");
 
-            sb.Append(purchase.employeID);
-            sb.Append("', '");
-            sb.Append(purchase.organizationID);
-            sb.Append("', '");
-            sb.Append(purchase.purchaseMethodID);
-            sb.Append("', '");
-            sb.Append(purchase.purchaseName);
-            sb.Append("', '");
-            sb.Append(purchase.statusID);
-            sb.Append("', '");
-            sb.Append(purchase.purchacePrice);
-            sb.Append("', '");
-            sb.Append(purchase.purchaseEisNum);
-            sb.Append("', '");
-            sb.Append(purchase.purchaseEisDate);
-            sb.Append("', '");
-            sb.Append(purchase.bidsStartDate);
-            sb.Append("', '");
-            sb.Append(purchase.bidsEndDate);
-            sb.Append("', '");
-            sb.Append(purchase.bidsOpenDate);
-            sb.Append("', '");
-            sb.Append(purchase.bidsFirstPartDate);
-            sb.Append("', '");
-            sb.Append(purchase.auctionDate);
-            sb.Append("', '");
-            sb.Append(purchase.bidsSecondPartDate);
-            sb.Append("', '");
-            sb.Append(purchase.bidsFinishDate);
-            sb.Append("', '");
-            sb.Append(purchase.contractPrice);
-            sb.Append("', '");
-            sb.Append(purchase.contractDatePlan);
-            sb.Append("', '");
-            sb.Append(purchase.contractDateLast);
-            sb.Append("', '");
-            sb.Append(purchase.contractDateReal);
-            sb.Append("', '");
-            sb.Append(purchase.reestrDateLast);
-            sb.Append("', '");
-            sb.Append(purchase.reestrNumber);
-            sb.Append("', '");
-            sb.Append(purchase.comments);
-            sb.Append("')");
+        //    sb.Append(purchase.employeID);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.organizationID);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.purchaseMethodID);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.purchaseName);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.statusID);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.purchacePrice);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.purchaseEisNum);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.purchaseEisDate);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.bidsStartDate);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.bidsEndDate);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.bidsOpenDate);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.bidsFirstPartDate);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.auctionDate);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.bidsSecondPartDate);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.bidsFinishDate);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.contractPrice);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.contractDatePlan);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.contractDateLast);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.contractDateReal);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.reestrDateLast);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.reestrNumber);
+        //    sb.Append("', '");
+        //    sb.Append(purchase.comments);
+        //    sb.Append("')");
 
-            try
-            {
-                LogManager.Log(tryingUserID, "Создание новой закупки " + purchase.purchaseName);
-                return ExecuteCommand(sb.ToString());
-            }
+        //    try
+        //    {               
+        //        return ExecuteCommand(sb.ToString());
+        //    }
 
-            catch (Exception ex)
-            {
-                throw (new Exception(ex.ToString() + "\n"
-                    + sb.ToString()));
-            }
+        //    catch (Exception ex)
+        //    {
+        //        throw (new Exception(ex.ToString() + "\n"
+        //            + sb.ToString()));
+        //    }
 
-        }
+        //}
 
         public Purchase AddNewPurchase(string sqlCommand, int tryingUserID)
         {
@@ -97,7 +96,7 @@ namespace Aura_Server.Controller
                 var row = table.Rows[0];
 
                 Purchase newPurchase = new Purchase(row);
-                LogManager.Log(tryingUserID, sqlCommand, newPurchase.id);
+                LogManager.LogPurchaseAdding(tryingUserID, newPurchase.id, sqlCommand);
                 return newPurchase;
 
             }
@@ -118,7 +117,7 @@ namespace Aura_Server.Controller
                 int startIndex = sqlCommand.IndexOf("WHERE ID = ");
                 string purchaseIDstr = sqlCommand.Substring(startIndex).Replace("WHERE ID = ", "");
                 int purchaseID = int.Parse(purchaseIDstr);
-                LogManager.Log(tryingUserID, sqlCommand, purchaseID);
+                LogManager.LogPurchaseUpdate(tryingUserID, purchaseID, sqlCommand);
 
                 ExecuteCommand(sqlCommand);
                 return GetPurchase(purchaseID);
