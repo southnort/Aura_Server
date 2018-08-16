@@ -74,6 +74,9 @@ namespace Aura_Server.Controller.Network
                 case ("GETPURCHASE"): server.SendObject(GetPurchase(message), connectionID); break;
                 case ("GETORGANISATION"): server.SendObject(GetOrganisation(message), connectionID); break;
 
+                case ("GETFILTEREDORGANISATIONS"):server.SendObject(
+                    GetFilteredOrganisations(message), connectionID);break;
+
                 default:
                     {
                         server.SendObject(null, connectionID);
@@ -147,6 +150,10 @@ namespace Aura_Server.Controller.Network
             return Program.organisationsDataBase.GetOrganisations();
         }
 
+        private List<Organisation> GetFilteredOrganisations(List<string>str)
+        {
+            return Program.organisationsDataBase.GetFilteredOrganisations(str[3]);
+        }
 
 
         private void ReceiveUser(List<string> message)

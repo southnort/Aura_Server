@@ -123,6 +123,20 @@ namespace Aura_Server.Controller
             }
 
             return result;
+            
+        }
+
+        public List<Organisation> GetFilteredOrganisations(string sqlCommand)
+        {
+            var result = new List<Organisation>();
+            var table = GetData(sqlCommand);
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                Organisation org = new Organisation(table.Rows[i]);
+                result.Add(org);
+            }
+
+            return result;
 
         }
 

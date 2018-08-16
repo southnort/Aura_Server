@@ -111,7 +111,7 @@ namespace Aura_Server.Model
             sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
             sb.Append("login TEXT UNIQUE, ");
             sb.Append("password TEXT, ");
-            sb.Append("name TEXT UNIQUE, ");
+            sb.Append("name TEXT, ");
             sb.Append("roleID INTEGER, ");
             sb.Append("dateOfCreation TEXT, ");
             sb.Append("dateOfLastEnter TEXT, ");
