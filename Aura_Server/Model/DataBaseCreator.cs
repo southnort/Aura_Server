@@ -45,11 +45,12 @@ namespace Aura_Server.Model
 
             //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
 
-            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN commentsFontColor INTEGER";
-            //m_sqlCmd.ExecuteNonQuery();
 
-            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN resultOfControlColor INTEGER";
-            //m_sqlCmd.ExecuteNonQuery();
+            m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN employeReestID INTEGER";
+            m_sqlCmd.ExecuteNonQuery();
+
+            m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN reestrStatus INTEGER";
+            m_sqlCmd.ExecuteNonQuery();
 
         }
 
@@ -163,7 +164,9 @@ namespace Aura_Server.Model
             sb.Append("colorMark INTEGER, ");
 
             sb.Append("commentsFontColor INTEGER, ");
-            sb.Append("resultOfControlColor INTEGER");
+            sb.Append("resultOfControlColor INTEGER, ");
+            sb.Append("employeReestID INTEGER, ");
+            sb.Append("reestrStatus INTEGER");
 
             sb.Append(")");
 

@@ -152,6 +152,20 @@ namespace Aura_Server.Controller
 
         }
 
+        public List<Purchase> GetReestr()
+        {
+            var table = GetData("SELECT * FROM Purchases WHERE statusID > '7'");
+            var result = new List<Purchase>(table.Rows.Count);
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                Purchase pur = new Purchase(table.Rows[i]);
+                result.Add(pur);
+            }
+
+            return result;
+
+        }
+
         public Calendar GetCalendar()
         {
             //возвращает все закупки из БД в виде календаря
