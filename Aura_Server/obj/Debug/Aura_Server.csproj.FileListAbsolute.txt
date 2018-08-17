@@ -44,3 +44,5 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.S
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.xml

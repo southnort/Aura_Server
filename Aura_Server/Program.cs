@@ -9,6 +9,7 @@ using Aura_Server.View;
 using System.Data;
 using Aura_Server.Controller.Network;
 using System.Threading;
+using Aura_Server.Excel;
 
 namespace Aura_Server
 {
@@ -22,7 +23,9 @@ namespace Aura_Server
         {
             StartDataBases();
             StartNetwork();
-          //  TestMethod();
+            LoadOrganisations();
+            //  TestMethod();
+
             ShowForms();
 
             Console.WriteLine("Server starting successfully");
@@ -142,6 +145,19 @@ namespace Aura_Server
             //};
 
            
+        }
+
+
+        private static void LoadOrganisations()
+        {
+            ExcelManagerImport excel = new ExcelManagerImport();
+            string fileName = "Журнал регистрации договоров 44-ФЗ 2018 год.xlsx";
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + 
+                "/" + fileName;
+
+            excel.LoadOrganisationsFromFile(filePath);
+
+
         }
 
     }
