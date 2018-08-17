@@ -41,3 +41,6 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Serv
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config

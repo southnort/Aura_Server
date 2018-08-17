@@ -45,12 +45,11 @@ namespace Aura_Server.Model
 
             //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
 
+            //m_sqlCmd.CommandText = "ALTER TABLE Organisations ADD COLUMN contractType INTEGER";
+            //m_sqlCmd.ExecuteNonQuery();
 
-            m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN employeReestID INTEGER";
-            m_sqlCmd.ExecuteNonQuery();
-
-            m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN reestrStatus INTEGER";
-            m_sqlCmd.ExecuteNonQuery();
+            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN employeReestID INTEGER";
+            //m_sqlCmd.ExecuteNonQuery();            
 
         }
 
@@ -190,7 +189,10 @@ namespace Aura_Server.Model
             sb.Append("contractEnd TEXT, ");
             sb.Append("comments TEXT, ");
             sb.Append("contractCondition INTEGER, ");
-            sb.Append("law INTEGER)");
+            sb.Append("law INTEGER, ");
+            sb.Append("contractType INTEGER");
+
+            sb.Append(")");
 
             return sb.ToString();
 
