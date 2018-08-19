@@ -41,7 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Aura_DLL.dll</HintPath>
     </Reference>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml, Version=2.8.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.8.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="SQLite.Designer, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\SQLite.Designer.dll</HintPath>
@@ -60,6 +62,7 @@
       <HintPath>bin\Debug\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -80,8 +83,7 @@
     <Compile Include="Controller\OrganisationsDataBaseAdapter.cs" />
     <Compile Include="Controller\PurchasesDataBaseAdapter.cs" />
     <Compile Include="Controller\UsersTableAdapter.cs" />
-    <Compile Include="Excel\DataFromExcel.cs" />
-    <Compile Include="Excel\ExcelManagerImport.cs" />
+    <Compile Include="Excel\ExcelReader.cs" />
     <Compile Include="Model\Calendar.cs" />
     <Compile Include="Model\Catalog.cs" />
     <Compile Include="Model\DataBaseCreator.cs" />
