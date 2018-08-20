@@ -110,17 +110,17 @@ namespace Aura_Server
             var table3 = LoadTable("Журнал регистрации 1 раз 44-фз 2018 год.xlsx");
             var table4 = LoadTable("Журнал регистрации 1 раз 223-фз 2018 год.xlsx");
 
-            var table5 = LoadTable("Список предприятий c телефонами мупы11.xlsx");
+            var table5 = LoadTable("Список предприятий c телефонами мупы.xlsx");
             var table6 = LoadTable("Список предприятий c тел. 223-ФЗ на 14.06.2018.xlsx");
 
-            int number = 0;
+
             foreach (var str in table1)
             {
-                
+
                 if (IsNotEmpty(str))
                 {
                     Organisation org = new Organisation();
-                    org.name = str[0];
+                    org.name = str[1];
 
                     //string regexPattern = "(.*)( от )";
                     //string result = Regex.Match(str[1], regexPattern).Value.Replace(" от ","");
@@ -130,40 +130,33 @@ namespace Aura_Server
                     //result = Regex.Match(str[1],regexPattern).Value.Replace(" от ", "");
                     //org.contractStart = result;
 
-                    org.contractNumber = str[1];
-                    org.contractStart = str[3];
-                    try
-                    {
-                        org.contractEnd = str[4];
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(str.Count + " " + number);
-                    }
+                    org.contractNumber = str[2];
+                    org.contractStart = str[4];
+                    org.contractEnd = str[5];
+                   
 
-                    switch (str[5])
+                    switch (str[6])
                     {
                         case "оригинал": org.originalID = 1; break;
                         case "оригинал в эл. виде": org.originalID = 3; break;
                         default:
                             {
-                                Console.WriteLine(org.name + " #" + str[5] + "#");
-                                org.originalID = Console.Read();
+                                org.originalID = 0;
 
                             }
                             break;
 
                     }
 
-                    org.inn = str[6];
-                    org.comments = str[7];
+                    org.inn = str[7];
+                    org.comments = str[8];
 
                     org.contractCondition = 1;
                     org.law = 1;
                     org.contractType = 1;
 
                     listOfOrganisations44.Add(org);
-                    number++;
+                   
                 }
 
             }
@@ -174,28 +167,27 @@ namespace Aura_Server
                 {
                     Organisation org = new Organisation();
 
-                    org.name = str[0];
-                    org.contractNumber = str[1];
-                    org.contractStart = str[3];
-                    org.contractEnd = str[4];
+                    org.name = str[1];
+                    org.contractNumber = str[2];
+                    org.contractStart = str[4];
+                    org.contractEnd = str[5];
 
-                    switch (str[5])
+                    switch (str[6])
                     {
                         case "оригинал": org.originalID = 1; break;
                         case "подписан ЭЦП": org.originalID = 3; break;
                         case "нет оригинала": org.originalID = 2; break;
                         default:
                             {
-                                Console.WriteLine(org.name + " #" + str[5] + "#");
-                                org.originalID = Console.Read();
+                                org.originalID = 0;
 
                             }
                             break;
 
                     }
 
-                    org.inn = str[6];
-                    org.comments = str[7];
+                    org.inn = str[7];
+                    org.comments = str[8];
 
                     org.contractCondition = 1;
                     org.law = 2;
@@ -211,28 +203,27 @@ namespace Aura_Server
                 if (IsNotEmpty(str))
                 {
                     Organisation org = new Organisation();
-                    org.name = str[0];
+                    org.name = str[1];
 
-                    org.contractNumber = str[1];
-                    org.contractStart = str[3];
-                    org.contractEnd = str[4];
+                    org.contractNumber = str[2];
+                    org.contractStart = str[4];
+                    org.contractEnd = str[5];
 
-                    switch (str[5])
+                    switch (str[6])
                     {
                         case "оригинал": org.originalID = 1; break;
                         case "оригинал в эл. виде": org.originalID = 3; break;
                         default:
                             {
-                                Console.WriteLine(org.name + " #" + str[5] + "#");
-                                org.originalID = Console.Read();
+                                org.originalID = 0;
 
                             }
                             break;
 
                     }
 
-                    org.inn = str[6];
-                    org.comments = str[7];
+                    org.inn = str[7];
+                    org.comments = str[8];
 
                     org.contractCondition = 1;
                     org.law = 1;
@@ -249,28 +240,27 @@ namespace Aura_Server
                 {
                     Organisation org = new Organisation();
 
-                    org.name = str[0];
-                    org.contractNumber = str[1];
+                    org.name = str[1];
+                    org.contractNumber = str[2];
 
-                    switch (str[3])
+                    switch (str[4])
                     {
                         case "оригинал": org.originalID = 1; break;
                         case "подписан ЭЦП": org.originalID = 3; break;
                         case "нет оригинала": org.originalID = 2; break;
                         default:
                             {
-                                Console.WriteLine(org.name + " #" + str[5] + "#");
-                                org.originalID = Console.Read();
+                                org.originalID = 0;
 
                             }
                             break;
 
                     }
 
-                    org.inn = str[4];
-                    org.contactName = str[5];
-                   
-                    org.comments = str[6];
+                    org.inn = str[5];
+                    org.contactName = str[6];
+
+                    org.comments = str[7];
 
                     org.contractCondition = 1;
                     org.law = 2;
@@ -285,79 +275,79 @@ namespace Aura_Server
             {
                 if (IsNotEmpty(str))
                 {
-                    Organisation org = listOfOrganisations44.GetOrganisation(str[0]);
+                    Organisation org = listOfOrganisations44.GetOrganisation(str[1]);
                     if (org == null)
-                        org = listOfOrganisations44.GetOrganisation(str[1]);
+                        org = listOfOrganisations44.GetOrganisation(str[2]);
                     if (org == null)
                     {
                         org = new Organisation();
                         listOfOrganisations44.Add(org);
                     }
 
-                    if (org.name != str[0])
+                    if (org.name != str[1])
                     {
-                        Console.WriteLine("#" + org.name + "# - #" + str[0] + "#");
+                        Console.WriteLine("#" + org.name + "# - #" + str[1] + "#");
                         if (Console.Read() == 1)
-                            org.name = str[0];
+                            org.name = str[1];
                     }
 
                     if (org.inn == "")
-                        org.inn = str[1];
+                        org.inn = str[2];
                     else
                     {
-                        if (org.inn != str[1])
-                            Console.WriteLine("#" + org.name + "# - #" + str[1] + "#");
+                        if (org.inn != str[2])
+                            Console.WriteLine("#" + org.name + "# - #" + str[2] + "#");
                         if (Console.Read() == 1)
-                            org.inn = str[1];
+                            org.inn = str[2];
                     }
 
-                    org.phoneNumber = str[2];
-                    org.contactName = str[3];
-                    org.email = str[4];
+                    org.phoneNumber = str[3];
+                    org.contactName = str[4];
+                    org.email = str[5];
 
 
                 }
             }
 
-            foreach (var str in table6)
-            {
-                if (IsNotEmpty(str))
-                {
-                    Organisation org = listOfOrganisations223.GetOrganisation(str[0]);
-                    if (org == null)
-                        org = listOfOrganisations223.GetOrganisation(str[1]);
-                    if (org == null)
-                    {
-                        org = new Organisation();
-                        listOfOrganisations223.Add(org);
-                    }
+            //foreach (var str in table6)
+            //{
+            //    if (IsNotEmpty(str))
+            //    {
+            //        Organisation org = listOfOrganisations223.GetOrganisation(str[0]);
+            //        if (org == null)
+            //            org = listOfOrganisations223.GetOrganisation(str[1]);
+            //        if (org == null)
+            //        {
+            //            org = new Organisation();
+            //            listOfOrganisations223.Add(org);
+            //        }
 
-                    if (org.name != str[0])
-                    {
-                        Console.WriteLine("#" + org.name + "# - #" + str[0] + "#");
-                        if (Console.Read() == 1)
-                            org.name = str[0];
-                    }
+            //        if (org.name != str[0])
+            //        {
+            //            Console.WriteLine("#" + org.name + "# - #" + str[0] + "#");
+            //            if (Console.Read() == 1)
+            //                org.name = str[0];
+            //        }
 
-                    if (org.inn == "")
-                        org.inn = str[1];
-                    else
-                    {
-                        if (org.inn != str[1])
-                            Console.WriteLine("#" + org.name + "# - #" + str[1] + "#");
-                        if (Console.Read() == 1)
-                            org.inn = str[1];
-                    }
+            //        if (org.inn == "")
+            //            org.inn = str[1];
+            //        else
+            //        {
+            //            if (org.inn != str[1])
+            //                Console.WriteLine("#" + org.name + "# - #" + str[1] + "#");
+            //            if (Console.Read() == 1)
+            //                org.inn = str[1];
+            //        }
 
-                    org.phoneNumber = str[2];
-                    org.contactName = str[3];
-                    org.email = str[4];
-                }
-            }
+            //        org.phoneNumber = str[2];
+            //        org.contactName = str[3];
+            //        org.email = str[4];
+            //    }
+            //}
 
 
-            Console.WriteLine(listOfOrganisations44.Last().email);
-            Console.WriteLine(listOfOrganisations223.Last().email);
+            //Console.WriteLine(listOfOrganisations44.Last().email);
+            //Console.WriteLine(listOfOrganisations223.Last().email);
         }
 
         private static List<List<string>> LoadTable(string fileName)

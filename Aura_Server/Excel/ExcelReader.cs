@@ -7,6 +7,8 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using ExcelDataReader;
+using System.Data;
 
 
 namespace Aura_Server.Excel
@@ -19,50 +21,32 @@ namespace Aura_Server.Excel
             List<List<string>> tableCells = new List<List<string>>();
             if (File.Exists(filePath))
             {
-                using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
                 {
-                    using (SpreadsheetDocument doc = SpreadsheetDocument.Open(fs, false))
+                    IExcelDataReader excelReader = ExcelReaderFactory.CreateReader(stream);
+                    DataSet result = excelReader.AsDataSet();
+                    var table = result.Tables[0];
+
+                    foreach (DataRow row in table.Rows)
                     {
-                        WorkbookPart workbookPart = doc.WorkbookPart;
-                        SharedStringTablePart sstPart = workbookPart.GetPartsOfType<SharedStringTablePart>().First();
-                        SharedStringTable sst = sstPart.SharedStringTable;
+                        List<string> rowString = new List<string>();
 
-                        WorksheetPart worksheetPart = workbookPart.WorksheetParts.Last();
-                        Worksheet sheet = worksheetPart.Worksheet;
-
-                        var cells = sheet.Descendants<Cell>();
-                        var rows = sheet.Descendants<Row>();
-
-
-                        foreach (Row row in rows)
+                        for (int i = 0; i < 10; i++)
                         {
-                            List<string> rowList = new List<string>();
-                            foreach (Cell cell in row.Elements<Cell>())
+                            try
                             {
-                                if ((cell.DataType != null) && (cell.DataType == CellValues.SharedString))
-                                {
-                                    int ssid = int.Parse(cell.CellValue.Text);
-                                    string str = sst.ChildElements[ssid].InnerText;
-                                    rowList.Add(str);
-                                }
-                                else if (cell.CellValue != null)
-                                {
-
-                                }
-
+                                rowString.Add(row[i].ToString());
                             }
-
-                            tableCells.Add(rowList);
-
+                            catch
+                            {
+                            }
                         }
 
-
-
+                        tableCells.Add(rowString);
                     }
                 }
 
                 return tableCells;
-
             }
 
             else
@@ -71,7 +55,7 @@ namespace Aura_Server.Excel
             }
 
         }
-
+       
     }
 
 }

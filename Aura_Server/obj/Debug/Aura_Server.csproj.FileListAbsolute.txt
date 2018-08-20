@@ -48,3 +48,8 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentF
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
