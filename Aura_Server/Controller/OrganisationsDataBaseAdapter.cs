@@ -15,48 +15,52 @@ namespace Aura_Server.Controller
         {
         }
 
-        //public string AddNewOrganisation(Organisation org, int tryingUserID)
-        //{
-        //    //создание и добавление новой организации в БД
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.Append("INSERT INTO Organisations ('name', 'inn', 'phoneNumber', 'contactName', 'email', 'originalID', 'contractNumber', 'contractStart', 'contractEnd', 'comments', 'contractCondition') values ('");
-        //    sb.Append(org.name);
-        //    sb.Append("', '");
-        //    sb.Append(org.inn);
-        //    sb.Append("', '");
-        //    sb.Append(org.phoneNumber);
-        //    sb.Append("', '");
-        //    sb.Append(org.contactName);
-        //    sb.Append("', '");
-        //    sb.Append(org.email);
-        //    sb.Append("', '");
-        //    sb.Append(org.originalID);
-        //    sb.Append("', '");
-        //    sb.Append(org.contractNumber);
-        //    sb.Append("', '");
-        //    sb.Append(org.contractStart);
-        //    sb.Append("', '");
-        //    sb.Append(org.contractEnd);
-        //    sb.Append("', '");
-        //    sb.Append(org.comments);
-        //    sb.Append("', '");
-        //    sb.Append(org.contractCondition);
-        //    sb.Append("')");
+        public string AddNewOrganisation(Organisation org, int tryingUserID)
+        {
+            //создание и добавление новой организации в БД
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO Organisations ('name', 'inn', 'phoneNumber', 'contactName', 'email', 'originalID', 'contractNumber', 'contractStart', 'contractEnd', 'comments', 'contractCondition', 'law', 'contractType') values ('");
+            sb.Append(org.name);
+            sb.Append("', '");
+            sb.Append(org.inn);
+            sb.Append("', '");
+            sb.Append(org.phoneNumber);
+            sb.Append("', '");
+            sb.Append(org.contactName);
+            sb.Append("', '");
+            sb.Append(org.email);
+            sb.Append("', '");
+            sb.Append(org.originalID);
+            sb.Append("', '");
+            sb.Append(org.contractNumber);
+            sb.Append("', '");
+            sb.Append(org.contractStart);
+            sb.Append("', '");
+            sb.Append(org.contractEnd);
+            sb.Append("', '");
+            sb.Append(org.comments);
+            sb.Append("', '");
+            sb.Append(org.contractCondition);
+            sb.Append("', '");
+            sb.Append(org.law);
+            sb.Append("', '");
+            sb.Append(org.contractType);
+            sb.Append("')");
 
-        //    try
-        //    {
-        //        LogManager.Log(tryingUserID, "Создание новой организации " + org.name);
-        //        return ExecuteCommand(sb.ToString());
-        //    }
+            try
+            {
+                AddNewOrganisation(sb.ToString(), tryingUserID);
+                return "Success";
+            }
 
-        //    catch (Exception ex)
-        //    {
-        //        throw (new Exception(ex.ToString() + "\n"
-        //            + sb.ToString()));
-        //    }
+            catch (Exception ex)
+            {
+                throw (new Exception(ex.ToString() + "\n"
+                    + sb.ToString()));
+            }
 
 
-        //}
+        }
 
         public Organisation AddNewOrganisation(string sqlCommand, int tryingUserID)
         {
