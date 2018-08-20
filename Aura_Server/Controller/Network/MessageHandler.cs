@@ -26,6 +26,7 @@ namespace Aura_Server.Controller.Network
 
                 case "NEWORGANISATION": ReceiveNewOrganisation(message); break;
                 case "UPDATEORGANISATION": ReveiveUpdateOrganisation(message); break;
+                case "DELETEORGANISATION": DeleteOrganisation(message); break;
 
 
                 default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
@@ -120,6 +121,7 @@ namespace Aura_Server.Controller.Network
 
         }
 
+
         private Dictionary<string, string> CreateUserNames()
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
@@ -137,6 +139,12 @@ namespace Aura_Server.Controller.Network
 
         }
 
+        private List<User> GetAllUsers()
+        {
+            return Program.usersDataBase.GetAllUsers();
+        }
+
+
         private List<Purchase> CreatePurchases()
         {
             return Program.purchasesDataBase.GetPurchases();
@@ -147,11 +155,7 @@ namespace Aura_Server.Controller.Network
         {
             return Program.purchasesDataBase.GetReestr();
         }
-
-        private List<User> GetAllUsers()
-        {
-            return Program.usersDataBase.GetAllUsers();
-        }
+        
 
         private List<Organisation> GetAllOrganisations()
         {
@@ -245,6 +249,13 @@ namespace Aura_Server.Controller.Network
             int id = int.Parse(message[3]);
             return Program.organisationsDataBase.GetOrganisation(id);
 
+        }
+
+        private void DeleteOrganisation(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+            int orgId = int.Parse(message[3]);
+            Program.organisationsDataBase.DeleteOrganisation(orgId, clientID);
         }
 
 

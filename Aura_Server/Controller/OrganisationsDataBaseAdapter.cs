@@ -152,6 +152,16 @@ namespace Aura_Server.Controller
 
         }
 
+        public void DeleteOrganisation(int organisationId, int tryingUserID )
+        {
+            //удалить организацию из БД
+            string command = "DELETE FROM Organisations WHERE id = '" + organisationId + "'";
+            LogManager.LogOrganisationUpdate(tryingUserID, organisationId, command);
+            ExecuteCommand(command);
+
+        }
+
+
     }
 
 
