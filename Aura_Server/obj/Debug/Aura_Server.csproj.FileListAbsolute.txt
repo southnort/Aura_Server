@@ -44,11 +44,7 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.S
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.dll
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.dll
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ICSharpCode.SharpZipLib.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll
@@ -59,3 +55,6 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.Vis
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ICSharpCode.SharpZipLib.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
