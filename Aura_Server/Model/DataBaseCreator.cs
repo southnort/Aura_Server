@@ -23,6 +23,9 @@ namespace Aura_Server.Model
             commandString = CreateCommandString_OrganizationsTable();
             CreateDataBase(dbFileName, commandString);
 
+            commandString = CreateCommandString_Reports();
+            CreateDataBase(dbFileName, commandString);
+
         }
 
         public void CreateDataBaseForLogs(string dbFileName)
@@ -174,6 +177,7 @@ namespace Aura_Server.Model
 
         private string CreateCommandString_OrganizationsTable()
         {
+            //создать commandString для таблицы организаций-заказчиков
             StringBuilder sb = new StringBuilder();
             sb.Append("CREATE TABLE IF NOT EXISTS Organisations (");
 
@@ -194,6 +198,22 @@ namespace Aura_Server.Model
 
             sb.Append(")");
 
+            return sb.ToString();
+
+        }
+
+        private string CreateCommandString_Reports()
+        {
+            //строка для БД создание отчетов заказчиков
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IF NOT EXISTS Reports (");
+
+            sb.Append("organisationID INTEGER PRIMARY KEY, ");
+            sb.Append("commonPurchasesContractsReport TEXT, ");
+            sb.Append("singleSupplierContractsReport TEXT, ");
+            sb.Append("failedPurchasesContractsReport TEXT");
+
+            sb.Append(")");
             return sb.ToString();
 
         }

@@ -79,7 +79,7 @@ namespace Aura_Server.Controller.Network
                     server.SendObject(GetFilteredOrganisations(message), connectionID); break;
                 case ("GETREESTR"): server.SendObject(GetReestr(), connectionID); break;
 
-
+                case ("ALLREPORTS"): server.SendObject(GetAllReports(), connectionID); break;
 
                 default:
                     {
@@ -258,6 +258,11 @@ namespace Aura_Server.Controller.Network
             Program.organisationsDataBase.DeleteOrganisation(orgId, clientID);
         }
 
+
+        private List<Report> GetAllReports()
+        {
+            return Program.reportsDataBaseAdapter.GetAllReports();
+        }
 
 
     }

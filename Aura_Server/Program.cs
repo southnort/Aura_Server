@@ -21,6 +21,7 @@ namespace Aura_Server
         public static UsersTableAdapter usersDataBase;
         public static PurchasesTableAdapter purchasesDataBase;
         public static OrganisationsDataBaseAdapter organisationsDataBase;
+        public static ReportsDataBaseAdapter reportsDataBaseAdapter;
 
         static void Main()
         {
@@ -55,6 +56,7 @@ namespace Aura_Server
             usersDataBase = new UsersTableAdapter(dataBase);
             purchasesDataBase = new PurchasesTableAdapter(dataBase);
             organisationsDataBase = new OrganisationsDataBaseAdapter(dataBase);
+            reportsDataBaseAdapter = new ReportsDataBaseAdapter(dataBase);
 
             Console.WriteLine("Connection to DBs established successfully");
         }
