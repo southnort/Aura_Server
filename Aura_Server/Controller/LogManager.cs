@@ -80,6 +80,23 @@ namespace Aura_Server.Controller
         }
 
 
+        public static void LogReportUpdate(int userID, int reportID, string dataBaseQuery)
+        {
+            LogNode node = new LogNode
+            {
+                userID = userID,
+                tableName = "Reports",
+                itemID = reportID,
+                message = "Редактирование отчета",
+                dataBaseQuery = dataBaseQuery,
+
+            };
+
+            Instance.Log(node);
+
+        }
+
+
         private void Log(LogNode node)
         {
             try

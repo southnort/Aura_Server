@@ -30,6 +30,15 @@ namespace Aura_Server.Controller
 
         }
 
+        public void UpdateReport(string sqlCommand, int reportID, int tryingUser)
+        {
+            ExecuteCommand(sqlCommand);
+
+            LogManager.LogReportUpdate(tryingUser, reportID, sqlCommand);
+
+        }
+
+
     }
 
 }

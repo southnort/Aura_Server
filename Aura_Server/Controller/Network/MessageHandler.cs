@@ -27,7 +27,7 @@ namespace Aura_Server.Controller.Network
                 case "NEWORGANISATION": ReceiveNewOrganisation(message); break;
                 case "UPDATEORGANISATION": ReveiveUpdateOrganisation(message); break;
                 case "DELETEORGANISATION": DeleteOrganisation(message); break;
-
+                case "UPDATEREPORT": UpdateReport(message); break;
 
                 default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
             }
@@ -264,6 +264,29 @@ namespace Aura_Server.Controller.Network
             return Program.reportsDataBaseAdapter.GetAllReports();
         }
 
+        private void UpdateReport(List<string> message)
+        {
+            try
+            {
+                int clientID = int.Parse(message[1]);
+                int reportID = int.Parse(message[4]);
+
+
+
+                Program.reportsDataBaseAdapter.UpdateReport(message[3], reportID, clientID);
+            }
+
+            catch
+            {
+                Console.WriteLine("######################");
+                foreach (var str in message)
+                {
+                    Console.WriteLine("String^ : " +str );
+                }
+
+                Console.Read();
+            }
+        }
 
     }
 
