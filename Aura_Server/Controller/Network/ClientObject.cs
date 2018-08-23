@@ -74,7 +74,8 @@ namespace Aura_Server.Controller.Network
 
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.ToString());
+                        // Console.WriteLine(ex.ToString());
+                        Console.WriteLine("Client connection closed");
                         Close();
                         break;
                     }
