@@ -23,6 +23,7 @@ namespace Aura_Server.Controller.Network
                 case "USER": ReceiveUser(message); break;
                 case "NEWPURCHASE": ReceiveNewPurchase(message); break;
                 case "UPDATEPURCHASE": ReceiveUpdatePurchase(message); break;
+                case "DELETEPURCHASE": DeletePurchase(message); break;
 
                 case "NEWORGANISATION": ReceiveNewOrganisation(message); break;
                 case "UPDATEORGANISATION": ReveiveUpdateOrganisation(message); break;
@@ -203,6 +204,13 @@ namespace Aura_Server.Controller.Network
             int startIndex = message[3].IndexOf("WHERE ID = ");
             string result = message[3].Substring(startIndex).Replace("WHERE ID = ", "");
 
+        }
+
+        private void DeletePurchase(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+            int purID = int.Parse(message[3]);
+            Program.purchasesDataBase.DeletePurchase(purID, clientID);
         }
 
 

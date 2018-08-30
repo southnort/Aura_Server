@@ -190,6 +190,15 @@ namespace Aura_Server.Controller
 
         }
 
+        public void DeletePurchase(int purID, int tryingUserID)
+        {
+            //удалить закупку из БД
+            string command = "DELETE FROM Purchases WHERE id = '" + purID + "'";
+            LogManager.LogPurchaseUpdate(tryingUserID, purID, command);
+            ExecuteCommand(command);
+
+        }
+
 
     }
 
