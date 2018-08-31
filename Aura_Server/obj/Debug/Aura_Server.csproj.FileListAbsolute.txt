@@ -58,3 +58,4 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ICSharpCode.S
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.SqlCommandsConsoleForm.resources

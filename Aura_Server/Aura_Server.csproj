@@ -140,6 +140,12 @@
     <Compile Include="View\PurchasesDataBaseForm.Designer.cs">
       <DependentUpon>PurchasesDataBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SqlCommandsConsoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SqlCommandsConsoleForm.Designer.cs">
+      <DependentUpon>SqlCommandsConsoleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UsersDataBaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\PurchasesDataBaseForm.resx">
       <DependentUpon>PurchasesDataBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SqlCommandsConsoleForm.resx">
+      <DependentUpon>SqlCommandsConsoleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UsersDataBaseForm.resx">
       <DependentUpon>UsersDataBaseForm.cs</DependentUpon>

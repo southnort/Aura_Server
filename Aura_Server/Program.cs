@@ -10,29 +10,31 @@ using System.Data;
 using Aura_Server.Controller.Network;
 using System.Threading;
 using Aura_Server.Excel;
-
 using Aura.Model;
 using System.Text.RegularExpressions;
+
 
 namespace Aura_Server
 {
     class Program
     {
+        public static DataBaseManager dataBase;
+
         public static UsersTableAdapter usersDataBase;
         public static PurchasesTableAdapter purchasesDataBase;
         public static OrganisationsDataBaseAdapter organisationsDataBase;
         public static ReportsDataBaseAdapter reportsDataBaseAdapter;
 
+        
         static void Main()
         {
             StartDataBases();
             StartNetwork();
             //  LoadOrganisations();
             //  TestMethod();
+            Console.WriteLine("Server starting successfully");
 
             ShowForms();
-
-            Console.WriteLine("Server starting successfully");
 
         }
 
@@ -50,7 +52,7 @@ namespace Aura_Server
 
             LogManager.Instance.InitializeLogManager(dbForLogsFileName);
 
-            DataBaseManager dataBase = new DataBaseManager();
+            dataBase = new DataBaseManager();
             dataBase.ConnectToDataBase(dbFileName);
 
             usersDataBase = new UsersTableAdapter(dataBase);
@@ -83,14 +85,11 @@ namespace Aura_Server
         {
             //открываем формы 
 
-            LoginWindow loginWindow = new LoginWindow(usersDataBase);
-            loginWindow.ShowDialog();
+            //LoginWindow loginWindow = new LoginWindow(usersDataBase);
+            //loginWindow.ShowDialog();
 
-            //PurchasesCalendarForm calendarForm = new PurchasesCalendarForm(purchasesDataBase);
-            //calendarForm.ShowDialog();
-
-            //PurchasesDataBaseForm purchasesDataBaseForm = new PurchasesDataBaseForm(purchasesDataBase);
-            //purchasesDataBaseForm.ShowDialog();
+            SqlCommandsConsoleForm sqlCommandsConsoleForm = new SqlCommandsConsoleForm();
+            sqlCommandsConsoleForm.ShowDialog();
 
         }
 
