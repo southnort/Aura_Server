@@ -41,9 +41,9 @@
             this.queryTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.queryTextBox.Font = new System.Drawing.Font("OCR A Extended", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.queryTextBox.ForeColor = System.Drawing.Color.SpringGreen;
-            this.queryTextBox.Location = new System.Drawing.Point(12, 57);
+            this.queryTextBox.Location = new System.Drawing.Point(12, 29);
             this.queryTextBox.Name = "queryTextBox";
-            this.queryTextBox.Size = new System.Drawing.Size(233, 318);
+            this.queryTextBox.Size = new System.Drawing.Size(760, 70);
             this.queryTextBox.TabIndex = 0;
             this.queryTextBox.Text = "";
             this.queryTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SqlCommandsConsoleForm_KeyUp);
@@ -52,7 +52,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(9, 41);
+            this.label1.Location = new System.Drawing.Point(9, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 13);
             this.label1.TabIndex = 1;
@@ -60,9 +60,9 @@
             // 
             // requestButton
             // 
-            this.requestButton.Location = new System.Drawing.Point(85, 381);
+            this.requestButton.Location = new System.Drawing.Point(85, 403);
             this.requestButton.Name = "requestButton";
-            this.requestButton.Size = new System.Drawing.Size(102, 53);
+            this.requestButton.Size = new System.Drawing.Size(102, 31);
             this.requestButton.TabIndex = 2;
             this.requestButton.Text = "Отправить запрос";
             this.requestButton.UseVisualStyleBackColor = true;
@@ -71,11 +71,12 @@
             // resultTextBox
             // 
             this.resultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.resultTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.resultTextBox.Font = new System.Drawing.Font("OCR A Extended", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.resultTextBox.ForeColor = System.Drawing.Color.SpringGreen;
-            this.resultTextBox.Location = new System.Drawing.Point(251, 57);
+            this.resultTextBox.Location = new System.Drawing.Point(12, 134);
             this.resultTextBox.Name = "resultTextBox";
-            this.resultTextBox.Size = new System.Drawing.Size(521, 318);
+            this.resultTextBox.Size = new System.Drawing.Size(760, 263);
             this.resultTextBox.TabIndex = 3;
             this.resultTextBox.Text = "";
             this.resultTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SqlCommandsConsoleForm_KeyUp);
@@ -84,7 +85,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Lime;
-            this.label2.Location = new System.Drawing.Point(385, 41);
+            this.label2.Location = new System.Drawing.Point(9, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 13);
             this.label2.TabIndex = 4;
@@ -92,9 +93,9 @@
             // 
             // clearFieldsButton
             // 
-            this.clearFieldsButton.Location = new System.Drawing.Point(433, 381);
+            this.clearFieldsButton.Location = new System.Drawing.Point(433, 403);
             this.clearFieldsButton.Name = "clearFieldsButton";
-            this.clearFieldsButton.Size = new System.Drawing.Size(134, 53);
+            this.clearFieldsButton.Size = new System.Drawing.Size(134, 31);
             this.clearFieldsButton.TabIndex = 5;
             this.clearFieldsButton.Text = "Очистить поля";
             this.clearFieldsButton.UseVisualStyleBackColor = true;
@@ -115,6 +116,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SqlCommandsConsoleForm";
             this.Text = "SqlCommandsConsoleForm";
+            this.Load += new System.EventHandler(this.SqlCommandsConsoleForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SqlCommandsConsoleForm_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();

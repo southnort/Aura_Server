@@ -41,17 +41,23 @@ namespace Aura_Server.View
 
         private string ConvertResponceToText(DataTable table)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (DataRow row in table.Rows)
+            if (table.Rows.Count < 1)
+                return "Empty table";
+            else
             {
-                foreach (var cell in row.ItemArray)
-                {
-                    sb.Append(cell.ToString() + " ");
-                }
-                sb.Append("\n\n");
-            }
 
-            return sb.ToString();
+                StringBuilder sb = new StringBuilder();
+                foreach (DataRow row in table.Rows)
+                {
+                    foreach (var cell in row.ItemArray)
+                    {
+                        sb.Append(cell.ToString() + " ");
+                    }
+                    sb.Append("\n\n");
+                }
+
+                return sb.ToString();
+            }
         }
 
         private void FillResultWindow(string text)
@@ -80,6 +86,11 @@ namespace Aura_Server.View
         {
             queryTextBox.Clear();
             resultTextBox.Clear();
+        }
+
+        private void SqlCommandsConsoleForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
