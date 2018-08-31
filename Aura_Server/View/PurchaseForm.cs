@@ -82,9 +82,8 @@ namespace Aura_Server.View
 
         }
 
-        private void SetDate(DateTimePicker picker, string date)
-        {
-            DateTime dateTime = Convert.ToDateTime(date);
+        private void SetDate(DateTimePicker picker, DateTime dateTime)
+        {            
             if (dateTime == DateTime.MinValue)
             {
                 picker.Format = DateTimePickerFormat.Custom;

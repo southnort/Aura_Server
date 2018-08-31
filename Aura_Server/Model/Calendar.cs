@@ -31,14 +31,14 @@ namespace Aura_Server.Model
 
 
 
-        private void Add(string date, Purchase purchase)
+        private void Add(DateTime date, Purchase purchase)
         {
-            if (!ContainsKey(date.ToDateTime()))
+            if (!ContainsKey(date))
             {
-                Add(date.ToDateTime(), new DayInCalendar(date.ToDateTime()));
+                Add(date, new DayInCalendar(date));
             }
 
-            this[date.ToDateTime()].Add(purchase);
+            this[date].Add(purchase);
 
         }
 

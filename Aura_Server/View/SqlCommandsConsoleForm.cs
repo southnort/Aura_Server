@@ -51,7 +51,7 @@ namespace Aura_Server.View
                 {
                     foreach (var cell in row.ItemArray)
                     {
-                        sb.Append(cell.ToString() + " ");
+                        sb.Append(cell.ToString() + "  ");
                     }
                     sb.Append("\n\n");
                 }

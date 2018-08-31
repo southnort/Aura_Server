@@ -39,11 +39,11 @@
             // queryTextBox
             // 
             this.queryTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.queryTextBox.Font = new System.Drawing.Font("OCR A Extended", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.queryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.queryTextBox.ForeColor = System.Drawing.Color.SpringGreen;
             this.queryTextBox.Location = new System.Drawing.Point(12, 29);
             this.queryTextBox.Name = "queryTextBox";
-            this.queryTextBox.Size = new System.Drawing.Size(760, 70);
+            this.queryTextBox.Size = new System.Drawing.Size(760, 139);
             this.queryTextBox.TabIndex = 0;
             this.queryTextBox.Text = "";
             this.queryTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SqlCommandsConsoleForm_KeyUp);
@@ -72,11 +72,11 @@
             // 
             this.resultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.resultTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.resultTextBox.Font = new System.Drawing.Font("OCR A Extended", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.resultTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.resultTextBox.ForeColor = System.Drawing.Color.SpringGreen;
-            this.resultTextBox.Location = new System.Drawing.Point(12, 134);
+            this.resultTextBox.Location = new System.Drawing.Point(12, 187);
             this.resultTextBox.Name = "resultTextBox";
-            this.resultTextBox.Size = new System.Drawing.Size(760, 263);
+            this.resultTextBox.Size = new System.Drawing.Size(760, 210);
             this.resultTextBox.TabIndex = 3;
             this.resultTextBox.Text = "";
             this.resultTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SqlCommandsConsoleForm_KeyUp);
@@ -85,7 +85,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Lime;
-            this.label2.Location = new System.Drawing.Point(9, 118);
+            this.label2.Location = new System.Drawing.Point(12, 171);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 13);
             this.label2.TabIndex = 4;
