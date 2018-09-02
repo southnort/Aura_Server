@@ -121,8 +121,8 @@ namespace Aura_Server
 
         //        org.name = str[1];
         //        org.contactName = str[2];
-        //        org.contractStart = str[4];
-        //        org.contractEnd = str[5];
+        //        org.contractStart = GetDate(str[4]);
+        //        org.contractEnd = GetDate(str[5]);
 
         //        switch (str[6])
         //        {
@@ -150,8 +150,8 @@ namespace Aura_Server
 
         //        org.name = str[1];
         //        org.contactName = str[2];
-        //        org.contractStart = str[4];
-        //        org.contractEnd = str[5];
+        //        org.contractStart = GetDate( str[4]);
+        //        org.contractEnd = GetDate(str[5]);
 
         //        switch (str[6])
         //        {
@@ -181,8 +181,8 @@ namespace Aura_Server
 
         //        org.name = str[1];
         //        org.contactName = str[2];
-        //        org.contractStart = str[4];
-        //        org.contractEnd = str[5];
+        //        org.contractStart = GetDate(str[4]);
+        //        org.contractEnd = GetDate(str[5]);
 
         //        switch (str[6])
         //        {
@@ -210,7 +210,7 @@ namespace Aura_Server
         //        Organisation org = new Organisation();
 
         //        org.name = str[1];
-        //        org.contactName = str[2];               
+        //        org.contactName = str[2];
 
         //        switch (str[4])
         //        {
@@ -225,7 +225,7 @@ namespace Aura_Server
 
         //        org.inn = str[5];
         //        org.contactName = str[6];
-        //        org.comments = "¿ÍÚ: " + str[7];                
+        //        org.comments = "¿ÍÚ: " + str[7];
 
         //        org.contractCondition = 1;
 
@@ -255,7 +255,7 @@ namespace Aura_Server
 
         //    foreach (var str in table6)
         //    {
-        //        Organisation org = listOfOrganisations223.FindOrganisation(str[2],str[1]);
+        //        Organisation org = listOfOrganisations223.FindOrganisation(str[2], str[1]);
 
         //        org.name = str[1];
         //        org.inn = str[2];
@@ -274,7 +274,7 @@ namespace Aura_Server
 
         //    foreach (var org in listOfOrganisations44)
         //    {
-        //        organisationsDataBase.AddNewOrganisation(org,-1);
+        //        organisationsDataBase.AddNewOrganisation(org, -1);
         //    }
 
         //    foreach (var org in listOfOrganisations223)
@@ -305,6 +305,34 @@ namespace Aura_Server
             return false;
         }
 
+
+        private static DateTime GetDate(string dateString)
+        {
+            if (dateString != string.Empty)
+            {
+                try
+                {
+                   return DateTime.Parse(dateString);
+
+                }
+                catch
+                {
+                    Console.WriteLine("What date is it: \"" +
+                        dateString+"\"?");
+                    string tempo = Console.ReadLine();
+                    if (tempo == string.Empty)
+                        return DateTime.MinValue;
+                    else
+                    return DateTime.Parse(tempo);
+
+                }
+            }
+
+            else
+            {
+                return DateTime.MinValue;
+            }
+        }
     }
 
     public class ListOfOrganistations : List<Organisation>
