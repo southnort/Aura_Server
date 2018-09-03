@@ -14,9 +14,6 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Serv
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.exe.config
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.exe
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.pdb
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EnvDTE.dll
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\stdole.dll
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EnvDTE.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csproj.CopyComplete
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.exe
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.pdb
@@ -44,7 +41,6 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.S
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll

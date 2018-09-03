@@ -150,7 +150,7 @@ namespace Aura_Server
 
         //        org.name = str[1];
         //        org.contactName = str[2];
-        //        org.contractStart = GetDate( str[4]);
+        //        org.contractStart = GetDate(str[4]);
         //        org.contractEnd = GetDate(str[5]);
 
         //        switch (str[6])
