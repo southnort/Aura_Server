@@ -6,9 +6,6 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.c
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.exe
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.pdb
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csproj.CopyComplete
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EnvDTE.dll
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\stdole.dll
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EnvDTE.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csprojAssemblyReference.cache
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csproj.CoreCompileInputs.cache
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.exe.config
@@ -43,7 +40,6 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Da
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
