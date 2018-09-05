@@ -34,6 +34,7 @@
             this.resultTextBox = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.clearFieldsButton = new System.Windows.Forms.Button();
+            this.createBackUpDateBase = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // queryTextBox
@@ -60,12 +61,13 @@
             // 
             // requestButton
             // 
-            this.requestButton.Location = new System.Drawing.Point(85, 403);
+            this.requestButton.BackColor = System.Drawing.Color.Lime;
+            this.requestButton.Location = new System.Drawing.Point(15, 403);
             this.requestButton.Name = "requestButton";
-            this.requestButton.Size = new System.Drawing.Size(102, 31);
+            this.requestButton.Size = new System.Drawing.Size(116, 31);
             this.requestButton.TabIndex = 2;
-            this.requestButton.Text = "Отправить запрос";
-            this.requestButton.UseVisualStyleBackColor = true;
+            this.requestButton.Text = "Отправить запроc";
+            this.requestButton.UseVisualStyleBackColor = false;
             this.requestButton.Click += new System.EventHandler(this.requestButton_Click);
             // 
             // resultTextBox
@@ -93,13 +95,25 @@
             // 
             // clearFieldsButton
             // 
-            this.clearFieldsButton.Location = new System.Drawing.Point(433, 403);
+            this.clearFieldsButton.BackColor = System.Drawing.Color.Orange;
+            this.clearFieldsButton.Location = new System.Drawing.Point(137, 403);
             this.clearFieldsButton.Name = "clearFieldsButton";
             this.clearFieldsButton.Size = new System.Drawing.Size(134, 31);
             this.clearFieldsButton.TabIndex = 5;
             this.clearFieldsButton.Text = "Очистить поля";
-            this.clearFieldsButton.UseVisualStyleBackColor = true;
+            this.clearFieldsButton.UseVisualStyleBackColor = false;
             this.clearFieldsButton.Click += new System.EventHandler(this.clearFieldsButton_Click);
+            // 
+            // createBackUpDateBase
+            // 
+            this.createBackUpDateBase.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.createBackUpDateBase.Location = new System.Drawing.Point(409, 403);
+            this.createBackUpDateBase.Name = "createBackUpDateBase";
+            this.createBackUpDateBase.Size = new System.Drawing.Size(134, 31);
+            this.createBackUpDateBase.TabIndex = 6;
+            this.createBackUpDateBase.Text = "Сделать бэкап";
+            this.createBackUpDateBase.UseVisualStyleBackColor = false;
+            this.createBackUpDateBase.Click += new System.EventHandler(this.createBackUpDateBase_Click);
             // 
             // SqlCommandsConsoleForm
             // 
@@ -107,6 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(784, 446);
+            this.Controls.Add(this.createBackUpDateBase);
             this.Controls.Add(this.clearFieldsButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.resultTextBox);
@@ -131,5 +146,6 @@
         private System.Windows.Forms.RichTextBox resultTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button clearFieldsButton;
+        private System.Windows.Forms.Button createBackUpDateBase;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using Aura_Server.Controller;
 
 namespace Aura_Server.View
@@ -90,6 +91,22 @@ namespace Aura_Server.View
 
         private void SqlCommandsConsoleForm_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void createBackUpDateBase_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Program.CreateBackup();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "ERROR");
+
+            }
 
         }
     }

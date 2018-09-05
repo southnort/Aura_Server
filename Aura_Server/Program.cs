@@ -11,7 +11,7 @@ using Aura_Server.Controller.Network;
 using System.Threading;
 using Aura_Server.Excel;
 using Aura.Model;
-using System.Text.RegularExpressions;
+using System.IO;
 
 
 namespace Aura_Server
@@ -25,7 +25,11 @@ namespace Aura_Server
         public static OrganisationsDataBaseAdapter organisationsDataBase;
         public static ReportsDataBaseAdapter reportsDataBaseAdapter;
 
-        
+        private static string dbForLogsFileName = "AuraDataBase_ForLogs.sqlite";
+        private static string dbFileName = "AuraDataBase.sqlite";
+
+
+
         static void Main()
         {
             StartDataBases();
@@ -41,9 +45,8 @@ namespace Aura_Server
         private static void StartDataBases()
         {
             //настраиваем соединения с БД            
-            string dbForLogsFileName = "AuraDataBase_ForLogs.sqlite";
-            string dbFileName = "AuraDataBase.sqlite";
-
+            
+            
             DataBaseCreator creator = new DataBaseCreator();
             creator.CreateDataBaseForLogs(dbForLogsFileName);
             creator.CreateMainDataBase(dbFileName);
@@ -92,6 +95,8 @@ namespace Aura_Server
             sqlCommandsConsoleForm.ShowDialog();
 
         }
+
+        
 
         private static void TestMethod()
         {
@@ -333,6 +338,26 @@ namespace Aura_Server
                 return DateTime.MinValue;
             }
         }
+
+
+        public static void CreateBackup()
+        {
+            //создание бэкапа базы данных
+            string directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Backups\\";
+            string postscript ="_" + DateTime.Now.ToString("dd.MM.yyy-HH.mm");
+             
+
+            string newDBFileName = directoryPath + dbFileName + postscript;
+            string newDBForLogsFileName = directoryPath + dbForLogsFileName + postscript;
+
+            Console.WriteLine(newDBFileName);
+            Console.WriteLine(newDBForLogsFileName);
+
+            File.Copy(dbFileName, newDBFileName);
+            File.Copy(dbForLogsFileName, newDBForLogsFileName);
+
+        }
+
     }
 
     public class ListOfOrganistations : List<Organisation>
@@ -351,5 +376,6 @@ namespace Aura_Server
         
 
     }
+
 
 }
