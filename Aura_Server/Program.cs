@@ -90,7 +90,7 @@ namespace Aura_Server
 
             //LoginWindow loginWindow = new LoginWindow(usersDataBase);
             //loginWindow.ShowDialog();
-
+           
             SqlCommandsConsoleForm sqlCommandsConsoleForm = new SqlCommandsConsoleForm();
             sqlCommandsConsoleForm.ShowDialog();
 
