@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Aura.Model;
+using System.Data;
 
 namespace Aura_Server.Controller.Network
 {
@@ -28,7 +29,7 @@ namespace Aura_Server.Controller.Network
                 case "UPDATEORGANISATION": ReveiveUpdateOrganisation(message); break;
                 case "DELETEORGANISATION": DeleteOrganisation(message); break;
                 case "UPDATEREPORT": UpdateReport(message); break;
-
+                
                 default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
             }
 
@@ -80,6 +81,8 @@ namespace Aura_Server.Controller.Network
                 case ("GETREESTR"): server.SendObject(GetReestr(), connectionID); break;
 
                 case ("ALLREPORTS"): server.SendObject(GetAllReports(), connectionID); break;
+
+                case ("GETDATATABLE"): server.SendObject(GetDataTable(message), connectionID); break;
 
                 default:
                     {
@@ -293,6 +296,11 @@ namespace Aura_Server.Controller.Network
 
                 Console.Read();
             }
+        }
+
+        private DataTable GetDataTable(List<string> message)
+        {
+            return Program.dataBase.GetTable(message[3]);
         }
       
     }

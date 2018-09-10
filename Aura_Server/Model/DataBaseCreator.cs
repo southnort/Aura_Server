@@ -26,6 +26,9 @@ namespace Aura_Server.Model
             commandString = CreateCommandString_Reports();
             CreateDataBase(dbFileName, commandString);
 
+            commandString = CreateCommandString_Contracts();
+            CreateDataBase(dbFileName, commandString);
+
         }
 
         public void CreateDataBaseForLogs(string dbFileName)
@@ -49,6 +52,12 @@ namespace Aura_Server.Model
             //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
 
             //m_sqlCmd.CommandText = "ALTER TABLE Organisations ADD COLUMN contractsIDs TEXT";
+            //m_sqlCmd.ExecuteNonQuery();
+
+            //string query = "INSERT INTO Contracts (organisationID, contractNumber, " +
+            //    "contractStart, contractEnd) SELECT id, contractNumber, contractStart, " +
+            //    "contractEnd FROM Organisations";
+            //m_sqlCmd.CommandText = query;
             //m_sqlCmd.ExecuteNonQuery();
 
 

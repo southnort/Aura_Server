@@ -47,7 +47,6 @@
             this.queryTextBox.Size = new System.Drawing.Size(760, 139);
             this.queryTextBox.TabIndex = 0;
             this.queryTextBox.Text = "";
-            this.queryTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SqlCommandsConsoleForm_KeyUp);
             // 
             // label1
             // 
