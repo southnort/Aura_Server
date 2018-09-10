@@ -48,11 +48,9 @@ namespace Aura_Server.Model
 
             //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
 
-            //m_sqlCmd.CommandText = "ALTER TABLE Organisations ADD COLUMN contractType INTEGER";
+            //m_sqlCmd.CommandText = "ALTER TABLE Organisations ADD COLUMN contractsIDs TEXT";
             //m_sqlCmd.ExecuteNonQuery();
 
-            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN employeReestID INTEGER";
-            //m_sqlCmd.ExecuteNonQuery();            
 
         }
 
@@ -194,7 +192,8 @@ namespace Aura_Server.Model
             sb.Append("comments TEXT, ");
             sb.Append("contractCondition INTEGER, ");
             sb.Append("law INTEGER, ");
-            sb.Append("contractType INTEGER");
+            sb.Append("contractType INTEGER, ");
+            sb.Append("contractsIDs TEXT");
 
             sb.Append(")");
 
@@ -214,6 +213,24 @@ namespace Aura_Server.Model
             sb.Append("failedPurchasesContractsReport TEXT");
 
             sb.Append(")");
+            return sb.ToString();
+
+        }
+
+        private string CreateCommandString_Contracts()
+        {
+            //строка для БД создание договоров с заказчиками
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IF NOT EXISTS Contracts (");
+
+            sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+            sb.Append("organisationID INTEGER, ");
+            sb.Append("contractNumber TEXT, ");
+            sb.Append("contractStart TEXT, ");
+            sb.Append("contractEnd TEXT");
+
+            sb.Append(")");
+
             return sb.ToString();
 
         }
