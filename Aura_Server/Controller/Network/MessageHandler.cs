@@ -29,7 +29,9 @@ namespace Aura_Server.Controller.Network
                 case "UPDATEORGANISATION": ReveiveUpdateOrganisation(message); break;
                 case "DELETEORGANISATION": DeleteOrganisation(message); break;
                 case "UPDATEREPORT": UpdateReport(message); break;
-                
+
+                case "EXECUTECOMMAND": ExecuteCommand(message); break;
+
                 default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
             }
 
@@ -83,6 +85,8 @@ namespace Aura_Server.Controller.Network
                 case ("ALLREPORTS"): server.SendObject(GetAllReports(), connectionID); break;
 
                 case ("GETDATATABLE"): server.SendObject(GetDataTable(message), connectionID); break;
+
+                case ("GETITEM"):server.SendObject(GetSingleObject(message), connectionID); break;
 
                 default:
                     {
@@ -158,14 +162,14 @@ namespace Aura_Server.Controller.Network
         {
             return Program.purchasesDataBase.GetReestr();
         }
-        
+
 
         private List<Organisation> GetAllOrganisations()
         {
             return Program.organisationsDataBase.GetOrganisations();
         }
 
-        private List<Organisation> GetFilteredOrganisations(List<string>str)
+        private List<Organisation> GetFilteredOrganisations(List<string> str)
         {
             return Program.organisationsDataBase.GetFilteredOrganisations(str[3]);
         }
@@ -249,7 +253,7 @@ namespace Aura_Server.Controller.Network
         {
             //отослать клиенту запрашиваемую закупку
             int id = int.Parse(message[3]);
-            return Program.purchasesDataBase.GetPurchase(id);        
+            return Program.purchasesDataBase.GetPurchase(id);
 
         }
 
@@ -291,18 +295,29 @@ namespace Aura_Server.Controller.Network
                 Console.WriteLine("######################");
                 foreach (var str in message)
                 {
-                    Console.WriteLine("String^ : " +str );
+                    Console.WriteLine("String^ : " + str);
                 }
 
                 Console.Read();
             }
         }
 
+
         private DataTable GetDataTable(List<string> message)
         {
             return Program.dataBase.GetTable(message[3]);
         }
-      
+
+        private void ExecuteCommand(List<string> message)
+        {
+            Program.dataBase.ExecuteCommand(message[3]);
+        }
+
+        private object GetSingleObject(List<string> message)
+        {
+           return Program.dataBase.GetValue(message[3]);
+        }
+
     }
 
 
