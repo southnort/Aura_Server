@@ -152,9 +152,9 @@ namespace Aura_Server.Controller
 
         }
 
-        public List<Purchase> GetReestr()
+        public List<Purchase> GetReestr(string filterQuery)
         {
-            var table = GetData("SELECT * FROM Purchases WHERE statusID > '7'");
+            var table = GetData("SELECT * FROM Purchases WHERE statusID > '7' ");
             var result = new List<Purchase>(table.Rows.Count);
             for (int i = 0; i < table.Rows.Count; i++)
             {

@@ -80,13 +80,13 @@ namespace Aura_Server.Controller.Network
 
                 case ("GETFILTEREDORGANISATIONS"):
                     server.SendObject(GetFilteredOrganisations(message), connectionID); break;
-                case ("GETREESTR"): server.SendObject(GetReestr(), connectionID); break;
+                case ("GETREESTR"): server.SendObject(GetReestr(message), connectionID); break;
 
                 case ("ALLREPORTS"): server.SendObject(GetAllReports(), connectionID); break;
 
                 case ("GETDATATABLE"): server.SendObject(GetDataTable(message), connectionID); break;
 
-                case ("GETITEM"):server.SendObject(GetSingleObject(message), connectionID); break;
+                case ("GETITEM"): server.SendObject(GetSingleObject(message), connectionID); break;
 
                 default:
                     {
@@ -158,9 +158,9 @@ namespace Aura_Server.Controller.Network
 
         }
 
-        private List<Purchase> GetReestr()
+        private List<Purchase> GetReestr(List<string>str)
         {
-            return Program.purchasesDataBase.GetReestr();
+            return Program.purchasesDataBase.GetReestr(str[3]);
         }
 
 
