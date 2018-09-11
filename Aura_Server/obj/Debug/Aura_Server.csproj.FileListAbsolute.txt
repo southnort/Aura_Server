@@ -38,8 +38,6 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.S
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
