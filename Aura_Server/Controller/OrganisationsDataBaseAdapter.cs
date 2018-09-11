@@ -134,11 +134,22 @@ namespace Aura_Server.Controller
         {
             var result = new List<Organisation>();
             var table = GetData(sqlCommand);
+
             for (int i = 0; i < table.Rows.Count; i++)
             {
-                Organisation org = new Organisation(table.Rows[i]);
-                result.Add(org);
-            }
+                try
+                {
+                    Organisation org = new Organisation(table.Rows[i]);
+                    result.Add(org);
+                }
+                catch
+                {
+                    Console.WriteLine("ERROR in " + i);
+                    Console.Read();
+                }
+
+                }
+           
 
             return result;
 
