@@ -1,17 +1,13 @@
+using Aura.Model;
+using Aura_Server.Controller;
+using Aura_Server.Controller.Network;
+using Aura_Server.Excel;
+using Aura_Server.Model;
+using Aura_Server.View;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aura_Server.Model;
-using Aura_Server.Controller;
-using Aura_Server.View;
-using System.Data;
-using Aura_Server.Controller.Network;
-using System.Threading;
-using Aura_Server.Excel;
-using Aura.Model;
 using System.IO;
+using System.Threading;
 
 
 namespace Aura_Server
@@ -40,6 +36,8 @@ namespace Aura_Server
 
             ShowForms();
 
+
+            CreateBackup();
         }
 
         private static void StartDataBases()

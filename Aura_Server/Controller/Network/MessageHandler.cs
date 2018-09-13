@@ -160,6 +160,7 @@ namespace Aura_Server.Controller.Network
 
         private List<Purchase> GetReestr(List<string>str)
         {
+            Console.WriteLine("++++++++++\n"+str[3]);
             return Program.purchasesDataBase.GetReestr(str[3]);
         }
 
