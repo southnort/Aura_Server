@@ -109,5 +109,18 @@ namespace Aura_Server.View
             }
 
         }
+
+        private void queryTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SendRequest();
+        }
+
+        private void queryTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendRequest();
+            }
+        }
     }
 }
