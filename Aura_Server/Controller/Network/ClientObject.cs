@@ -67,8 +67,6 @@ namespace Aura_Server.Controller.Network
                     try
                     {
                         string message = ReceiveString(stream);
-                        Console.WriteLine("\n\n***********************************");
-                        Console.WriteLine(message);
                         server.HandleMessage(message, this);
                     }
 
@@ -163,6 +161,8 @@ namespace Aura_Server.Controller.Network
                     if (totalReadMessageBytes >= messageLenght)
                         break;
                 }
+                Console.WriteLine("\n\n"+sb.ToString());
+                Console.WriteLine("Size is - " + messageLenght+"\n\n");
                 return sb.ToString();
 
             }
@@ -229,7 +229,7 @@ namespace Aura_Server.Controller.Network
             {
                 int size = data.Length;
                 byte[] preparedSize = BitConverter.GetBytes(size);
-                Console.WriteLine("Size is - : "+size);
+              //  Console.WriteLine("Size is - : "+size);
                 stream.Write(preparedSize, 0, preparedSize.Length);
                 stream.Write(data, 0, data.Length);
 
