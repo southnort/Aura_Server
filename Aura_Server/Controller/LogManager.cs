@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Aura_Server.Model;
+﻿using Aura_Server.Model;
+using System;
+using System.Data;
 
 
 namespace Aura_Server.Controller
@@ -120,7 +118,10 @@ namespace Aura_Server.Controller
 
         }
 
-
+        public DataTable GetTable(string request)
+        {
+            return dataBase.GetTable(request);
+        }
 
 
     }
