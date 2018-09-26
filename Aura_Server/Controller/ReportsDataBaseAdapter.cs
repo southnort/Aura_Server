@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Aura.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Aura.Model;
 
 namespace Aura_Server.Controller
 {
@@ -38,6 +36,92 @@ namespace Aura_Server.Controller
 
         }
 
+        private void UpdateReport(Report report)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("REPLACE INTO Reports (organisationID, commonPurchasesContractsReport, ");
+            sb.Append("singleSupplierContractsReport, failedPurchasesContractsReport)");
+            sb.Append(" VALUES ('");
+            sb.Append(report.organisationID);
+            sb.Append("', '");
+            sb.Append(report.commonPurchasesContractsReport);
+            sb.Append("', '");
+            sb.Append(report.singleSupplierContractsReport);
+            sb.Append("', '");
+            sb.Append(report.failedPurchasesContractsReport);
+            sb.Append("')");
+
+            ExecuteCommand(sb.ToString());
+        }
+
+        public void CheckAllReports(string month, int tryingUser)
+        {
+            SetAllReports(month, true);
+            LogManager.LogReportUpdate(tryingUser, -1, "CHECKALLREPORTS ON " + month);
+        }
+
+        public void UncheckAllReports(string month, int tryingUser)
+        {
+            SetAllReports(month, false);
+            LogManager.LogReportUpdate(tryingUser, -1, "CHECKALLREPORTS OFF " + month);
+        }
+
+        private void SetAllReports(string month, bool adding)
+        {
+            var ids = GetData("SELECT id FROM Organisations WHERE law = 2 AND contractType = 1 ");
+            var reports = GetAllReports();
+
+            foreach (System.Data.DataRow row in ids.Rows)
+            {
+                int id = (int)(long)row[0];
+                Report report = reports.SingleOrDefault(rep => rep.organisationID == id);
+                if (report == null)
+                    report = new Report();
+
+                report.organisationID = id;
+
+                if (adding)
+                {
+                    AddReportData(report, month);
+                }
+
+                else
+                {
+                    RemoveReportData(report, month);
+                }
+
+                UpdateReport(report);
+
+            }
+        }
+
+        private void AddReportData(Report report, string month)
+        {
+            if (!report.commonPurchasesContractsReport.Contains(month))
+                report.commonPurchasesContractsReport += month;
+
+            if (!report.singleSupplierContractsReport.Contains(month))
+                report.singleSupplierContractsReport += month;
+
+            if (!report.failedPurchasesContractsReport.Contains(month))
+                report.failedPurchasesContractsReport += month;
+
+        }
+
+        private void RemoveReportData(Report report, string month)
+        {
+            if (report.commonPurchasesContractsReport.Contains(month))
+                report.commonPurchasesContractsReport =
+                    report.commonPurchasesContractsReport.Replace(month, "");
+
+            if (report.singleSupplierContractsReport.Contains(month))
+                report.singleSupplierContractsReport =
+                    report.singleSupplierContractsReport.Replace(month, "");
+
+            if (report.failedPurchasesContractsReport.Contains(month))
+                report.failedPurchasesContractsReport =
+                    report.failedPurchasesContractsReport.Replace(month, "");
+        }
 
     }
 

@@ -51,7 +51,7 @@ namespace Aura_Server.Model
 
             //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
 
-            //m_sqlCmd.CommandText = "ALTER TABLE Organisations ADD COLUMN contractsIDs TEXT";
+            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN withoutPurchase INTEGER";
             //m_sqlCmd.ExecuteNonQuery();
 
             //string query = "INSERT INTO Contracts (organisationID, contractNumber, " +
@@ -63,7 +63,7 @@ namespace Aura_Server.Model
 
         }
 
-       
+
 
 
 

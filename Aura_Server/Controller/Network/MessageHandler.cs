@@ -30,6 +30,9 @@ namespace Aura_Server.Controller.Network
                 case "DELETEORGANISATION": DeleteOrganisation(message); break;
                 case "UPDATEREPORT": UpdateReport(message); break;
 
+                case "CHECKALLREPORTS": CheckAllReports(message); break;
+                case "UNCHECKALLREPORTS": UncheckAllReports(message); break;
+
                 case "EXECUTECOMMAND": ExecuteCommand(message); break;
 
                 default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
@@ -158,9 +161,9 @@ namespace Aura_Server.Controller.Network
 
         }
 
-        private List<Purchase> GetReestr(List<string>str)
+        private List<Purchase> GetReestr(List<string> str)
         {
-            Console.WriteLine("++++++++++\n"+str[3]);
+            Console.WriteLine("++++++++++\n" + str[3]);
             return Program.purchasesDataBase.GetReestr(str[3]);
         }
 
@@ -316,10 +319,25 @@ namespace Aura_Server.Controller.Network
 
         private object GetSingleObject(List<string> message)
         {
-           return Program.dataBase.GetValue(message[3]);
+            return Program.dataBase.GetValue(message[3]);
         }
 
+
+        private void CheckAllReports(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+            Program.reportsDataBaseAdapter.CheckAllReports(message[3], clientID);
+        }
+
+        private void UncheckAllReports(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+            Program.reportsDataBaseAdapter.UncheckAllReports(message[3], clientID);
+        }
+
+
     }
+
 
 
 }
