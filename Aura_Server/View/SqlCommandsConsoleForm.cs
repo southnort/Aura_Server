@@ -15,6 +15,8 @@ namespace Aura_Server.View
     public partial class SqlCommandsConsoleForm : Form
     {
         private DataBaseManager dataBase = Program.dataBase;
+        private Font formFont;
+        private Color formTextColor;
 
         public SqlCommandsConsoleForm()
         {
@@ -75,7 +77,21 @@ namespace Aura_Server.View
             resultTextBox.Clear();
             resultTextBox.Text = text;
         }
-       
+
+        private void SaveFont()
+        {
+            formTextColor = queryTextBox.ForeColor;
+            formFont = queryTextBox.Font;
+        }
+
+        private void LoadFont()
+        {
+            queryTextBox.ForeColor = formTextColor;
+            resultTextBox.ForeColor = formTextColor;
+            queryTextBox.Font = formFont;
+            resultTextBox.Font = formFont;
+        }
+
 
 
         private void SqlCommandsConsoleForm_KeyUp(object sender, KeyEventArgs e)
@@ -100,7 +116,7 @@ namespace Aura_Server.View
 
         private void SqlCommandsConsoleForm_Load(object sender, EventArgs e)
         {
-
+            SaveFont();
         }
 
         private void createBackUpDateBase_Click(object sender, EventArgs e)
@@ -118,18 +134,18 @@ namespace Aura_Server.View
             }
 
         }
-
-        private void queryTextBox_TextChanged(object sender, EventArgs e)
-        {
-            SendRequest();
-        }
-
+        
         private void queryTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 SendRequest();
             }
+        }
+
+        private void queryTextBox_TextChanged_1(object sender, EventArgs e)
+        {
+            LoadFont();
         }
     }
 }

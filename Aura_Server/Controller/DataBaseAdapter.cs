@@ -32,6 +32,11 @@ namespace Aura_Server.Controller
 
         }
 
+        protected object GetValue(string sqlQuery)
+        {
+            return dataBase.GetValue(sqlQuery);
+        }
+
         
 
     }
