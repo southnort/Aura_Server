@@ -175,7 +175,8 @@ namespace Aura_Server.Model
             sb.Append("commentsFontColor INTEGER, ");
             sb.Append("resultOfControlColor INTEGER, ");
             sb.Append("employeReestID INTEGER, ");
-            sb.Append("reestrStatus INTEGER");
+            sb.Append("reestrStatus INTEGER, ");
+            sb.Append("withoutPurchase INTEGER");
 
             sb.Append(")");
 

@@ -36,7 +36,7 @@ namespace Aura_Server.View
 
         private DataTable GetData(string sqlCommand)
         {
-            if (sqlCommand.Contains(" FROM Logs"))
+            if (sqlCommand.ToLower().Contains(" from logs"))
             {
                 var table = LogManager.Instance.GetTable(sqlCommand);
                 return table;

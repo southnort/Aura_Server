@@ -58,7 +58,7 @@ namespace Aura_Server.Controller.Network
             //прослушивание входящих подключений
             try
             {
-                tcpListener = new TcpListener(IPAddress.Any, 40501);
+                tcpListener = new TcpListener(IPAddress.Any, 40503);
                 tcpListener.Start();
 
                 while (true)
