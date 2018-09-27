@@ -21,6 +21,7 @@ namespace Aura_Server.View
         public SqlCommandsConsoleForm()
         {
             InitializeComponent();
+            SaveFont();
         }
 
 
@@ -86,10 +87,9 @@ namespace Aura_Server.View
 
         private void LoadFont()
         {
-            queryTextBox.ForeColor = formTextColor;
-            resultTextBox.ForeColor = formTextColor;
-            queryTextBox.Font = formFont;
-            resultTextBox.Font = formFont;
+            queryTextBox.SelectionStart = 0;
+            queryTextBox.SelectionLength = queryTextBox.TextLength;
+            queryTextBox.SelectionColor = formTextColor;
         }
 
 
@@ -134,7 +134,7 @@ namespace Aura_Server.View
             }
 
         }
-        
+
         private void queryTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -142,8 +142,8 @@ namespace Aura_Server.View
                 SendRequest();
             }
         }
-
-        private void queryTextBox_TextChanged_1(object sender, EventArgs e)
+        
+        private void clearFormatting_Click(object sender, EventArgs e)
         {
             LoadFont();
         }

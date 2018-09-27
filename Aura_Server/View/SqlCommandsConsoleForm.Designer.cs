@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.clearFieldsButton = new System.Windows.Forms.Button();
             this.createBackUpDateBase = new System.Windows.Forms.Button();
+            this.clearFormatting = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // queryTextBox
@@ -47,7 +48,6 @@
             this.queryTextBox.Size = new System.Drawing.Size(760, 139);
             this.queryTextBox.TabIndex = 0;
             this.queryTextBox.Text = "";
-            this.queryTextBox.TextChanged += new System.EventHandler(this.queryTextBox_TextChanged_1);
             this.queryTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.queryTextBox_KeyUp);
             // 
             // label1
@@ -108,7 +108,7 @@
             // createBackUpDateBase
             // 
             this.createBackUpDateBase.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.createBackUpDateBase.Location = new System.Drawing.Point(409, 403);
+            this.createBackUpDateBase.Location = new System.Drawing.Point(638, 403);
             this.createBackUpDateBase.Name = "createBackUpDateBase";
             this.createBackUpDateBase.Size = new System.Drawing.Size(134, 31);
             this.createBackUpDateBase.TabIndex = 6;
@@ -116,12 +116,24 @@
             this.createBackUpDateBase.UseVisualStyleBackColor = false;
             this.createBackUpDateBase.Click += new System.EventHandler(this.createBackUpDateBase_Click);
             // 
+            // clearFormatting
+            // 
+            this.clearFormatting.BackColor = System.Drawing.Color.Moccasin;
+            this.clearFormatting.Location = new System.Drawing.Point(277, 403);
+            this.clearFormatting.Name = "clearFormatting";
+            this.clearFormatting.Size = new System.Drawing.Size(155, 31);
+            this.clearFormatting.TabIndex = 7;
+            this.clearFormatting.Text = "Сбросить форматирование";
+            this.clearFormatting.UseVisualStyleBackColor = false;
+            this.clearFormatting.Click += new System.EventHandler(this.clearFormatting_Click);
+            // 
             // SqlCommandsConsoleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(784, 446);
+            this.Controls.Add(this.clearFormatting);
             this.Controls.Add(this.createBackUpDateBase);
             this.Controls.Add(this.clearFieldsButton);
             this.Controls.Add(this.label2);
@@ -148,5 +160,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button clearFieldsButton;
         private System.Windows.Forms.Button createBackUpDateBase;
+        private System.Windows.Forms.Button clearFormatting;
     }
 }
