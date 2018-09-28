@@ -42,7 +42,7 @@ namespace Aura_Server.Model
         {
             //обновить существующие таблицы, добавить в них новые колонки
 
-            
+
             SQLiteConnection m_dbConn = new SQLiteConnection("Data Source=" + dbFileName + ";Version=3;");
             m_dbConn.Open();
 
@@ -51,14 +51,11 @@ namespace Aura_Server.Model
 
             //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
 
-            //m_sqlCmd.CommandText = "ALTER TABLE Purchases ADD COLUMN withoutPurchase INTEGER";
-            //m_sqlCmd.ExecuteNonQuery();
+            //ALTER TABLE Purchases ADD COLUMN organisationInn TEXT
 
-            //string query = "INSERT INTO Contracts (organisationID, contractNumber, " +
-            //    "contractStart, contractEnd) SELECT id, contractNumber, contractStart, " +
-            //    "contractEnd FROM Organisations";
-            //m_sqlCmd.CommandText = query;
-            //m_sqlCmd.ExecuteNonQuery();
+            //UPDATE Purchases
+            //SET organisationInn =
+            //(SELECT inn FROM Organisations WHERE id = Purchases.organizationID)
 
 
         }
@@ -176,7 +173,8 @@ namespace Aura_Server.Model
             sb.Append("resultOfControlColor INTEGER, ");
             sb.Append("employeReestID INTEGER, ");
             sb.Append("reestrStatus INTEGER, ");
-            sb.Append("withoutPurchase INTEGER");
+            sb.Append("withoutPurchase INTEGER, ");
+            sb.Append("organisationInn TEXT");
 
             sb.Append(")");
 
