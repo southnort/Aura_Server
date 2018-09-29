@@ -57,6 +57,9 @@ namespace Aura_Server.Model
             //SET organisationInn =
             //(SELECT inn FROM Organisations WHERE id = Purchases.organizationID)
 
+            //ALTER TABLE Organisations ADD COLUMN number TEXT
+
+
 
         }
 
@@ -201,7 +204,8 @@ namespace Aura_Server.Model
             sb.Append("contractCondition INTEGER, ");
             sb.Append("law INTEGER, ");
             sb.Append("contractType INTEGER, ");
-            sb.Append("contractsIDs TEXT");
+            sb.Append("contractsIDs TEXT, ");
+            sb.Append("number TEXT");
 
             sb.Append(")");
 
