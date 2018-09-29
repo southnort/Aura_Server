@@ -49,7 +49,8 @@ namespace Aura_Server.Model
             SQLiteCommand m_sqlCmd = new SQLiteCommand();
             m_sqlCmd.Connection = m_dbConn;
 
-            //ВНИМАНИЕ!!! ЭТО УЖЕ СДЕЛАНО!!! ТЕКСТ ОСТАВЛЕН ДЛЯ ПРИМЕРА В БУДУЩЕМ
+
+            //Это нужно запустить через консоль прямого общения с БД
 
             //ALTER TABLE Purchases ADD COLUMN organisationInn TEXT
 
@@ -59,6 +60,7 @@ namespace Aura_Server.Model
 
             //ALTER TABLE Organisations ADD COLUMN number TEXT
 
+            //UPDATE Organisations SET number = id
 
 
         }
