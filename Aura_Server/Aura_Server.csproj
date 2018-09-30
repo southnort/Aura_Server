@@ -96,6 +96,7 @@
     <Compile Include="Controller\OrganisationsDataBaseAdapter.cs" />
     <Compile Include="Controller\PurchasesDataBaseAdapter.cs" />
     <Compile Include="Controller\ReportsDataBaseAdapter.cs" />
+    <Compile Include="Controller\StatusSwitchManager.cs" />
     <Compile Include="Controller\UsersTableAdapter.cs" />
     <Compile Include="Excel\ExcelReader.cs" />
     <Compile Include="Model\Calendar.cs" />

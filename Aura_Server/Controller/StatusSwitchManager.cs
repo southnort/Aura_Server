@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Aura_Server.Controller
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     class StatusSwitchManager
     {
     }
