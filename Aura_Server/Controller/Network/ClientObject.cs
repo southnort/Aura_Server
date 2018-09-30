@@ -72,30 +72,28 @@ namespace Aura_Server.Controller.Network
 
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.ToString());
-                        Console.WriteLine("Client connection closed");
-                        Close();
+                       // Console.WriteLine(ex.ToString());
+                        Console.WriteLine("Client connection closed");                        
                         break;
                     }
-
                 }
+
+                Close();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+               // Console.WriteLine(e.Message);
+                Console.WriteLine("Client connection closed");
                 Close();
             }
-            finally
-            {
-                // в случае выхода из цикла закрываем ресурсы
-                server.RemoveConnection(connectionID);
-                Close();
-            }
+            
         }
 
         protected internal void Close()
         {
             // закрытие подключения
+            server.RemoveConnection(connectionID);
+
             if (stream != null)
                 stream.Close();
             if (client != null)
@@ -126,23 +124,23 @@ namespace Aura_Server.Controller.Network
             BinaryFormatter bf = new BinaryFormatter();
             MemoryStream ms = new MemoryStream();
 
-            try
-            {
+            //try
+            //{
                 bf.Serialize(ms, ob);
                 Send(ms.GetBuffer());
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ToString() + ".SendObject Exception: " + ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+             //   Console.WriteLine(ToString() + ".SendObject Exception: " + ex.Message);
+           // }
 
         }
 
         private string ReceiveString(NetworkStream st)
         {
             //метод получения одного сообщения
-            try
+           // try
             {
                 StringBuilder sb = new StringBuilder();
 
@@ -166,17 +164,17 @@ namespace Aura_Server.Controller.Network
                 return sb.ToString();
 
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                throw ex;
-            }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //    throw ex;
+            //}
         }
 
         private object ReceiveObject(NetworkStream st)
         {
             //метод получения сериализованного объекта
-            try
+         //   try
             {
                 var ms = new MemoryStream();
                 var binaryWriter = new BinaryWriter(ms);
@@ -212,11 +210,11 @@ namespace Aura_Server.Controller.Network
                 }
             }
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                throw ex;
-            }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //    throw ex;
+            //}
 
         }
 
@@ -225,7 +223,7 @@ namespace Aura_Server.Controller.Network
 
         private void Send(byte[] data)
         {
-            try
+          //  try
             {
                 int size = data.Length;
                 byte[] preparedSize = BitConverter.GetBytes(size);
@@ -235,11 +233,11 @@ namespace Aura_Server.Controller.Network
 
             }
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ToString() + ".Send Exception: " + ex.Message);
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ToString() + ".Send Exception: " + ex.Message);
 
-            }
+            //}
 
         }
 

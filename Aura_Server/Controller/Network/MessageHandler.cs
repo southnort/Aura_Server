@@ -299,7 +299,7 @@ namespace Aura_Server.Controller.Network
                 Console.WriteLine("######################");
                 foreach (var str in message)
                 {
-                    Console.WriteLine("String^ : " + str);
+                    Console.WriteLine("String : " + str);
                 }
 
                 Console.Read();
