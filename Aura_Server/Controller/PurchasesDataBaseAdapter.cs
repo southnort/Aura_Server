@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using Aura.Model;
+﻿using Aura.Model;
 using Aura_Server.Model;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 
 namespace Aura_Server.Controller

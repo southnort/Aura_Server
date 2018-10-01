@@ -23,7 +23,7 @@ namespace Aura_Server.Controller.Network
 
 
         private TcpClient broadcastClient;
-        private int broadcastPort = 40504;
+        private int broadcastPort = NetworkSettings.secondPort;
         protected internal NetworkStream broadcastStream { get; private set; }      //поток для отправки оповещений
 
 

@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Aura.Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Aura.Model;
 
 namespace Aura_Server.Model
 {
