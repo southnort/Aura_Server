@@ -29,14 +29,75 @@ namespace Aura_Server.Controller
 
         private void HandleDay(DayInCalendar day)
         {
-            foreach (var events in day.events)
+            foreach (var ev in day.events)
             {
+                switch (ev.Key.purchaseMethodID)
+                {
+                    case 2: HandleDemandOfQuotation(ev); break;
+                    case 3: HandleDemandOfQuotation(ev); break;
+                    case 4: HandleAuction(ev);break;
+                    case 5: HandleKonkurs(ev);break;
+                    case 6: HandleKonkurs(ev);break;
+                    case 7: HandleAuction(ev); break;
+
+                }
 
             }
 
         }
 
-        private void HandlePurchase(
+        private void HandleDemandOfQuotation(KeyValuePair<Purchase, string> pair)
+        {
+            switch (pair.Value)
+            {
+                case "Окончание подачи заявок":
+                    {
+                        if (pair.Key.bidsFinishDate < DateTime.Now)
+                            SwitchStatusOfPurchase(pair.Key, 2);
+                    }
+                    break;
+
+                case "Вскрытие конвертов":
+                    {
+                        if (pair.Key.bidsOpenDate < DateTime.Now)
+                            SwitchStatusOfPurchase(pair.Key, 3);
+                    }
+                    break;
+
+                case "Рассмотрение":
+                    {
+                        if (pair.Key.bidsReviewDate < DateTime.Now)
+                            SwitchStatusOfPurchase(pair.Key, 4);
+                    }
+                    break;
+
+                case "Оценка":
+                    {
+                        if (pair.Key.bidsRatingDate < DateTime.Now)
+                            SwitchStatusOfPurchase(pair.Key, 8);
+                    }
+                    break;
+
+                default: break;
+
+            }
+        }
+
+        private void HandleAuction(KeyValuePair<Purchase, string> pair)
+        {
+            switch (pair.Value)
+            {
+                case "Окончание подачи заявок":
+                    {
+                        здесь
+                    }break;
+            }
+        }
+
+        private void HandleKonkurs(KeyValuePair<Purchase, string> pair)
+        {
+
+        }
 
 
         private void SwitchStatusOfPurchase(Purchase pur, int newStatusID)
@@ -56,19 +117,19 @@ namespace Aura_Server.Controller
 
             Program.dataBase.ExecuteCommand(sb.ToString());
         }
-        
+
     }
 
     /*     АЛГОРИТМ:
 
-     1) Берем через Calendar список закупок, в которых есть события на сегодняшний день или ранее.
-     2) Игнорируем нулевую дату.
-     3) Проходим оставшийся список. 
-     4) Если время, указанное в закупке по данному событию прошло - 
-     переводим на следующий статус, если статус не конечный.
-     5) Сохраняем обновленные данные в БД
-     
-     
-     */
+    1) Берем через Calendar список закупок, в которых есть события на сегодняшний день или ранее.
+    2) Игнорируем нулевую дату.
+    3) Проходим оставшийся список. 
+    4) Если время, указанное в закупке по данному событию прошло - 
+    переводим на следующий статус, если статус не конечный.
+    5) Сохраняем обновленные данные в БД
+
+
+    */
 
 }
