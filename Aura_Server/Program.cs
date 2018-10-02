@@ -30,6 +30,7 @@ namespace Aura_Server
         {
             StartDataBases();
             StartNetwork();
+            StartTimer();
             //  LoadOrganisations();
             //  TestMethod();
             Console.WriteLine("Server starting successfully");
@@ -81,6 +82,33 @@ namespace Aura_Server
             }
 
         }
+
+        private static void StartTimer()
+        {
+            //запуск таймера, срабатывающего раз в час
+            //например, закупки автоматически мен€ют статус
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Interval = 3600000;
+            timer.AutoReset = true;
+            timer.Elapsed += Timer_Elapsed;
+            timer.Enabled = true;
+
+            StatusSwitchManagerTick();
+        }
+
+        private static void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            StatusSwitchManagerTick();
+        }
+
+        private static void StatusSwitchManagerTick()
+        {           
+            StatusSwitchManager manager = new StatusSwitchManager();
+            manager.Tick();
+
+        }
+
+       
 
         private static void ShowForms()
         {
