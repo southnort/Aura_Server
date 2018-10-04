@@ -54,7 +54,7 @@ namespace Aura_Server.Controller.Network
             }
 
             server.SendMessage(PrepareString(response), connectionID);
-
+            
         }
 
         protected override void ReceiveObject(List<string> message, string connectionID)

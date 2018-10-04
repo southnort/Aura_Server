@@ -27,8 +27,7 @@ namespace Aura_Server.Controller
         private void HandleDay(DayInCalendar day)
         {           
             foreach (var ev in day.events)
-            {
-               
+            {               
                 switch (ev.Key.purchaseMethodID)
                 {
                     case 2: HandleDemandOfQuotation(ev); break;
