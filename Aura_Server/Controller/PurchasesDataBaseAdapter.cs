@@ -128,18 +128,18 @@ namespace Aura_Server.Controller
             }
         }
 
-        public DataTable GetAllPurchases()
+        public DataTable GetAllPurchasesInTable()
         {
             //возвращает все закупки в виде таблицы
             return GetData("SELECT * FROM Purchases");
 
         }
 
-        public List<Purchase> GetPurchases()
+        public List<Purchase> GetAllPurchases()
         {
             //вернуть все закупки в виде List
             var result = new List<Purchase>();
-            var table = GetAllPurchases();
+            var table = GetAllPurchasesInTable();
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 Purchase pur = new Purchase(table.Rows[i]);
@@ -162,22 +162,6 @@ namespace Aura_Server.Controller
             }
 
             return result;
-
-        }
-
-        public Calendar GetCalendar()
-        {
-            //возвращает все закупки из БД в виде календаря
-            DataTable table = GetAllPurchases();
-            Calendar calendar = new Calendar();
-
-            foreach (DataRow row in table.Rows)
-            {
-                calendar.Add(new Purchase(row));
-
-            }
-
-            return calendar;
 
         }
 

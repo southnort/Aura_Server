@@ -157,7 +157,7 @@ namespace Aura_Server.Controller.Network
 
         private List<Purchase> CreatePurchases()
         {
-            return Program.purchasesDataBase.GetPurchases();
+            return Program.purchasesDataBase.GetAllPurchases();
 
         }
 

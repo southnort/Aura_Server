@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Aura.Model;
+﻿using Aura.Model;
 using Aura_Server.Controller;
-using Aura_Server.Model;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Aura_Server.View
 {
@@ -82,8 +77,10 @@ namespace Aura_Server.View
         //заполнение календаря
         private void RefreshTable()
         {
-            Clear();
-            Fill(GetDays(dataBase.GetCalendar()));
+            //Clear();
+
+            //Calendar calendar = new Calendar(Program.purchasesDataBase.GetAllPurchases());
+            //Fill(calendar.GetDays());
         }
 
         private void Clear()

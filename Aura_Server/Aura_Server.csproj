@@ -99,7 +99,6 @@
     <Compile Include="Controller\StatusSwitchManager.cs" />
     <Compile Include="Controller\UsersTableAdapter.cs" />
     <Compile Include="Excel\ExcelReader.cs" />
-    <Compile Include="Model\Calendar.cs" />
     <Compile Include="Model\Catalog.cs" />
     <Compile Include="Model\DataBaseCreator.cs" />
     <Compile Include="Model\LogNode.cs" />

@@ -20,7 +20,7 @@ namespace Aura_Server.View
         {
             InitializeComponent();
             this.adapter = adapter;
-            ReloadTable(adapter.GetAllPurchases());
+            ReloadTable(adapter.GetAllPurchasesInTable());
 
         }
 
