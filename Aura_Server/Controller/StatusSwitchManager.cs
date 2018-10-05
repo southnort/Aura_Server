@@ -98,11 +98,11 @@ namespace Aura_Server.Controller
         private void SwitchStatusOfPurchase(Purchase pur, int newStatusID)
         {
             if (pur.statusID < newStatusID)
-                SendCommandToSwitchStatus(pur.id.ToString(), newStatusID.ToString());
+                SendCommandToSwitchStatus(pur.id, newStatusID.ToString());
         }
 
 
-        private void SendCommandToSwitchStatus(string id, string newStatusID)
+        private void SendCommandToSwitchStatus(int id, string newStatusID)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE Purchases SET statusID = '");
@@ -111,6 +111,7 @@ namespace Aura_Server.Controller
             sb.Append(id);
             sb.Append("'");
 
+            LogManager.LogPurchaseUpdate(-1, id, sb.ToString());
             Program.dataBase.ExecuteCommand(sb.ToString());
         }
 
