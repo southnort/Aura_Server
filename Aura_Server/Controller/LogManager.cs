@@ -1,4 +1,4 @@
-﻿using Aura_Server.Model;
+﻿using Aura.Model;
 using System;
 using System.Data;
 

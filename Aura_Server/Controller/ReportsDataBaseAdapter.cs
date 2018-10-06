@@ -13,18 +13,18 @@ namespace Aura_Server.Controller
 
         }
 
-        public List<Report> GetAllReports()
+        public ReportsList GetAllReports()
         {
-            var result = new List<Report>();
             var table = GetData("SELECT * FROM Reports");
+            var reportsList = new ReportsList();
 
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 Report report = new Report(table.Rows[i]);
-                result.Add(report);
+                reportsList.reports.Add(report);
             }
 
-            return result;
+            return reportsList;
 
         }
 
@@ -69,7 +69,7 @@ namespace Aura_Server.Controller
         private void SetAllReports(string month, bool adding)
         {
             var ids = GetData("SELECT id FROM Organisations WHERE law = 2 AND contractType = 1 ");
-            var reports = GetAllReports();
+            var reports = GetAllReports().reports;
 
             foreach (System.Data.DataRow row in ids.Rows)
             {

@@ -101,7 +101,6 @@
     <Compile Include="Excel\ExcelReader.cs" />
     <Compile Include="Model\Catalog.cs" />
     <Compile Include="Model\DataBaseCreator.cs" />
-    <Compile Include="Model\LogNode.cs" />
     <Compile Include="NetworkSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

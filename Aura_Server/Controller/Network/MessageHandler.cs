@@ -49,6 +49,7 @@ namespace Aura_Server.Controller.Network
             {
                 case "LOGIN": response = TryLogin(message); break;
 
+
                 default: response = "ERROR#No such command " + message[1]; break;
 
             }
@@ -90,6 +91,8 @@ namespace Aura_Server.Controller.Network
                 case ("GETDATATABLE"): server.SendObject(GetDataTable(message), connectionID); break;
 
                 case ("GETITEM"): server.SendObject(GetSingleObject(message), connectionID); break;
+
+                case ("GETLOGS"):server.SendObject(GetLogs(message), connectionID);break;
 
                 default:
                     {
@@ -277,7 +280,7 @@ namespace Aura_Server.Controller.Network
         }
 
 
-        private List<Report> GetAllReports()
+        private ReportsList GetAllReports()
         {
             return Program.reportsDataBaseAdapter.GetAllReports();
         }
@@ -335,7 +338,10 @@ namespace Aura_Server.Controller.Network
             Program.reportsDataBaseAdapter.UncheckAllReports(message[3], clientID);
         }
 
-
+        private DataTable GetLogs(List<string> message)
+        {
+            return LogManager.Instance.GetTable(message[3]);
+        }
     }
 
 
