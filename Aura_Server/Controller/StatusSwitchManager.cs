@@ -111,7 +111,7 @@ namespace Aura_Server.Controller
             sb.Append(id);
             sb.Append("'");
 
-            LogManager.LogPurchaseUpdate(-1, id, sb.ToString());
+            LogManager.LogPurchaseUpdate(0, id, sb.ToString());
             Program.dataBase.ExecuteCommand(sb.ToString());
         }
 
