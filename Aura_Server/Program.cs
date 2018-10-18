@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 
 namespace Aura_Server
@@ -24,21 +26,45 @@ namespace Aura_Server
         private static string dbForLogsFileName = "AuraDataBase_ForLogs.sqlite";
         private static string dbFileName = "AuraDataBase.sqlite";
 
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
+        [DllImport("kernel32.dll", ExactSpelling = true)]
+        private static extern IntPtr GetConsoleWindow();
+
+        private static bool showWindow = false;
 
         static void Main()
         {
-            StartDataBases();
-            StartNetwork();
-            StartTimer();
-            //  LoadOrganisations();
-            //  TestMethod();
+            StartIcon();
+          //  StartDataBases();
+          //  StartNetwork();
+          //  StartTimer();
+           
             Console.WriteLine("Server starting successfully. Version - " +
                 System.Windows.Forms.Application.ProductVersion);
 
             ShowForms();
 
+            Console.Read();
         }
+
+        private static void StartIcon()
+        {
+            var icon = new NotifyIcon();
+            icon.Icon = new System.Drawing.Icon("Icon.ico");
+            icon.Visible = true;
+            icon.DoubleClick += Icon_DoubleClick;
+
+            
+
+            ShowWindow(GetConsoleWindow(), 0);
+        }
+
+        private static void Icon_DoubleClick(object sender, EventArgs e)
+        {
+            showWindow = ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
+        }             
 
         private static void StartDataBases()
         {
@@ -114,9 +140,6 @@ namespace Aura_Server
         {
             //открываем формы 
 
-            //LoginWindow loginWindow = new LoginWindow(usersDataBase);
-            //loginWindow.ShowDialog();
-           
             SqlCommandsConsoleForm sqlCommandsConsoleForm = new SqlCommandsConsoleForm();
             sqlCommandsConsoleForm.ShowDialog();
 
@@ -129,191 +152,6 @@ namespace Aura_Server
 
 
         }
-
-
-        //private static void LoadOrganisations()
-        //{
-        //    ListOfOrganistations listOfOrganisations44 = new ListOfOrganistations();
-        //    ListOfOrganistations listOfOrganisations223 = new ListOfOrganistations();
-
-        //    var table1 = LoadTable("Журнал регистрации договоров 44-ФЗ 2018 год.xlsx");
-        //    var table2 = LoadTable("Журнал регистрации договоров 223-ФЗ 2018 год.xlsx");
-
-        //    var table3 = LoadTable("Журнал регистрации 1 раз 44-фз 2018 год.xlsx");
-        //    var table4 = LoadTable("Журнал регистрации 1 раз 223-фз 2018 год.xlsx");
-
-        //    var table5 = LoadTable("Список предприятий c телефонами мупы.xlsx");
-        //    var table6 = LoadTable("Список предприятий c тел. 223-ФЗ на 14.06.2018.xlsx");
-
-
-        //    foreach (var str in table1)
-        //    {
-        //        Organisation org = new Organisation();
-
-        //        org.name = str[1];
-        //        org.contactName = str[2];
-        //        org.contractStart = GetDate(str[4]);
-        //        org.contractEnd = GetDate(str[5]);
-
-        //        switch (str[6])
-        //        {
-        //            case "оригинал": org.originalID = 1; break;
-        //            case "оригинал в эл. виде": org.originalID = 3; break;
-
-        //            default: org.originalID = 0; break;
-
-        //        }
-
-        //        org.inn = str[7];
-        //        org.comments = str[8];
-
-        //        org.contractCondition = 1;
-
-        //        org.law = 1;
-        //        org.contractType = 1;
-
-        //        listOfOrganisations44.Add(org);
-        //    }
-
-        //    foreach (var str in table2)
-        //    {
-        //        Organisation org = new Organisation();
-
-        //        org.name = str[1];
-        //        org.contactName = str[2];
-        //        org.contractStart = GetDate(str[4]);
-        //        org.contractEnd = GetDate(str[5]);
-
-        //        switch (str[6])
-        //        {
-        //            case "оригинал": org.originalID = 1; break;
-        //            case "подписан ЭЦП": org.originalID = 3; break;
-        //            case "нет оригинала": org.originalID = 2; break;
-        //            case "без договора": org.originalID = 4; break;
-
-        //            default: org.originalID = 0; break;
-
-        //        }
-
-        //        org.inn = str[7];
-        //        org.comments = str[8];
-
-        //        org.contractCondition = 1;
-
-        //        org.law = 2;
-        //        org.contractType = 1;
-
-        //        listOfOrganisations223.Add(org);
-        //    }
-
-        //    foreach (var str in table3)
-        //    {
-        //        Organisation org = new Organisation();
-
-        //        org.name = str[1];
-        //        org.contactName = str[2];
-        //        org.contractStart = GetDate(str[4]);
-        //        org.contractEnd = GetDate(str[5]);
-
-        //        switch (str[6])
-        //        {
-        //            case "оригинал": org.originalID = 1; break;
-        //            case "нет": org.originalID = 2; break;
-
-        //            default: org.originalID = 0; break;
-
-        //        }
-
-        //        org.inn = str[7];
-        //        org.comments = str[8];
-
-        //        org.contractCondition = 1;
-
-        //        org.law = 1;
-        //        org.contractType = 2;
-
-        //        listOfOrganisations44.Add(org);
-
-        //    }
-
-        //    foreach (var str in table4)
-        //    {
-        //        Organisation org = new Organisation();
-
-        //        org.name = str[1];
-        //        org.contactName = str[2];
-
-        //        switch (str[4])
-        //        {
-        //            case "оригинал": org.originalID = 1; break;
-        //            case "подписан ЭЦП": org.originalID = 3; break;
-        //            case "нет оригинала": org.originalID = 2; break;
-        //            case "без договора": org.originalID = 4; break;
-
-        //            default: org.originalID = 0; break;
-
-        //        }
-
-        //        org.inn = str[5];
-        //        org.contactName = str[6];
-        //        org.comments = "Акт: " + str[7];
-
-        //        org.contractCondition = 1;
-
-        //        org.law = 2;
-        //        org.contractType = 2;
-
-        //        listOfOrganisations223.Add(org);
-        //    }
-
-
-        //    foreach (var str in table5)
-        //    {
-        //        Organisation org = listOfOrganisations44.FindOrganisation(str[2], str[1]);
-
-        //        org.name = str[1];
-        //        org.inn = str[2];
-
-        //        org.phoneNumber = str[3];
-        //        org.contactName = str[4];
-        //        org.email = str[5];
-
-        //        if (!listOfOrganisations44.Contains(org))
-        //        {
-        //            listOfOrganisations44.Add(org);
-        //        }
-        //    }
-
-        //    foreach (var str in table6)
-        //    {
-        //        Organisation org = listOfOrganisations223.FindOrganisation(str[2], str[1]);
-
-        //        org.name = str[1];
-        //        org.inn = str[2];
-        //        org.phoneNumber = str[3];
-        //        org.contactName = str[4];
-        //        org.email = str[5];
-
-        //        if (!listOfOrganisations223.Contains(org))
-        //        {
-        //            listOfOrganisations223.Add(org);
-        //        }
-
-
-        //    }
-
-
-        //    foreach (var org in listOfOrganisations44)
-        //    {
-        //        organisationsDataBase.AddNewOrganisation(org, -1);
-        //    }
-
-        //    foreach (var org in listOfOrganisations223)
-        //    {
-        //        organisationsDataBase.AddNewOrganisation(org, -1);
-        //    }
-
-        //}
 
         private static List<List<string>> LoadTable(string fileName)
         {
@@ -393,24 +231,211 @@ namespace Aura_Server
 
         }
 
-    }
-
-    public class ListOfOrganistations : List<Organisation>
-    {
-
-        public Organisation FindOrganisation(string inn, string name)
-        {
-            foreach (var org in this)
-            {
-                if (org.name == name || org.inn == inn)
-                    return org;
-            }
-
-            return new Organisation();
-        }
-        
-
-    }
-
+    }   
 
 }
+
+
+
+
+//private static void LoadOrganisations()
+//{
+//    ListOfOrganistations listOfOrganisations44 = new ListOfOrganistations();
+//    ListOfOrganistations listOfOrganisations223 = new ListOfOrganistations();
+
+//    var table1 = LoadTable("Журнал регистрации договоров 44-ФЗ 2018 год.xlsx");
+//    var table2 = LoadTable("Журнал регистрации договоров 223-ФЗ 2018 год.xlsx");
+
+//    var table3 = LoadTable("Журнал регистрации 1 раз 44-фз 2018 год.xlsx");
+//    var table4 = LoadTable("Журнал регистрации 1 раз 223-фз 2018 год.xlsx");
+
+//    var table5 = LoadTable("Список предприятий c телефонами мупы.xlsx");
+//    var table6 = LoadTable("Список предприятий c тел. 223-ФЗ на 14.06.2018.xlsx");
+
+
+//    foreach (var str in table1)
+//    {
+//        Organisation org = new Organisation();
+
+//        org.name = str[1];
+//        org.contactName = str[2];
+//        org.contractStart = GetDate(str[4]);
+//        org.contractEnd = GetDate(str[5]);
+
+//        switch (str[6])
+//        {
+//            case "оригинал": org.originalID = 1; break;
+//            case "оригинал в эл. виде": org.originalID = 3; break;
+
+//            default: org.originalID = 0; break;
+
+//        }
+
+//        org.inn = str[7];
+//        org.comments = str[8];
+
+//        org.contractCondition = 1;
+
+//        org.law = 1;
+//        org.contractType = 1;
+
+//        listOfOrganisations44.Add(org);
+//    }
+
+//    foreach (var str in table2)
+//    {
+//        Organisation org = new Organisation();
+
+//        org.name = str[1];
+//        org.contactName = str[2];
+//        org.contractStart = GetDate(str[4]);
+//        org.contractEnd = GetDate(str[5]);
+
+//        switch (str[6])
+//        {
+//            case "оригинал": org.originalID = 1; break;
+//            case "подписан ЭЦП": org.originalID = 3; break;
+//            case "нет оригинала": org.originalID = 2; break;
+//            case "без договора": org.originalID = 4; break;
+
+//            default: org.originalID = 0; break;
+
+//        }
+
+//        org.inn = str[7];
+//        org.comments = str[8];
+
+//        org.contractCondition = 1;
+
+//        org.law = 2;
+//        org.contractType = 1;
+
+//        listOfOrganisations223.Add(org);
+//    }
+
+//    foreach (var str in table3)
+//    {
+//        Organisation org = new Organisation();
+
+//        org.name = str[1];
+//        org.contactName = str[2];
+//        org.contractStart = GetDate(str[4]);
+//        org.contractEnd = GetDate(str[5]);
+
+//        switch (str[6])
+//        {
+//            case "оригинал": org.originalID = 1; break;
+//            case "нет": org.originalID = 2; break;
+
+//            default: org.originalID = 0; break;
+
+//        }
+
+//        org.inn = str[7];
+//        org.comments = str[8];
+
+//        org.contractCondition = 1;
+
+//        org.law = 1;
+//        org.contractType = 2;
+
+//        listOfOrganisations44.Add(org);
+
+//    }
+
+//    foreach (var str in table4)
+//    {
+//        Organisation org = new Organisation();
+
+//        org.name = str[1];
+//        org.contactName = str[2];
+
+//        switch (str[4])
+//        {
+//            case "оригинал": org.originalID = 1; break;
+//            case "подписан ЭЦП": org.originalID = 3; break;
+//            case "нет оригинала": org.originalID = 2; break;
+//            case "без договора": org.originalID = 4; break;
+
+//            default: org.originalID = 0; break;
+
+//        }
+
+//        org.inn = str[5];
+//        org.contactName = str[6];
+//        org.comments = "Акт: " + str[7];
+
+//        org.contractCondition = 1;
+
+//        org.law = 2;
+//        org.contractType = 2;
+
+//        listOfOrganisations223.Add(org);
+//    }
+
+
+//    foreach (var str in table5)
+//    {
+//        Organisation org = listOfOrganisations44.FindOrganisation(str[2], str[1]);
+
+//        org.name = str[1];
+//        org.inn = str[2];
+
+//        org.phoneNumber = str[3];
+//        org.contactName = str[4];
+//        org.email = str[5];
+
+//        if (!listOfOrganisations44.Contains(org))
+//        {
+//            listOfOrganisations44.Add(org);
+//        }
+//    }
+
+//    foreach (var str in table6)
+//    {
+//        Organisation org = listOfOrganisations223.FindOrganisation(str[2], str[1]);
+
+//        org.name = str[1];
+//        org.inn = str[2];
+//        org.phoneNumber = str[3];
+//        org.contactName = str[4];
+//        org.email = str[5];
+
+//        if (!listOfOrganisations223.Contains(org))
+//        {
+//            listOfOrganisations223.Add(org);
+//        }
+
+
+//    }
+
+
+//    foreach (var org in listOfOrganisations44)
+//    {
+//        organisationsDataBase.AddNewOrganisation(org, -1);
+//    }
+
+//    foreach (var org in listOfOrganisations223)
+//    {
+//        organisationsDataBase.AddNewOrganisation(org, -1);
+//    }
+
+//}
+
+
+//public class ListOfOrganistations : List<Organisation>
+//{
+
+//    public Organisation FindOrganisation(string inn, string name)
+//    {
+//        foreach (var org in this)
+//        {
+//            if (org.name == name || org.inn == inn)
+//                return org;
+//        }
+
+//        return new Organisation();
+//    }
+
+
+//}

@@ -17,6 +17,7 @@ namespace Aura_Server.View
         {
             InitializeComponent();
             SaveFont();
+
         }
 
 
@@ -89,6 +90,7 @@ namespace Aura_Server.View
 
 
 
+
         private void SqlCommandsConsoleForm_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -137,10 +139,31 @@ namespace Aura_Server.View
                 SendRequest();
             }
         }
-        
+
         private void clearFormatting_Click(object sender, EventArgs e)
         {
             LoadFont();
         }
+
+        private void SqlCommandsConsoleForm_Deactivate(object sender, EventArgs e)
+        {
+           
+                this.ShowInTaskbar = false;
+                notifyIcon1.Visible = true;
+                notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
+                notifyIcon1.Click += NotifyIcon1_Click;
+            
+        }
+
+        private void NotifyIcon1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("123123");
+        }
+
+        private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("123123");
+        }
     }
+
 }

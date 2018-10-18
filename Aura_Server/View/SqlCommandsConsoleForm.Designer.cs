@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SqlCommandsConsoleForm));
             this.queryTextBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.requestButton = new System.Windows.Forms.Button();
@@ -36,6 +38,7 @@
             this.clearFieldsButton = new System.Windows.Forms.Button();
             this.createBackUpDateBase = new System.Windows.Forms.Button();
             this.clearFormatting = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // queryTextBox
@@ -127,6 +130,12 @@
             this.clearFormatting.UseVisualStyleBackColor = false;
             this.clearFormatting.Click += new System.EventHandler(this.clearFormatting_Click);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // SqlCommandsConsoleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,8 +151,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.queryTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SqlCommandsConsoleForm";
             this.Text = "SqlCommandsConsoleForm";
+            this.Deactivate += new System.EventHandler(this.SqlCommandsConsoleForm_Deactivate);
             this.Load += new System.EventHandler(this.SqlCommandsConsoleForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SqlCommandsConsoleForm_KeyUp);
             this.ResumeLayout(false);
@@ -161,5 +172,6 @@
         private System.Windows.Forms.Button clearFieldsButton;
         private System.Windows.Forms.Button createBackUpDateBase;
         private System.Windows.Forms.Button clearFormatting;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
