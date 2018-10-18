@@ -33,12 +33,11 @@ namespace Aura_Server
             StartTimer();
             //  LoadOrganisations();
             //  TestMethod();
-            Console.WriteLine("Server starting successfully");
+            Console.WriteLine("Server starting successfully. Version - " +
+                System.Windows.Forms.Application.ProductVersion);
 
             ShowForms();
 
-
-            CreateBackup();
         }
 
         private static void StartDataBases()
@@ -105,6 +104,7 @@ namespace Aura_Server
         {           
             StatusSwitchManager manager = new StatusSwitchManager();
             manager.Tick();
+            CreateBackup();
 
         }
 
@@ -369,18 +369,27 @@ namespace Aura_Server
         public static void CreateBackup()
         {
             //создание бэкапа базы данных
+            Thread backupThread = new Thread(new ThreadStart(BackupMethod));
+            backupThread.Start();
+            
+        }
+
+        private static void BackupMethod()
+        {
             string directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Backups\\";
-            string postscript ="_" + DateTime.Now.ToString("dd.MM.yyy-HH.mm");
-             
+            string postscript = "_" + DateTime.Now.ToString("dd.MM.yyy-HH.mm");
+
 
             string newDBFileName = directoryPath + dbFileName + postscript;
             string newDBForLogsFileName = directoryPath + dbForLogsFileName + postscript;
 
-            Console.WriteLine(newDBFileName);
-            Console.WriteLine(newDBForLogsFileName);
-
             File.Copy(dbFileName, newDBFileName);
             File.Copy(dbForLogsFileName, newDBForLogsFileName);
+
+            BackupFilesSender backupFilesSender = new BackupFilesSender();
+            backupFilesSender.SendMail(newDBFileName, newDBForLogsFileName);
+
+            Console.WriteLine("\nBackup\n");
 
         }
 

@@ -312,9 +312,19 @@ namespace Aura_Server.Controller.Network
 
         private DataTable GetDataTable(List<string> message)
         {
-            return Program.dataBase.GetTable(message[3]);
-        }
+            if (message[3].ToLower().Contains(" from logs") || message[3].ToLower().Contains("update logs "))
+            {
+                var table = LogManager.Instance.GetTable(message[3]);
+                return table;
+            }
 
+            else
+            {
+                var table = Program.dataBase.GetTable(message[3]);
+                return table;
+            }
+        }
+        
         private void ExecuteCommand(List<string> message)
         {
             Program.dataBase.ExecuteCommand(message[3]);

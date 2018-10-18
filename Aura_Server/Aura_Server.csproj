@@ -85,6 +85,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\BackupFilesSender.cs" />
     <Compile Include="Controller\DataBaseAdapter.cs" />
     <Compile Include="Controller\DataBaseManager.cs" />
     <Compile Include="Controller\ExtensionsMethods.cs" />
