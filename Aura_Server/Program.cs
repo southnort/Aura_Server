@@ -56,6 +56,7 @@ namespace Aura_Server
             icon.Icon = new System.Drawing.Icon("Icon.ico");
             icon.Visible = true;
             icon.DoubleClick += new EventHandler(Icon_DoubleClick);
+            icon.Text = "Aura Server Console";
            
             ShowWindow(GetConsoleWindow(), 0);
         }

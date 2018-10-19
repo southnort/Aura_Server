@@ -16,9 +16,7 @@ namespace Aura_Server.View
 
         public SqlCommandsConsoleForm()
         {
-            InitializeComponent();
-            SaveFont();
-            SetActive(false);
+            InitializeComponent();   
 
         }
 
@@ -128,6 +126,7 @@ namespace Aura_Server.View
         private void SqlCommandsConsoleForm_Load(object sender, EventArgs e)
         {
             SaveFont();
+            SetActive(false);
         }
 
         private void createBackUpDateBase_Click(object sender, EventArgs e)
