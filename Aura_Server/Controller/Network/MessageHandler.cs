@@ -32,6 +32,7 @@ namespace Aura_Server.Controller.Network
 
                 case "CHECKALLREPORTS": CheckAllReports(message); break;
                 case "UNCHECKALLREPORTS": UncheckAllReports(message); break;
+                case "CHANGEPASSWORD":ChangePassword(message);break;
 
                 case "EXECUTECOMMAND": ExecuteCommand(message); break;
 
@@ -126,12 +127,18 @@ namespace Aura_Server.Controller.Network
                 sb.Append("LOGINSUCCESS#");
                 sb.Append(user.name + "#");
                 sb.Append(user.roleID + "#");
-                sb.Append(user.ID);
+                sb.Append(user.ID + "#");
+                sb.Append(user.login + "#");
 
                 return sb.ToString();
 
             }
 
+        }
+
+        private void ChangePassword(List<string> str)
+        {
+            Program.usersDataBase.ChangePassword(str[3], str[4]);
         }
 
 

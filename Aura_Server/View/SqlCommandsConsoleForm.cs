@@ -12,11 +12,13 @@ namespace Aura_Server.View
         private DataBaseManager dataBase = Program.dataBase;
         private Font formFont;
         private Color formTextColor;
+        private bool showWindow = false;
 
         public SqlCommandsConsoleForm()
         {
             InitializeComponent();
             SaveFont();
+            SetActive(false);
 
         }
 
@@ -88,7 +90,19 @@ namespace Aura_Server.View
             queryTextBox.SelectionColor = formTextColor;
         }
 
+        
+        private void SetActive(bool value)
+        {
+            //свернуть / развернуть из трея
+            ShowInTaskbar = value;
+            Visible = value;
+            notifyIcon1.Visible = true;
+            showWindow = value;
 
+            if (value)
+                WindowState = FormWindowState.Normal;
+           
+        }
 
 
         private void SqlCommandsConsoleForm_KeyUp(object sender, KeyEventArgs e)
@@ -147,22 +161,15 @@ namespace Aura_Server.View
 
         private void SqlCommandsConsoleForm_Deactivate(object sender, EventArgs e)
         {
-           
-                this.ShowInTaskbar = false;
-                notifyIcon1.Visible = true;
-                notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
-                notifyIcon1.Click += NotifyIcon1_Click;
+            SetActive(false);         
+               
             
         }
-
-        private void NotifyIcon1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("123123");
-        }
-
+        
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("123123");
+            SetActive(!showWindow);
+
         }
     }
 

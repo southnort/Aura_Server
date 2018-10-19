@@ -116,6 +116,7 @@ namespace Aura_Server.Model
 
             StringBuilder sb = new StringBuilder();
             sb.Append("CREATE TABLE IF NOT EXISTS Users (");
+
             sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
             sb.Append("login TEXT UNIQUE, ");
             sb.Append("password TEXT, ");

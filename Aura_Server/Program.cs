@@ -37,16 +37,17 @@ namespace Aura_Server
         static void Main()
         {
             StartIcon();
-          //  StartDataBases();
-          //  StartNetwork();
-          //  StartTimer();
-           
+            StartDataBases();
+            StartNetwork();
+            StartTimer();
+
             Console.WriteLine("Server starting successfully. Version - " +
                 System.Windows.Forms.Application.ProductVersion);
 
             ShowForms();
 
-            Console.Read();
+            //при сворачивании в трей без этого, программа завершает работу
+            Application.Run();
         }
 
         private static void StartIcon()
@@ -54,17 +55,17 @@ namespace Aura_Server
             var icon = new NotifyIcon();
             icon.Icon = new System.Drawing.Icon("Icon.ico");
             icon.Visible = true;
-            icon.DoubleClick += Icon_DoubleClick;
-
-            
-
+            icon.DoubleClick += new EventHandler(Icon_DoubleClick);
+           
             ShowWindow(GetConsoleWindow(), 0);
         }
 
         private static void Icon_DoubleClick(object sender, EventArgs e)
         {
-            showWindow = ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
-        }             
+            showWindow = !showWindow;
+            ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
+
+        }         
 
         private static void StartDataBases()
         {

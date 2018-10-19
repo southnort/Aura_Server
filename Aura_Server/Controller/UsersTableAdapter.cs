@@ -91,12 +91,7 @@ namespace Aura_Server.Controller
             DataTable table = dataBase.GetTable("SELECT * FROM Users WHERE ID = " + userID);
             var row = table.Rows[0];
 
-            User user = new User();
-            user.ID = int.Parse(row.ItemArray[0].ToString());
-            user.login = (string)row.ItemArray[1];
-            user.password = (string)row.ItemArray[2];
-            user.name = (string)row.ItemArray[3];
-            user.roleID = int.Parse(row.ItemArray[4].ToString());
+            User user = new User(row);            
 
             return user;
 
@@ -132,17 +127,20 @@ namespace Aura_Server.Controller
             {
                 var row = table.Rows[i];
 
-                User user = new User();
-                user.ID = int.Parse(row.ItemArray[0].ToString());
-                user.login = (string)row.ItemArray[1];
-                user.password = (string)row.ItemArray[2];
-                user.name = (string)row.ItemArray[3];
-                user.roleID = int.Parse(row.ItemArray[4].ToString());
+                User user = new User(row);
 
                 result.Add(user);
             }
 
             return result;
+        }
+
+        public void ChangePassword(string userID, string newPassword)
+        {
+            var command = "UPDATE Users SET password = '"
+                + newPassword + "' WHERE ID = '" + userID + "'";
+            ExecuteCommand(command);
+
         }
 
     }
