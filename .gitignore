@@ -5,3 +5,4 @@
 .sqlite
 Aura_Server/bin/Debug/AuraDataBase.sqlite
 Aura_Server/bin/Debug/AuraDataBase_ForLogs.sqlite
+Aura_Server/bin/Debug/connect settings.txt
