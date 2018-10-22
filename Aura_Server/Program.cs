@@ -35,19 +35,31 @@ namespace Aura_Server
         private static bool showWindow = false;
 
         static void Main()
-        {
-            StartIcon();
-            StartDataBases();
-            StartNetwork();
-            StartTimer();
+        {           
+            try
+            {
+                StartIcon();
+                StartDataBases();
+                StartNetwork();
+                StartTimer();
 
-            Console.WriteLine("Server starting successfully. Version - " +
-                System.Windows.Forms.Application.ProductVersion);
+                Console.WriteLine("Server starting successfully. Version - " +
+                    System.Windows.Forms.Application.ProductVersion);
 
-            ShowForms();
+                ShowForms();
 
-            //при сворачивании в трей без этого, программа завершает работу
-            Application.Run();
+                //при сворачивании в трей без этого, программа завершает работу
+                Application.Run();
+            }
+            catch (Exception ex)
+            {
+                ShowWindow(GetConsoleWindow(), 1);
+                Console.WriteLine("##############ERROR:\n");
+                Console.WriteLine(ex.ToString());
+                Console.Read();
+
+            }
+            
         }
 
         private static void StartIcon()
