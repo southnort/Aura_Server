@@ -8,6 +8,8 @@ using System.Threading;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
+using NATUPNPLib;
+
 namespace Aura_Server.Controller.Network
 {
     /// <summary>
@@ -21,6 +23,9 @@ namespace Aura_Server.Controller.Network
         private TcpListener tcpListener;    //сервер для прослушивания
         private Dictionary<string, ClientObject> clients;   //все подключения
         private MessageHandler messageHandler;  //обработчик сетевых сообщений
+
+        private UPnPNATClass upnpnat;
+
 
         public ServerObject()
         {
@@ -61,6 +66,8 @@ namespace Aura_Server.Controller.Network
                 tcpListener = new TcpListener(IPAddress.Any, NetworkSettings.firstPort);
                 tcpListener.Start();
 
+                OpenPorts();
+
                 while (true)
                 {
                     TcpClient tcpClient = tcpListener.AcceptTcpClient();
@@ -78,6 +85,22 @@ namespace Aura_Server.Controller.Network
                 Disconnect();
             }
 
+        }
+
+        private void OpenPorts()
+        {
+            upnpnat = new UPnPNATClass();
+            IStaticPortMappingCollection mapping = upnpnat.StaticPortMappingCollection;
+            mapping.Add(40501, "TCP", 40501, "192.168.0.102", true, "internalPort");
+            mapping.Add(40502, "TCP", 40502, "192.168.0.102", true, "internalPort");
+            
+        }
+
+        private void ClosePorts()
+        {
+            IStaticPortMappingCollection mapping = upnpnat.StaticPortMappingCollection;
+            mapping.Remove(40501, "TCP");
+            mapping.Remove(40502, "TCP");
         }
 
 
