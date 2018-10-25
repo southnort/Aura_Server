@@ -41,7 +41,7 @@ namespace Aura_Server
                 StartIcon();
                 StartDataBases();
                 StartNetwork();
-                StartTimer();
+                StartTimers();
 
                 Console.WriteLine("Server starting successfully. Version - " +
                     System.Windows.Forms.Application.ProductVersion);
@@ -122,30 +122,43 @@ namespace Aura_Server
 
         }
 
-        private static void StartTimer()
+        private static void StartTimers()
         {
-            //запуск таймера, срабатывающего раз в час
+            //запуск таймеров, срабатывающих в определенное время
             //например, закупки автоматически меняют статус
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 3600000;
-            timer.AutoReset = true;
-            timer.Elapsed += Timer_Elapsed;
-            timer.Enabled = true;
+            System.Timers.Timer statusSwitchTimer = new System.Timers.Timer();
+            statusSwitchTimer.Interval = 3600000;
+            statusSwitchTimer.AutoReset = true;
+            statusSwitchTimer.Elapsed += Timer_Elapsed;
+            statusSwitchTimer.Enabled = true;
+
+            System.Timers.Timer backupTimer = new System.Timers.Timer();
+            backupTimer.Interval = 10800000;
+            backupTimer.AutoReset = true;
+            backupTimer.Elapsed += BackupTimer_Elapsed;
+            backupTimer.Enabled = true;
 
             StatusSwitchManagerTick();
+            CreateBackup();
+        }
+
+        private static void BackupTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            CreateBackup();
+
         }
 
         private static void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             StatusSwitchManagerTick();
+
         }
 
         private static void StatusSwitchManagerTick()
         {           
             StatusSwitchManager manager = new StatusSwitchManager();
             manager.Tick();
-            CreateBackup();
-
+            
         }
 
        

@@ -5,7 +5,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{BD7E82F5-6E52-4E8A-A5E5-B9228596324D}
+AppId={{29C22713-5BA8-4BA3-9AFB-FF5AE93499FB}
 AppName=Aura_Server
 AppVersion=1.0.3.2
 ;AppVerName=Aura_Server 1.0.3.2
@@ -14,6 +14,7 @@ DefaultDirName={pf}\Aura_Server
 DefaultGroupName=Aura_Server
 AllowNoIcons=yes
 OutputBaseFilename=setup
+SetupIconFile=C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\MainIcon.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -27,10 +28,15 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\AuraDataBase.sqlite"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\AuraDataBase_ForLogs.sqlite"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\connect settings.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.SqlServer.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.SqlServer.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EnvDTE.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -53,11 +59,14 @@ Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Syst
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.EF6.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.Linq.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml"; DestDir: "{app}"; Flags: ignoreversion
-
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Backups\*"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\x86\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 Name: "{group}\Aura_Server"; Filename: "{app}\Aura_Server.exe"
+Name: "{group}\{cm:UninstallProgram,Aura_Server}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\Aura_Server"; Filename: "{app}\Aura_Server.exe"; Tasks: desktopicon
 
 [Run]
