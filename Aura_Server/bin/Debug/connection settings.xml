@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ConnectionSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <serverExternalAddress>95.80.77.105</serverExternalAddress>
+  <serverInternalAddress>192.168.1.221</serverInternalAddress>
+  <clientExternalAddress>95.80.77.105</clientExternalAddress>
+  <clientInternalAddress>192.168.1.221</clientInternalAddress>
+  <serverListenPort>40503</serverListenPort>
+  <clientListenPort>40504</clientListenPort>
+</ConnectionSettings>

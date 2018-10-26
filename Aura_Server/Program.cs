@@ -38,7 +38,7 @@ namespace Aura_Server
         {           
             try
             {
-              //  StartIcon();
+                StartIcon();
                 StartDataBases();
                 StartNetwork();
                 StartTimers();

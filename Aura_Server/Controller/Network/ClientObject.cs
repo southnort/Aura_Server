@@ -23,7 +23,7 @@ namespace Aura_Server.Controller.Network
 
 
         private TcpClient broadcastClient;
-        private int broadcastPort = NetworkSettings.secondPort;
+        private int broadcastPort = ConnectionSettings.Instance.clientListenPort;
         protected internal NetworkStream broadcastStream { get; private set; }      //поток для отправки оповещений
 
 
@@ -34,7 +34,7 @@ namespace Aura_Server.Controller.Network
             client = tcpClient;
             server = serverObject;
             serverObject.AddConnection(this);
-            CreateBroadcastStream();
+          //  CreateBroadcastStream();
         }
 
         private void CreateBroadcastStream()
@@ -73,17 +73,19 @@ namespace Aura_Server.Controller.Network
                     catch (Exception ex)
                     {
                        // Console.WriteLine(ex.ToString());
-                        Console.WriteLine("Client connection closed");                        
+                        Console.WriteLine("\n\nClient connection closed");
+                        Console.WriteLine(ex.ToString());
                         break;
                     }
                 }
 
                 Close();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                // Console.WriteLine(e.Message);
-                Console.WriteLine("Client connection closed");
+                Console.WriteLine("\n\nClient connection closed");
+                Console.WriteLine(ex.ToString());
                 Close();
             }
             

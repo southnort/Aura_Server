@@ -1,14 +1,12 @@
-﻿using System;
+﻿using LumiSoft.Net.UPnP.NAT;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-
-using LumiSoft.Net.UPnP.NAT;
+using System.Text;
+using System.Threading;
 
 namespace Aura_Server.Controller.Network
 {
@@ -24,13 +22,14 @@ namespace Aura_Server.Controller.Network
         private Dictionary<string, ClientObject> clients;   //все подключения
         private MessageHandler messageHandler;  //обработчик сетевых сообщений
 
-        
+        private UPnP_NAT_Client client = new UPnP_NAT_Client();
+
 
         public ServerObject()
         {
             clients = new Dictionary<string, ClientObject>();
             messageHandler = new MessageHandler(this);
-            
+
         }
 
         protected internal void AddConnection(ClientObject clientObject)
@@ -54,6 +53,8 @@ namespace Aura_Server.Controller.Network
                 pair.Value.Close();
             }
 
+            ClosePorts();
+
             Environment.Exit(0); //завершение процесса
         }
 
@@ -62,10 +63,12 @@ namespace Aura_Server.Controller.Network
             //прослушивание входящих подключений
             try
             {
-                tcpListener = new TcpListener(IPAddress.Any, NetworkSettings.firstPort);
+                tcpListener = new TcpListener(IPAddress.Any, 
+                    ConnectionSettings.Instance.serverListenPort);
                 tcpListener.Start();
 
-                OpenPorts();
+               ClosePorts();
+                OpenPorts();               
 
                 while (true)
                 {
@@ -82,29 +85,51 @@ namespace Aura_Server.Controller.Network
             {
                 Console.WriteLine(ex.Message);
                 Disconnect();
+                Console.Read();
             }
 
         }
 
         private void OpenPorts()
         {
-            var map = new UPnP_NAT_Map(true, "TCP", "95.80.77.105", "40503",
-                "192.168.1.221", 40503, "test", 15);
+            try
+            {  
+                client.AddPortMapping(true, "test", "TCP",
+                    ConnectionSettings.Instance.serverExternalAddress,
+                    ConnectionSettings.Instance.serverListenPort,
+                    new IPEndPoint(
+                        IPAddress.Parse(ConnectionSettings.Instance.serverInternalAddress),
+                        ConnectionSettings.Instance.serverListenPort),
+                   0);
+            }
 
-            var client = new UPnP_NAT_Client();
-
-            client.AddPortMapping(true, "test", "TCP", "95.80.77.105", 40503,
-               new IPEndPoint(IPAddress.Parse("192.168.1.221"), 40503), 15);
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.Read();
+            }
 
             
-
-
         }
 
         private void ClosePorts()
         {
-            
+            try
+            {
+                client.DeletePortMapping("TCP", ConnectionSettings.Instance.serverExternalAddress,
+                    ConnectionSettings.Instance.serverListenPort);
+
+                foreach (var map in client.GetPortMappings())
+                {
+                    client.DeletePortMapping(map);
+                }
+               
+            }
+
+            catch
+            {
+            }
+
         }
 
 
