@@ -8,7 +8,7 @@ using System.Threading;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-using NATUPNPLib;
+using LumiSoft.Net.UPnP.NAT;
 
 namespace Aura_Server.Controller.Network
 {
@@ -24,8 +24,7 @@ namespace Aura_Server.Controller.Network
         private Dictionary<string, ClientObject> clients;   //все подключения
         private MessageHandler messageHandler;  //обработчик сетевых сообщений
 
-        private UPnPNATClass upnpnat;
-
+        
 
         public ServerObject()
         {
@@ -89,18 +88,23 @@ namespace Aura_Server.Controller.Network
 
         private void OpenPorts()
         {
-            upnpnat = new UPnPNATClass();
-            IStaticPortMappingCollection mapping = upnpnat.StaticPortMappingCollection;
-            mapping.Add(40501, "TCP", 40501, "192.168.0.102", true, "internalPort");
-            mapping.Add(40502, "TCP", 40502, "192.168.0.102", true, "internalPort");
+            var map = new UPnP_NAT_Map(true, "TCP", "95.80.77.105", "40503",
+                "192.168.1.221", 40503, "test", 15);
+
+            var client = new UPnP_NAT_Client();
+
+            client.AddPortMapping(true, "test", "TCP", "95.80.77.105", 40503,
+               new IPEndPoint(IPAddress.Parse("192.168.1.221"), 40503), 15);
+
+
             
+
+
         }
 
         private void ClosePorts()
         {
-            IStaticPortMappingCollection mapping = upnpnat.StaticPortMappingCollection;
-            mapping.Remove(40501, "TCP");
-            mapping.Remove(40502, "TCP");
+            
         }
 
 

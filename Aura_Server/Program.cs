@@ -38,13 +38,15 @@ namespace Aura_Server
         {           
             try
             {
-                StartIcon();
+              //  StartIcon();
                 StartDataBases();
                 StartNetwork();
                 StartTimers();
 
-                Console.WriteLine("Server starting successfully. Version - " +
-                    System.Windows.Forms.Application.ProductVersion);
+                //Console.WriteLine("Server starting successfully. Version - " +
+                //    System.Windows.Forms.Application.ProductVersion);
+
+                Console.WriteLine("TEST SERVER");
 
                 ShowForms();
 

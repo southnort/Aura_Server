@@ -67,6 +67,9 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="LumiSoft.Net, Version=4.5.6712.42296, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LumiSoft.Net.dll.4.5.6712.42292\lib\net45\Release\LumiSoft.Net.dll</HintPath>
+    </Reference>
     <Reference Include="SQLite.Designer, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\SQLite.Designer.dll</HintPath>
@@ -203,6 +206,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="license.txt" />
     <Content Include="MainIcon.ico" />
   </ItemGroup>
   <ItemGroup>
