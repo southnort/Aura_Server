@@ -31,7 +31,7 @@ namespace Aura_Server.Controller.Network
             messageHandler = new MessageHandler(this);
 
         }
-
+       
         protected internal void AddConnection(ClientObject clientObject)
         {
             clients.Add(clientObject.connectionID, clientObject);
@@ -67,7 +67,7 @@ namespace Aura_Server.Controller.Network
                     ConnectionSettings.Instance.serverListenPort);
                 tcpListener.Start();
 
-               ClosePorts();
+                ClosePorts();
                 OpenPorts();               
 
                 while (true)
@@ -112,7 +112,7 @@ namespace Aura_Server.Controller.Network
             
         }
 
-        private void ClosePorts()
+        public void ClosePorts()
         {
             try
             {

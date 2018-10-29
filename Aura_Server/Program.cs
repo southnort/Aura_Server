@@ -23,6 +23,7 @@ namespace Aura_Server
         public static OrganisationsDataBaseAdapter organisationsDataBase;
         public static ReportsDataBaseAdapter reportsDataBaseAdapter;
 
+        private static ServerObject server;
         private static string dbForLogsFileName = "AuraDataBase_ForLogs.sqlite";
         private static string dbFileName = "AuraDataBase.sqlite";
 
@@ -35,7 +36,7 @@ namespace Aura_Server
         private static bool showWindow = false;
 
         static void Main()
-        {           
+        {
             try
             {
                 StartIcon();
@@ -43,14 +44,15 @@ namespace Aura_Server
                 StartNetwork();
                 StartTimers();
 
-                //Console.WriteLine("Server starting successfully. Version - " +
-                //    System.Windows.Forms.Application.ProductVersion);
+                Console.WriteLine("Server starting successfully. Version - " +
+                    System.Windows.Forms.Application.ProductVersion);
 
-                Console.WriteLine("TEST SERVER");
+                //Console.WriteLine("TEST SERVER");
 
                 ShowForms();
 
                 //при сворачивании в трей без этого, программа завершает работу
+                AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
                 Application.Run();
             }
             catch (Exception ex)
@@ -61,7 +63,12 @@ namespace Aura_Server
                 Console.Read();
 
             }
-            
+
+        }
+
+        private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            server.ClosePorts();            
         }
 
         private static void StartIcon()
@@ -71,7 +78,7 @@ namespace Aura_Server
             icon.Visible = true;
             icon.DoubleClick += new EventHandler(Icon_DoubleClick);
             icon.Text = "Aura Server Console";
-           
+
             ShowWindow(GetConsoleWindow(), 0);
         }
 
@@ -80,13 +87,13 @@ namespace Aura_Server
             showWindow = !showWindow;
             ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
 
-        }         
+        }
 
         private static void StartDataBases()
         {
             //настраиваем соединения с БД            
-            
-            
+
+
             DataBaseCreator creator = new DataBaseCreator();
             creator.CreateDataBaseForLogs(dbForLogsFileName);
             creator.CreateMainDataBase(dbFileName);
@@ -108,8 +115,7 @@ namespace Aura_Server
 
         private static void StartNetwork()
         {
-            //включаем сетевое соединение
-            ServerObject server;
+            //включаем сетевое соединение      
             Thread listeningThread;
             try
             {
@@ -157,13 +163,13 @@ namespace Aura_Server
         }
 
         private static void StatusSwitchManagerTick()
-        {           
+        {
             StatusSwitchManager manager = new StatusSwitchManager();
             manager.Tick();
-            
+
         }
 
-       
+
 
         private static void ShowForms()
         {
@@ -174,7 +180,7 @@ namespace Aura_Server
 
         }
 
-        
+
 
         private static void TestMethod()
         {
@@ -210,18 +216,18 @@ namespace Aura_Server
             {
                 try
                 {
-                   return DateTime.Parse(dateString);
+                    return DateTime.Parse(dateString);
 
                 }
                 catch
                 {
                     Console.WriteLine("What date is it: \"" +
-                        dateString+"\"?");
+                        dateString + "\"?");
                     string tempo = Console.ReadLine();
                     if (tempo == string.Empty)
                         return DateTime.MinValue;
                     else
-                    return DateTime.Parse(tempo);
+                        return DateTime.Parse(tempo);
 
                 }
             }
@@ -236,9 +242,9 @@ namespace Aura_Server
         public static void CreateBackup()
         {
             //создание бэкапа базы данных
-            //Thread backupThread = new Thread(new ThreadStart(BackupMethod));
-            //backupThread.Start();
-            
+            Thread backupThread = new Thread(new ThreadStart(BackupMethod));
+            backupThread.Start();
+
         }
 
         private static void BackupMethod()
@@ -260,7 +266,7 @@ namespace Aura_Server
 
         }
 
-    }   
+    }
 
 }
 

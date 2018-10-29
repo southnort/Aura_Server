@@ -7,8 +7,8 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{29C22713-5BA8-4BA3-9AFB-FF5AE93499FB}
 AppName=Aura_Server
-AppVersion=1.0.3.2
-;AppVerName=Aura_Server 1.0.3.2
+AppVersion=1.0.3.3
+;AppVerName=Aura_Server 1.0.3.3
 AppPublisher=ASTIKS
 DefaultDirName={pf}\Aura_Server
 DefaultGroupName=Aura_Server
@@ -32,7 +32,7 @@ Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_Server.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\AuraDataBase.sqlite"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\AuraDataBase_ForLogs.sqlite"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\connect settings.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\connection settings.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.SqlServer.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.SqlServer.xml"; DestDir: "{app}"; Flags: ignoreversion

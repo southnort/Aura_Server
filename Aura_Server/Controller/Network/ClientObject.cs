@@ -23,7 +23,6 @@ namespace Aura_Server.Controller.Network
 
 
         private TcpClient broadcastClient;
-        private int broadcastPort = ConnectionSettings.Instance.clientListenPort;
         protected internal NetworkStream broadcastStream { get; private set; }      //поток для отправки оповещений
 
 
@@ -35,24 +34,6 @@ namespace Aura_Server.Controller.Network
             server = serverObject;
             serverObject.AddConnection(this);
           //  CreateBroadcastStream();
-        }
-
-        private void CreateBroadcastStream()
-        {
-            try
-            {
-                broadcastClient = new TcpClient();                
-                string clientIP = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
-                broadcastClient.Connect(clientIP, broadcastPort);
-                broadcastStream = broadcastClient.GetStream();
-
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                Close();
-            }
         }
 
         protected internal void Process()

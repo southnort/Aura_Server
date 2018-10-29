@@ -86,7 +86,6 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Da
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csprojAssemblyReference.cache
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Interop.NATUPNPLib.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Interop.NATUPNPLib.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csproj.ResolveComReference.cache
