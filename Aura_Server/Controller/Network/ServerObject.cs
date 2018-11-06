@@ -31,7 +31,7 @@ namespace Aura_Server.Controller.Network
             messageHandler = new MessageHandler(this);
 
         }
-       
+
         protected internal void AddConnection(ClientObject clientObject)
         {
             clients.Add(clientObject.connectionID, clientObject);
@@ -63,12 +63,23 @@ namespace Aura_Server.Controller.Network
             //прослушивание входящих подключений
             try
             {
-                tcpListener = new TcpListener(IPAddress.Any, 
+
+
+#if DEBUG
+                tcpListener = new TcpListener(IPAddress.Any,
+                   ConnectionSettings.Instance.serverDebugPort);
+                tcpListener.Start();
+
+#else
+
+                 tcpListener = new TcpListener(IPAddress.Any,
                     ConnectionSettings.Instance.serverListenPort);
                 tcpListener.Start();
 
                 ClosePorts();
-                OpenPorts();               
+                OpenPorts();
+#endif
+
 
                 while (true)
                 {
@@ -93,7 +104,7 @@ namespace Aura_Server.Controller.Network
         private void OpenPorts()
         {
             try
-            {  
+            {
                 client.AddPortMapping(true, "test", "TCP",
                     ConnectionSettings.Instance.serverExternalAddress,
                     ConnectionSettings.Instance.serverListenPort,
@@ -109,7 +120,7 @@ namespace Aura_Server.Controller.Network
                 Console.Read();
             }
 
-            
+
         }
 
         public void ClosePorts()
@@ -123,7 +134,7 @@ namespace Aura_Server.Controller.Network
                 {
                     client.DeletePortMapping(map);
                 }
-               
+
             }
 
             catch
@@ -173,7 +184,7 @@ namespace Aura_Server.Controller.Network
 
 
         }
-       
+
         protected internal void SendMessage(string message, string connectionID)
         {
             clients[connectionID].SendMessage(message);
@@ -185,7 +196,7 @@ namespace Aura_Server.Controller.Network
             clients[connectionID].SendObject(ob);
         }
 
-        
+
     }
 }
 

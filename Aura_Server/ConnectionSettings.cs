@@ -25,10 +25,12 @@ public class ConnectionSettings
     private static ConnectionSettings _instance;
 
     public string serverExternalAddress { get; set; }
-    public string serverInternalAddress { get; set; }   
+    public string serverInternalAddress { get; set; }      
 
     public int serverListenPort { get; set; }
-   
+    public int serverDebugPort { get; set; }
+
+
     private const string fileName = "connection settings.xml";
 
 

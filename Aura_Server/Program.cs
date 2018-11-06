@@ -242,8 +242,12 @@ namespace Aura_Server
         public static void CreateBackup()
         {
             //создание бэкапа базы данных
+
+#if DEBUG
+#else
             Thread backupThread = new Thread(new ThreadStart(BackupMethod));
             backupThread.Start();
+#endif
 
         }
 

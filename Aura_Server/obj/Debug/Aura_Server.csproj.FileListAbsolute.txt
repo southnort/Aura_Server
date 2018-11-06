@@ -94,3 +94,4 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\LumiSoft.
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Interop.NATUPNPLib.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Interop.NATUPNPLib.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csproj.ResolveComReference.cache
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csprojAssemblyReference.cache
