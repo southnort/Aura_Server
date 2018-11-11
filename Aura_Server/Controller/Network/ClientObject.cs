@@ -115,8 +115,30 @@ namespace Aura_Server.Controller.Network
             //}
             //catch (Exception ex)
             //{
-             //   Console.WriteLine(ToString() + ".SendObject Exception: " + ex.Message);
-           // }
+            //   Console.WriteLine(ToString() + ".SendObject Exception: " + ex.Message);
+            //}
+
+        }
+
+        protected internal void SendFile(string filePath)
+        {
+            //найти файл по названию, преобразовать его в набор байт и отправить
+            //после отправки файл удаляется
+
+            Console.WriteLine("Sending file ");
+            using (var fileStream = new FileStream(filePath, FileMode.Open))
+            {
+                using (var reader = new BinaryReader(fileStream))
+                {
+                    var size = new FileInfo(filePath).Length;
+
+                    byte[] buffer = new byte[size];
+                    reader.Read(buffer, 0, (int)size);
+
+                    Send(buffer);
+                    Console.WriteLine("File sended successfull");
+                }
+            }
 
         }
 

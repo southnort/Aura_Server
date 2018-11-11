@@ -4,6 +4,8 @@ using System.Text;
 using Aura.Model;
 using System.Data;
 
+using System.IO;
+
 namespace Aura_Server.Controller.Network
 {
 
@@ -32,7 +34,7 @@ namespace Aura_Server.Controller.Network
 
                 case "CHECKALLREPORTS": CheckAllReports(message); break;
                 case "UNCHECKALLREPORTS": UncheckAllReports(message); break;
-                case "CHANGEPASSWORD":ChangePassword(message);break;
+                case "CHANGEPASSWORD": ChangePassword(message); break;
 
                 case "EXECUTECOMMAND": ExecuteCommand(message); break;
 
@@ -56,7 +58,7 @@ namespace Aura_Server.Controller.Network
             }
 
             server.SendMessage(PrepareString(response), connectionID);
-            
+
         }
 
         protected override void ReceiveObject(List<string> message, string connectionID)
@@ -65,7 +67,7 @@ namespace Aura_Server.Controller.Network
             switch (message[2])
             {
 
-                default: Console.WriteLine(ToString() + " invalid command " + message[1]); break;
+                default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
             }
         }
 
@@ -93,16 +95,33 @@ namespace Aura_Server.Controller.Network
 
                 case ("GETITEM"): server.SendObject(GetSingleObject(message), connectionID); break;
 
-                case ("GETLOGS"):server.SendObject(GetLogs(message), connectionID);break;
+                case ("GETLOGS"): server.SendObject(GetLogs(message), connectionID); break;
 
                 default:
                     {
                         server.SendObject(null, connectionID);
-                        Console.WriteLine(ToString() + " invalid command " + message[1]);
+                        Console.WriteLine(ToString() + " invalid command " + message[2]);
                     }
                     break;
 
             }
+
+        }
+
+        protected override void SendFile(List<string> message, string connectionID)
+        {
+            switch (message[2])
+            {
+                case ("GETXLFILE"): server.SendFile(GetExcelFile(message), connectionID); break;
+
+                default:
+                    {
+                        server.SendObject(null, connectionID);
+                        Console.WriteLine(ToString() + " invalid command " + message[2]);
+                    }
+                    break;
+            }
+
 
         }
 
@@ -331,7 +350,7 @@ namespace Aura_Server.Controller.Network
                 return table;
             }
         }
-        
+
         private void ExecuteCommand(List<string> message)
         {
             Program.dataBase.ExecuteCommand(message[3]);
@@ -358,6 +377,14 @@ namespace Aura_Server.Controller.Network
         private DataTable GetLogs(List<string> message)
         {
             return LogManager.Instance.GetTable(message[3]);
+        }
+
+
+        private string GetExcelFile(List<string> message)
+        {
+            //обрабатывает запрос, создаёт файл на диске и возвращает его местонахождение
+          
+            return "testFIle.xls";
         }
     }
 

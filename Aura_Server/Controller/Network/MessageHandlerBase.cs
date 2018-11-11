@@ -13,6 +13,7 @@ namespace Aura_Server.Controller.Network
     {
         protected internal void HandleMessage(string message, string connectionID)
         {
+            Console.WriteLine("Handle message "+ message);
             List<string> arr = SplitString(message);
             switch (arr[0])
             {
@@ -20,6 +21,7 @@ namespace Aura_Server.Controller.Network
                 case "rqst": HandleRequest(arr, connectionID); break;
                 case "sobj": ReceiveObject(arr, connectionID); break;
                 case "gobj": SendObject(arr, connectionID); break;
+                case "gfl": SendFile(arr, connectionID); break;
 
                 default: Console.WriteLine("Error. Invalid request: " + arr[0]); break;
             }
@@ -39,6 +41,8 @@ namespace Aura_Server.Controller.Network
         //отправить объект клиенту
         abstract protected void SendObject(List<string> message, string connectionID);
 
+        //отправить клиенту файл
+        abstract protected void SendFile(List<string> message, string connectionID);
 
 
         protected List<string> SplitString(string message)

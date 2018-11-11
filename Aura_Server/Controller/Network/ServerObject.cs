@@ -196,6 +196,11 @@ namespace Aura_Server.Controller.Network
             clients[connectionID].SendObject(ob);
         }
 
+        protected internal void SendFile(string filePath, string connectionID)
+        {
+            Console.WriteLine("Sending file " + filePath);
+            clients[connectionID].SendFile(filePath);
+        }
 
     }
 }
