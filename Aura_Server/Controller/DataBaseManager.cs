@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 using System.Data;
+using OdsReadWrite;
+
 
 namespace Aura_Server.Controller
 {
@@ -77,7 +79,51 @@ namespace Aura_Server.Controller
 
         }
 
-       
+
+        public string CreateExcelFile(string queryString)
+        {
+            //создать файл и вернуть его имя-путь
+           // string directory = @"\ExcelFiles\";
+            string name = Guid.NewGuid().ToString()+".xls";
+
+            string filePath = name;
+
+            var table = GetTable(queryString);
+            var dataSet = ConvertDataTableToDataSet(table);
+
+            OdsReaderWriter writer = new OdsReaderWriter();
+
+            writer.WriteOdsFile(dataSet, filePath);
+
+            return filePath;
+
+        }
+
+        private DataSet ConvertDataTableToDataSet(DataTable table)
+        {
+            //DataTable tempTable = new DataTable();
+            //foreach (DataColumn column in table.Columns)
+            //{
+            //    tempTable.Columns.Add(column);
+            //}
+
+            //foreach (var row in table.Rows)
+            //{
+            //    tempTable.Rows.Add(row);
+            //}
+
+
+            //DataSet result = new DataSet();
+            //result.Tables.Add(tempTable); 
+
+
+            //return result;
+
+
+            return table.DataSet;
+        }
+
+
     }
 
 }

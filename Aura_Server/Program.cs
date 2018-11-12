@@ -33,7 +33,9 @@ namespace Aura_Server
         [DllImport("kernel32.dll", ExactSpelling = true)]
         private static extern IntPtr GetConsoleWindow();
 
+
         private static bool showWindow = false;
+
 
         static void Main()
         {
@@ -73,13 +75,16 @@ namespace Aura_Server
 
         private static void StartIcon()
         {
+#if DEBUG
+#else
             var icon = new NotifyIcon();
             icon.Icon = new System.Drawing.Icon("Icon.ico");
             icon.Visible = true;
             icon.DoubleClick += new EventHandler(Icon_DoubleClick);
             icon.Text = "Aura Server Console";
 
-            ShowWindow(GetConsoleWindow(), 0);
+            ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
+#endif
         }
 
         private static void Icon_DoubleClick(object sender, EventArgs e)

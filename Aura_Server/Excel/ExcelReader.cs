@@ -1,18 +1,17 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using ExcelDataReader;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Data;
-using ExcelDataReader;
+using System.IO;
 
 
 namespace Aura_Server.Excel
 {
+    /// <summary>
+    /// класс предназначен для чтения данных из таблицы Excel
+    /// </summary>
     public class ExcelReader
     {
-        //класс предназначен для чтения данных из таблицы Excel
         public List<List<string>> GetFromFile(string filePath)
         {
             List<List<string>> tableCells = new List<List<string>>();

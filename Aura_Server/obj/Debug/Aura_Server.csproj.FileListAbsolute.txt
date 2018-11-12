@@ -97,3 +97,8 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Serv
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.csprojAssemblyReference.cache
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\LumiSoft.Net.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\LumiSoft.Net.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Ionic.Zip.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
