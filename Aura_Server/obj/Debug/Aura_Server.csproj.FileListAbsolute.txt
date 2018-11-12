@@ -25,11 +25,8 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Serv
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchasesCalendarForm.resources
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.DayInCalendarForm.resources
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.DayInCalendarFullForm.resources
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchasesCalendarForm.resources
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.DayInCalendarFullForm.resources
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchaseForm.resources
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchasesDataBaseForm.resources
-C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchaseForm.resources
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Debug\Aura_Server.View.PurchasesDataBaseForm.resources
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config
@@ -102,3 +99,11 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelData
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Ionic.Zip.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.dll
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Ionic.Zip.dll
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.xml
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.pdb
+C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll.config

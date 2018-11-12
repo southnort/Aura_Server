@@ -46,6 +46,8 @@ namespace Aura_Server
                 StartNetwork();
                 StartTimers();
 
+                TestMethod();
+
                 Console.WriteLine("Server starting successfully. Version - " +
                     System.Windows.Forms.Application.ProductVersion);
 
@@ -67,6 +69,16 @@ namespace Aura_Server
             }
 
         }
+
+        private static void TestMethod()
+        {
+            string command = "SELECT * FROM Purchases";
+            string path = dataBase.CreateExcelFile(command);
+            string destination = Environment.GetFolderPath(
+                Environment.SpecialFolder.Desktop) + "\\result.xls";
+            File.Copy(path, destination, true);
+        }
+
 
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
@@ -184,15 +196,7 @@ namespace Aura_Server
             sqlCommandsConsoleForm.ShowDialog();
 
         }
-
-
-
-        private static void TestMethod()
-        {
-
-
-        }
-
+                      
         private static List<List<string>> LoadTable(string fileName)
         {
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) +

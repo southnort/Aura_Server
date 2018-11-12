@@ -1,12 +1,10 @@
-﻿using System;
+﻿using OdsReadWrite;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
-using System.Data;
-using OdsReadWrite;
+using Aura.Model;
 
 
 namespace Aura_Server.Controller
@@ -83,8 +81,8 @@ namespace Aura_Server.Controller
         public string CreateExcelFile(string queryString)
         {
             //создать файл и вернуть его имя-путь
-           // string directory = @"\ExcelFiles\";
-            string name = Guid.NewGuid().ToString()+".xls";
+
+            string name = Guid.NewGuid().ToString() + ".xls";
 
             string filePath = name;
 
@@ -101,28 +99,65 @@ namespace Aura_Server.Controller
 
         private DataSet ConvertDataTableToDataSet(DataTable table)
         {
-            //DataTable tempTable = new DataTable();
-            //foreach (DataColumn column in table.Columns)
-            //{
-            //    tempTable.Columns.Add(column);
-            //}
+            DataTable resultTable = new DataTable();
+            CreateHeaders(table, resultTable);
 
-            //foreach (var row in table.Rows)
-            //{
-            //    tempTable.Rows.Add(row);
-            //}
-
-
-            //DataSet result = new DataSet();
-            //result.Tables.Add(tempTable); 
-
-
-            //return result;
+            foreach (DataRow row in table.Rows)
+            {
+                DataRow newRow = resultTable.NewRow();
+                for (int i = 0; i < table.Columns.Count; i++)
+                {
+                    DataColumn column = table.Columns[i];
+                    newRow[i] = ConvertToString(row[i], column.ColumnName);
+                }
+                resultTable.Rows.Add(newRow);
+            }
 
 
-            return table.DataSet;
+            DataSet resultDataSet = new DataSet();
+            resultDataSet.Tables.Add(resultTable);
+            return resultTable.DataSet;
         }
 
+        private void CreateHeaders(DataTable inputTable, DataTable resultTable)
+        {
+            List<string> names = new List<string>();
+            foreach (DataColumn column in inputTable.Columns)
+            {
+                resultTable.Columns.Add(column.ColumnName, typeof(string));
+                names.Add(HeaderText(column.ColumnName));
+            }
+            DataRow headerRow = resultTable.NewRow();
+            headerRow.ItemArray = names.ToArray();
+            resultTable.Rows.InsertAt(headerRow, 0);
+        }
+
+        private string HeaderText(string columnName)
+        {
+            if (Catalog.dataTableHeaders.ContainsKey(columnName))
+                return Catalog.dataTableHeaders[columnName];
+            else
+                return columnName;
+        }
+
+
+
+        private string ConvertToString(object value, string columnName)
+        {
+            switch (columnName)
+            {
+                case "statusID": return Catalog.allStatuses[GetInt(value)];
+
+                default: return value.ToString();
+            }
+        }
+
+
+
+        private int GetInt(object val)
+        {
+            return (int)(long)val;
+        }
 
     }
 

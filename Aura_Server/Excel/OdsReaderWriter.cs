@@ -193,23 +193,8 @@ namespace OdsReadWrite
         /// <param name="odsFile">DataSet that represent .ods file.</param>
         /// <param name="outputFilePath">The name of the file to save to.</param>
         public void WriteOdsFile(DataSet odsFile, string outputFilePath)
-        {
-            var tempo = GetType().Assembly.GetManifestResourceNames();
-            Console.WriteLine("\n####################");
-            foreach (var str in tempo)
-            {
-                Console.WriteLine(str);
-            }
-            Console.WriteLine("\n####################");
-
-
-          //  FileStream stream = new FileStream("template.ods", FileMode.Open);
-            ZipFile templateFile = GetZipFile("template.ods");
-
-            //ZipFile templateFile = this.GetZipFile(Assembly.GetExecutingAssembly()
-            //    .GetManifestResourceStream("OdsReadWrite.template.ods"));
-
-
+        {           
+            ZipFile templateFile = GetZipFile("template.ods");           
 
             XmlDocument contentXml = this.GetContentXmlFile(templateFile);
 
