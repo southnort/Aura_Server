@@ -46,12 +46,13 @@ namespace Aura_Server
                 StartNetwork();
                 StartTimers();
 
-                TestMethod();
+              //  TestMethod();
 
                 Console.WriteLine("Server starting successfully. Version - " +
                     System.Windows.Forms.Application.ProductVersion);
-
-                //Console.WriteLine("TEST SERVER");
+#if DEBUG
+                Console.WriteLine("TEST SERVER");
+#endif
 
                 ShowForms();
 
@@ -72,11 +73,11 @@ namespace Aura_Server
 
         private static void TestMethod()
         {
-            string command = "SELECT * FROM Purchases";
-            string path = dataBase.CreateExcelFile(command);
-            string destination = Environment.GetFolderPath(
-                Environment.SpecialFolder.Desktop) + "\\result.xls";
-            File.Copy(path, destination, true);
+        //    string command = "SELECT * FROM Organisations";
+        //    string path = dataBase.CreateExcelFile(command);
+        //    string destination = Environment.GetFolderPath(
+        //        Environment.SpecialFolder.Desktop) + "\\result.xls";
+        //    File.Copy(path, destination, true);
         }
 
 

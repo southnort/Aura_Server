@@ -18,6 +18,11 @@ namespace Aura_Server.Controller
         private SQLiteConnection connection;
         private SQLiteCommand command;
 
+        private Dictionary<string, string> users;
+        private Dictionary<string, string> organisations;
+
+
+
         public void ConnectToDataBase(string dbFileName)
         {
             //подключиться к существующей базе
@@ -81,6 +86,9 @@ namespace Aura_Server.Controller
         public string CreateExcelFile(string queryString)
         {
             //создать файл и вернуть его имя-путь
+            ReloadUsers();
+            ReloadOrganisations();
+
 
             string name = Guid.NewGuid().ToString() + ".xls";
 
@@ -140,23 +148,73 @@ namespace Aura_Server.Controller
                 return columnName;
         }
 
-
-
-        private string ConvertToString(object value, string columnName)
+        private void ReloadUsers()
         {
-            switch (columnName)
+            var table = GetTable("SELECT id, name FROM Users");
+            users = new Dictionary<string, string>();
+            users.Add("", "");
+            foreach (DataRow row in table.Rows)
             {
-                case "statusID": return Catalog.allStatuses[GetInt(value)];
+                users.Add(row[0].ToString(), row[1].ToString());
+            }
+        }
 
-                default: return value.ToString();
+        private void ReloadOrganisations()
+        {
+            var table = GetTable("SELECT id, name FROM Organisations");
+            organisations = new Dictionary<string, string>();
+            organisations.Add("", "");
+            foreach (DataRow row in table.Rows)
+            {
+                organisations.Add(row[0].ToString(), row[1].ToString());
             }
         }
 
 
+        private string ConvertToString(object val, string columnName)
+        {
+            //конвертирует значения полей в текст. Например, ID сотрудника в его фамилию
+
+
+
+            switch (columnName)
+            {
+                case "employeID": return users[GetStr(val)];
+                case "organizationID": return organisations[GetStr(val)];
+                case "purchaseMethodID": return Catalog.purchaseMethods[GetInt(val)].name;
+                case "statusID": return Catalog.allStatuses[GetInt(val)];
+
+                case "law": return Catalog.laws[GetInt(val)];
+                case "withAZK": return GetInt(val) == 0 ? "С АЦК" : "БЕЗ АЦК";
+                case "employeDocumentationID": return users[GetStr(val)];
+                case "protocolStatusID": return Catalog.protocolStatuses[GetInt(val)];
+                case "controlStatus": return GetInt(val) == 0 ? "Нет" : "Да";
+                case "employeReestID": return users[GetStr(val)];
+                case "reestrStatus": return GetInt(val) == 0 ? "Нет" : "Да";
+
+                case "originalID": return Catalog.contractOriginalConditions[GetInt(val)];
+                case "contractCondition": return Catalog.contractConditions[GetInt(val)];
+                case "contractType": return Catalog.contractTypes[GetInt(val)];
+
+
+                default: return val.ToString();
+            }
+        }
+
 
         private int GetInt(object val)
         {
-            return (int)(long)val;
+            if (val is DBNull) return 0;
+            else
+                return (int)(long)val;
+
+        }
+
+        private string GetStr(object val)
+        {
+            if (val is DBNull) return "";
+            else
+                return val.ToString();
         }
 
     }
