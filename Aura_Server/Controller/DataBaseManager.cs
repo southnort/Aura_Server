@@ -153,6 +153,7 @@ namespace Aura_Server.Controller
             var table = GetTable("SELECT id, name FROM Users");
             users = new Dictionary<string, string>();
             users.Add("", "");
+            users.Add("0", "");
             foreach (DataRow row in table.Rows)
             {
                 users.Add(row[0].ToString(), row[1].ToString());

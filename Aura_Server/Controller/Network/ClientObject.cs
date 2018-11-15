@@ -140,6 +140,13 @@ namespace Aura_Server.Controller.Network
                 }
             }
 
+            if (File.Exists(filePath))
+            {
+
+                File.Delete(filePath);
+
+            }
+
         }
 
         private string ReceiveString(NetworkStream st)

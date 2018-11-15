@@ -112,7 +112,27 @@ namespace Aura_Server.Controller.Network
         {
             switch (message[2])
             {
-                case ("GETXLFILE"): server.SendFile(GetExcelFile(message), connectionID); break;
+                case ("GETXLFILE"):
+                    {
+                        string response;
+                        string filePath;
+
+                        try
+                        {
+                            filePath = GetExcelFile(message);
+                            response = "Файл успешно создан";
+                        }
+                        catch (Exception ex)
+                        {
+                            filePath = "ERROR";
+                            response = ex.Message;
+
+                        }
+
+                        server.SendFile(response, filePath, connectionID);
+
+                    }
+                    break;
 
                 default:
                     {
@@ -379,7 +399,7 @@ namespace Aura_Server.Controller.Network
             return LogManager.Instance.GetTable(message[3]);
         }
 
-
+               
         private string GetExcelFile(List<string> message)
         {
             //обрабатывает запрос, создаёт файл на диске и возвращает его местонахождение
