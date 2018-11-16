@@ -165,6 +165,7 @@ namespace Aura_Server.Controller
             var table = GetTable("SELECT id, name FROM Organisations");
             organisations = new Dictionary<string, string>();
             organisations.Add("", "");
+            organisations.Add("0", "");
             foreach (DataRow row in table.Rows)
             {
                 organisations.Add(row[0].ToString(), row[1].ToString());

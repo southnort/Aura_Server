@@ -239,7 +239,7 @@ namespace Aura_Server.Controller.Network
             {
                 int size = data.Length;
                 byte[] preparedSize = BitConverter.GetBytes(size);
-              //  Console.WriteLine("Size is - : "+size);
+                Console.WriteLine("Size is - : "+size);
                 stream.Write(preparedSize, 0, preparedSize.Length);
                 stream.Write(data, 0, data.Length);
 

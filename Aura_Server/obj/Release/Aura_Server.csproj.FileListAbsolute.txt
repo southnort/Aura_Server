@@ -13,10 +13,7 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\Microso
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\Microsoft.VisualStudio.OLE.Interop.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\Microsoft.VisualStudio.TextManager.Interop.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\LumiSoft.Net.xml
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\System.Data.SQLite.xml
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\System.Data.SQLite.dll.config
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\Interop.NATUPNPLib.dll
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Release\Aura_Server.csprojAssemblyReference.cache
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Release\Interop.NATUPNPLib.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Release\Aura_Server.csproj.ResolveComReference.cache
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Release\Aura_Server.View.DayInCalendarForm.resources

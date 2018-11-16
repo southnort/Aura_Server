@@ -199,7 +199,7 @@ namespace Aura_Server.Controller.Network
         protected internal void SendFile(string message, string filePath, string connectionID)
         {
             clients[connectionID].SendMessage(message);
-            Thread.Sleep(30);
+            Thread.Sleep(300);
             clients[connectionID].SendFile(filePath);
         }
 
