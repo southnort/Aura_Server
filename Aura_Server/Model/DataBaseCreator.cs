@@ -176,7 +176,9 @@ namespace Aura_Server.Model
             sb.Append("employeReestID INTEGER, ");
             sb.Append("reestrStatus INTEGER, ");
             sb.Append("withoutPurchase INTEGER, ");
-            sb.Append("organisationInn TEXT");
+            sb.Append("organisationInn TEXT, ");
+            sb.Append("stageID INTEGER, ");
+            sb.Append("bidsCount TEXT");
 
             sb.Append(")");
 

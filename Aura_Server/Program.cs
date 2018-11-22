@@ -88,8 +88,7 @@ namespace Aura_Server
 
         private static void StartIcon()
         {
-#if DEBUG
-#else
+
             var icon = new NotifyIcon();
             icon.Icon = new System.Drawing.Icon("Icon.ico");
             icon.Visible = true;
@@ -97,7 +96,7 @@ namespace Aura_Server
             icon.Text = "Aura Server Console";
 
             ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
-#endif
+
         }
 
         private static void Icon_DoubleClick(object sender, EventArgs e)
@@ -152,11 +151,12 @@ namespace Aura_Server
         {
             //запуск таймеров, срабатывающих в определенное время
             //например, закупки автоматически меняют статус
-            System.Timers.Timer statusSwitchTimer = new System.Timers.Timer();
-            statusSwitchTimer.Interval = 3600000;
-            statusSwitchTimer.AutoReset = true;
-            statusSwitchTimer.Elapsed += Timer_Elapsed;
-            statusSwitchTimer.Enabled = true;
+
+            //System.Timers.Timer statusSwitchTimer = new System.Timers.Timer();
+            //statusSwitchTimer.Interval = 3600000;
+            //statusSwitchTimer.AutoReset = true;
+            //statusSwitchTimer.Elapsed += Timer_Elapsed;
+            //statusSwitchTimer.Enabled = true;
 
             System.Timers.Timer backupTimer = new System.Timers.Timer();
             backupTimer.Interval = 10800000;
@@ -164,7 +164,7 @@ namespace Aura_Server
             backupTimer.Elapsed += BackupTimer_Elapsed;
             backupTimer.Enabled = true;
 
-            StatusSwitchManagerTick();
+          //  StatusSwitchManagerTick();
             CreateBackup();
         }
 

@@ -167,8 +167,8 @@ namespace Aura_Server.View
         
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            SetActive(!showWindow);
-
+            //  SetActive(!showWindow);
+            SetActive(true);
         }
     }
 

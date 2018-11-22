@@ -1,0 +1,119 @@
+/*
+
+последовательные скрипты для изменения БД
+
+*/
+
+
+-- добавляем новые колонки
+ALTER TABLE Purchases ADD COLUMN stageID INTEGER
+
+ALTER TABLE Purchases ADD COLUMN bidsCount TEXT
+
+
+
+-- изменяем значения в таблицах
+
+
+--статусы и этапы
+
+
+
+-- 2 вскрытие
+UPDATE Purchases 
+SET 
+	statusID = '1',
+	stageID = '1'
+WHERE statusID = 2
+
+
+-- 3 рассмотрение
+UPDATE Purchases 
+SET 
+	statusID = '1',
+	stageID = '2'	
+WHERE statusID = 3
+
+-- 4 оценка
+UPDATE Purchases 
+SET 
+	statusID = '1',
+	stageID = '3'
+WHERE statusID = 4
+
+
+-- 5 первые части
+UPDATE Purchases 
+SET 
+	statusID = '1',
+	stageID = '4'
+WHERE statusID = 5
+
+
+-- 6 вторые части
+UPDATE Purchases 
+SET 
+	statusID = '1',
+	stageID = '5'
+WHERE statusID = 6
+
+
+-- 7 итоговый протокол
+UPDATE Purchases 
+SET 
+	statusID = '1',
+	stageID = '6'
+WHERE statusID = 7
+
+
+-- 8 завершена
+UPDATE Purchases
+SET
+	statusID = '2'
+WHERE statusID = 8
+
+
+-- 9 отменена
+UPDATE Purchases
+SET 
+	statusID = '3'
+WHERE statusID = 9
+
+
+
+-- статусы протоколов
+
+-- 1 0 заявок
+UPDATE Purchases
+SET 
+	protocolStatusID = '0'
+WHERE protocolStatusID = 1
+
+-- 2 1 заявка
+UPDATE Purchases
+SET 
+	protocolStatusID = '0'
+WHERE protocolStatusID = 2
+
+-- 3 2 заявки
+UPDATE Purchases
+SET 
+	protocolStatusID = '0'
+WHERE protocolStatusID = 3
+
+-- 4 жду скан
+UPDATE Purchases
+SET
+	protocolStatusID = '1'
+WHERE protocolStatusID = 4
+
+-- 5 опубликовано
+UPDATE Purchases
+SET 
+	protocolStatusID = '2'
+WHERE protocolStatusID = 5
+
+
+
+
+
