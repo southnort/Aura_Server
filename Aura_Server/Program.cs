@@ -10,6 +10,7 @@ using System.IO;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 
 namespace Aura_Server
@@ -46,15 +47,18 @@ namespace Aura_Server
                 StartNetwork();
                 StartTimers();
 
-              //  TestMethod();
+                //  TestMethod();
+                
+                Console.WriteLine("App Version - " + Application.ProductVersion);
+                FileVersionInfo dllVersion = FileVersionInfo.GetVersionInfo("Aura_DLL.dll");
+                Console.WriteLine("DLL Version - " + dllVersion.FileVersion);    
 
-                Console.WriteLine("Server starting successfully. Version - " +
-                    System.Windows.Forms.Application.ProductVersion);
 #if DEBUG
                 Console.WriteLine("TEST SERVER");
 #endif
 
                 ShowForms();
+                Console.WriteLine("Server starting successfully.");
 
                 //при сворачивании в трей без этого, программа завершает работу
                 AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
