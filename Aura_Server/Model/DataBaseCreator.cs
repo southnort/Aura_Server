@@ -143,7 +143,6 @@ namespace Aura_Server.Model
             sb.Append("purchaseName TEXT, ");
             sb.Append("statusID INTEGER, ");
             sb.Append("purchacePrice REAL, ");
-
             sb.Append("purchaseEisNum TEXT, ");
             sb.Append("purchaseEisDate TEXT, ");
             sb.Append("bidsStartDate TEXT, ");
@@ -153,7 +152,6 @@ namespace Aura_Server.Model
             sb.Append("auctionDate TEXT, ");
             sb.Append("bidsSecondPartDate TEXT, ");
             sb.Append("bidsFinishDate TEXT, ");
-
             sb.Append("contractPrice REAL, ");
             sb.Append("contractDatePlan TEXT, ");
             sb.Append("contractDateLast TEXT, ");
@@ -170,15 +168,19 @@ namespace Aura_Server.Model
             sb.Append("bidsRatingDate TEXT, ");
             sb.Append("controlStatus INTEGER, ");
             sb.Append("colorMark INTEGER, ");
-
             sb.Append("commentsFontColor INTEGER, ");
             sb.Append("resultOfControlColor INTEGER, ");
             sb.Append("employeReestID INTEGER, ");
             sb.Append("reestrStatus INTEGER, ");
             sb.Append("withoutPurchase INTEGER, ");
             sb.Append("organisationInn TEXT, ");
+
             sb.Append("stageID INTEGER, ");
-            sb.Append("bidsCount TEXT");
+            sb.Append("bidsCount1 INTEGER, ");
+            sb.Append("bidsCount2 INTEGER, ");
+            sb.Append("bidsCount3 INTEGER, ");
+            sb.Append("protocolStatusID2 INTEGER, ");
+            sb.Append("protocolStatusID3 INTEGER ");
 
             sb.Append(")");
 

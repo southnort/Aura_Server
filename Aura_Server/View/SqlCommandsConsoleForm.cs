@@ -92,6 +92,8 @@ namespace Aura_Server.View
         private void SetActive(bool value)
         {
             //свернуть / развернуть из трея
+
+
             ShowInTaskbar = value;
             Visible = value;
             notifyIcon1.Visible = true;
@@ -99,7 +101,7 @@ namespace Aura_Server.View
 
             if (value)
                 WindowState = FormWindowState.Normal;
-           
+
         }
 
 
@@ -160,15 +162,15 @@ namespace Aura_Server.View
 
         private void SqlCommandsConsoleForm_Deactivate(object sender, EventArgs e)
         {
-            SetActive(false);         
+          //  SetActive(false);         
                
             
         }
         
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //  SetActive(!showWindow);
-            SetActive(true);
+           SetActive(!showWindow);
+          
         }
     }
 

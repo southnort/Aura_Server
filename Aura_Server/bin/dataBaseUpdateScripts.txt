@@ -8,8 +8,12 @@
 -- добавляем новые колонки
 ALTER TABLE Purchases ADD COLUMN stageID INTEGER
 
-ALTER TABLE Purchases ADD COLUMN bidsCount TEXT
+ALTER TABLE Purchases ADD COLUMN bidsCount1 INTEGER
+ALTER TABLE Purchases ADD COLUMN bidsCount2 INTEGER
+ALTER TABLE Purchases ADD COLUMN bidsCount3 INTEGER
 
+ALTER TABLE Purchases ADD COLUMN protocolStatusID2 INTEGER
+ALTER TABLE Purchases ADD COLUMN protocolStatusID3 INTEGER
 
 
 -- изменяем значения в таблицах
@@ -87,30 +91,52 @@ WHERE statusID = 9
 UPDATE Purchases
 SET 
 	protocolStatusID = '0'
+	protocolStatusID2 = '0'
+	protocolStatusID3 = '0'	
+	bidsCount1 = '3'
+	bidsCount2 = '3'
+	bidsCount3 = '3'	
 WHERE protocolStatusID = 1
+
+
 
 -- 2 1 заявка
 UPDATE Purchases
 SET 
 	protocolStatusID = '0'
+	protocolStatusID2 = '0'
+	protocolStatusID3 = '0'	
+	bidsCount1 = '1'
+	bidsCount2 = '1'
+	bidsCount3 = '1'	
 WHERE protocolStatusID = 2
+
 
 -- 3 2 заявки
 UPDATE Purchases
 SET 
 	protocolStatusID = '0'
+	protocolStatusID2 = '0'
+	protocolStatusID2 = '0'	
+	bidsCount1 = '2'
+	bidsCount2 = '2'
+	bidsCount3 = '2'	
 WHERE protocolStatusID = 3
 
 -- 4 жду скан
 UPDATE Purchases
 SET
 	protocolStatusID = '1'
+	protocolStatusID2 = '1'
+	protocolStatusID3 = '1'
 WHERE protocolStatusID = 4
 
 -- 5 опубликовано
 UPDATE Purchases
 SET 
 	protocolStatusID = '2'
+	protocolStatusID2 = '2'
+	protocolStatusID3 = '2'
 WHERE protocolStatusID = 5
 
 
