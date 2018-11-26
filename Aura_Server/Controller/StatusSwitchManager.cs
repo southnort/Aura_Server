@@ -48,12 +48,14 @@ namespace Aura_Server.Controller
             int status = -1;
             switch (pair.Value)
             {
-                case "Окончание подачи заявок": status = 2; break;
-                case "Вскрытие конвертов": status = 2; break;
-                case "Рассмотрение": status = 3; break;
-                case "Оценка":status = 4;break;
+                case "Окончание подачи заявок": status = 1; break;
+                case "Вскрытие конвертов": status = 1; break;
+                case "Рассмотрение": status = 2; break;
+                case "Оценка":status = 3; break;
                 default: status = -1; break;
             }
+
+            здесь
 
             if (status != -1)
                 SwitchStatusOfPurchase(pur, status);
