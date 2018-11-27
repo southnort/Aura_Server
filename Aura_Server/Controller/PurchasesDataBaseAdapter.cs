@@ -145,7 +145,7 @@ namespace Aura_Server.Controller
                 Purchase pur = new Purchase(table.Rows[i]);
                 result.Add(pur);
             }
-            
+
             return result;
 
         }
@@ -173,6 +173,14 @@ namespace Aura_Server.Controller
 
         }
 
+        private Purchase GetPurchase(string id)
+        {
+            var table = dataBase.GetTable("SELECT * FROM Purchases WHERE ID= " + id);
+            var row = table.Rows[0];
+            return new Purchase(row);
+
+        }
+
         public void DeletePurchase(int purID, int tryingUserID)
         {
             //удалить закупку из БД
@@ -182,6 +190,34 @@ namespace Aura_Server.Controller
 
         }
 
+        public void SwitchProtocolStatusOfPurchase(string purchaseID,
+            string newProtocolStatus, int tryingUserID)
+        {
+            var purchase = GetPurchase(purchaseID);
+            string fieldName;
+
+            switch (purchase.stageID)
+            {
+                case 2: fieldName = "protocolStatusID2"; break;
+                case 3: fieldName = "protocolStatusID3"; break;
+
+                case 5: fieldName = "protocolStatusID2"; break;
+                case 6: fieldName = "protocolStatusID3"; break;
+
+                default: fieldName = "protocolStatusID"; break;
+            }
+
+            var sb = new System.Text.StringBuilder();
+
+            sb.Append("UPDATE Purchases SET ");
+            sb.Append(fieldName);
+            sb.Append(" = ");
+            sb.Append(newProtocolStatus);
+            sb.Append(" WHERE ID = ");
+            sb.Append(purchaseID);
+
+            UpdatePurchase(sb.ToString(), tryingUserID);
+        }
 
     }
 

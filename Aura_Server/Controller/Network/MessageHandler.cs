@@ -38,6 +38,8 @@ namespace Aura_Server.Controller.Network
 
                 case "EXECUTECOMMAND": ExecuteCommand(message); break;
 
+                case "SWITCHPROTOCOLSTATUSOFPURCHASE": SwitchStatusOfPurchase(message); break;
+
                 default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
             }
 
@@ -355,7 +357,6 @@ namespace Aura_Server.Controller.Network
             }
         }
 
-
         private DataTable GetDataTable(List<string> message)
         {
             if (message[3].ToLower().Contains(" from logs") || message[3].ToLower().Contains("update logs "))
@@ -399,7 +400,15 @@ namespace Aura_Server.Controller.Network
             return LogManager.Instance.GetTable(message[3]);
         }
 
-               
+        private void SwitchStatusOfPurchase(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+
+            Program.purchasesDataBase.SwitchProtocolStatusOfPurchase(message[3], message[4], clientID);
+
+        }
+
+
         private string GetExcelFile(List<string> message)
         {
             //обрабатывает запрос, создаёт файл на диске и возвращает его местонахождение

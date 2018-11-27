@@ -47,9 +47,7 @@ namespace Aura_Server.Controller
         {
             connection.Close();
 
-        }
-
-
+        }       
 
 
         public string ExecuteCommand(string commandString)
