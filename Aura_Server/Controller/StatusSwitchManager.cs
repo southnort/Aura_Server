@@ -41,7 +41,7 @@ namespace Aura_Server.Controller
 
             }
         }
-       
+
         private void HandleDemandOfQuotation(KeyValuePair<Purchase, string> pair)
         {
             Purchase pur = pair.Key;
@@ -51,11 +51,11 @@ namespace Aura_Server.Controller
                 case "Окончание подачи заявок": status = 1; break;
                 case "Вскрытие конвертов": status = 1; break;
                 case "Рассмотрение": status = 2; break;
-                case "Оценка":status = 3; break;
+                case "Оценка": status = 3; break;
                 default: status = -1; break;
             }
 
-            здесь
+
 
             if (status != -1)
                 SwitchStatusOfPurchase(pur, status);
@@ -68,9 +68,9 @@ namespace Aura_Server.Controller
             int status = -1;
             switch (pair.Value)
             {
-                case "Первые части": status = 5; break;
-                case "Вторые части": status = 6; break;
-                case "Подведение итогов": status = 7; break;
+                case "Первые части": status = 4; break;
+                case "Вторые части": status = 5; break;
+                case "Подведение итогов": status = 6; break;
                 default: status = -1; break;
             }
 
@@ -85,9 +85,9 @@ namespace Aura_Server.Controller
             int status = -1;
             switch (pair.Value)
             {
-                case "Вскрытие конвертов": status = 2; break;
-                case "Рассмотрение": status = 3; break;
-                case "Оценка": status = 4; break;
+                case "Вскрытие конвертов": status = 1; break;
+                case "Рассмотрение": status = 2; break;
+                case "Оценка": status = 3; break;
                 default: status = -1; break;
             }
 
@@ -107,7 +107,7 @@ namespace Aura_Server.Controller
         private void SendCommandToSwitchStatus(int id, string newStatusID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("UPDATE Purchases SET statusID = '");
+            sb.Append("UPDATE Purchases SET stageID = '");
             sb.Append(newStatusID);
             sb.Append("' WHERE id = '");
             sb.Append(id);

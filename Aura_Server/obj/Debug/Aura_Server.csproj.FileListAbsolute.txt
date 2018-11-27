@@ -93,6 +93,6 @@ C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelDataRead
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.pdb
 C:\Users\User\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll.config
-C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.pdb
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll.config
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\Aura_DLL.dll
