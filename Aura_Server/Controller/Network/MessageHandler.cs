@@ -39,6 +39,7 @@ namespace Aura_Server.Controller.Network
                 case "EXECUTECOMMAND": ExecuteCommand(message); break;
 
                 case "SWITCHPROTOCOLSTATUSOFPURCHASE": SwitchStatusOfPurchase(message); break;
+                case "CHANGEBIDSCOUNTINPURCHASE": ChangeCountOfBidsInPurchase(message); break;
 
                 default: Console.WriteLine(ToString() + " invalid command " + message[2]); break;
             }
@@ -404,7 +405,17 @@ namespace Aura_Server.Controller.Network
         {
             int clientID = int.Parse(message[1]);
 
-            Program.purchasesDataBase.SwitchProtocolStatusOfPurchase(message[3], message[4], clientID);
+            Program.purchasesDataBase.SwitchProtocolStatusOfPurchase(message[3],
+                message[4], clientID);
+
+        }
+
+        private void ChangeCountOfBidsInPurchase(List<string> message)
+        {
+            int clientID = int.Parse(message[1]);
+
+            Program.purchasesDataBase.ChangeBidsCountInPurchase(message[3],
+                message[4], clientID);
 
         }
 

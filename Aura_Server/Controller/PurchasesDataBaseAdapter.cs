@@ -219,6 +219,36 @@ namespace Aura_Server.Controller
             UpdatePurchase(sb.ToString(), tryingUserID);
         }
 
+
+        public void ChangeBidsCountInPurchase(string purchaseID,
+           string newBidsCountID, int tryingUserID)
+        {
+            var purchase = GetPurchase(purchaseID);
+            string fieldName;
+
+            switch (purchase.stageID)
+            {
+                case 2: fieldName = "bidsCount2"; break;
+                case 3: fieldName = "bidsCount3"; break;
+
+                case 5: fieldName = "bidsCoun2"; break;
+                case 6: fieldName = "bidsCount3"; break;
+
+                default: fieldName = "bidsCount1"; break;
+            }
+
+            var sb = new System.Text.StringBuilder();
+
+            sb.Append("UPDATE Purchases SET ");
+            sb.Append(fieldName);
+            sb.Append(" = ");
+            sb.Append(newBidsCountID);
+            sb.Append(" WHERE ID = ");
+            sb.Append(purchaseID);
+
+            UpdatePurchase(sb.ToString(), tryingUserID);
+
+        }
     }
 
 }
