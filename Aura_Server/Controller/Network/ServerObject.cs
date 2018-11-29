@@ -112,6 +112,8 @@ namespace Aura_Server.Controller.Network
                         IPAddress.Parse(ConnectionSettings.Instance.serverInternalAddress),
                         ConnectionSettings.Instance.serverListenPort),
                    0);
+
+                Console.WriteLine("Port opened");
             }
 
             catch (Exception ex)

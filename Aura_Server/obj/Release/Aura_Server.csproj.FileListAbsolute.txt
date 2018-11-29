@@ -32,3 +32,4 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\Aura_DL
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\Aura_DLL.dll.config
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\ExcelDataReader.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\ExcelDataReader.DataSet.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Release\Aura_Server.csprojAssemblyReference.cache

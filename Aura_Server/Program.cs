@@ -11,6 +11,7 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 
 
 namespace Aura_Server
@@ -91,10 +92,9 @@ namespace Aura_Server
         }
 
         private static void StartIcon()
-        {
-
+        {            
             var icon = new NotifyIcon();
-            icon.Icon = new System.Drawing.Icon("Icon.ico");
+            icon.Icon = new Icon("Icon.ico");
             icon.Visible = true;
             icon.DoubleClick += new EventHandler(Icon_DoubleClick);
             icon.Text = "Aura Server Console";

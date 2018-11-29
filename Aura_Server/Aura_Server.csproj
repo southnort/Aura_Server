@@ -189,6 +189,7 @@
     <Content Include="Content\ionic.css" />
     <Content Include="Content\ionic.min.css" />
     <Content Include="fonts\ionicons.svg" />
+    <Content Include="Icon.ico" />
     <Content Include="license.txt" />
     <Content Include="MainIcon.ico" />
     <Content Include="scripts\angular-animate.js" />
