@@ -423,12 +423,9 @@ namespace Aura_Server.Controller.Network
         private string GetExcelFile(List<string> message)
         {
             //обрабатывает запрос, создаёт файл на диске и возвращает его местонахождение
-
-
+            
             return Program.dataBase.CreateExcelFile(message[3]);
-            //Program.dataBase.CreateExcelFile(message[3]);
-
-            //return "testFIle.xls";
+            
         }
     }
 

@@ -39,6 +39,7 @@
             this.createBackUpDateBase = new System.Windows.Forms.Button();
             this.clearFormatting = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toFileButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // queryTextBox
@@ -50,7 +51,7 @@
             this.queryTextBox.Name = "queryTextBox";
             this.queryTextBox.Size = new System.Drawing.Size(760, 139);
             this.queryTextBox.TabIndex = 0;
-            this.queryTextBox.Text = "";
+            this.queryTextBox.Text = "SELECT * FROM Purchases";
             this.queryTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.queryTextBox_KeyUp);
             // 
             // label1
@@ -137,12 +138,24 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon1_MouseDoubleClick);
             // 
+            // toFileButton
+            // 
+            this.toFileButton.BackColor = System.Drawing.Color.MediumOrchid;
+            this.toFileButton.Location = new System.Drawing.Point(498, 403);
+            this.toFileButton.Name = "toFileButton";
+            this.toFileButton.Size = new System.Drawing.Size(134, 31);
+            this.toFileButton.TabIndex = 8;
+            this.toFileButton.Text = "В файл";
+            this.toFileButton.UseVisualStyleBackColor = false;
+            this.toFileButton.Click += new System.EventHandler(this.toFileButton_Click);
+            // 
             // SqlCommandsConsoleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(784, 446);
+            this.Controls.Add(this.toFileButton);
             this.Controls.Add(this.clearFormatting);
             this.Controls.Add(this.createBackUpDateBase);
             this.Controls.Add(this.clearFieldsButton);
@@ -174,5 +187,6 @@
         private System.Windows.Forms.Button createBackUpDateBase;
         private System.Windows.Forms.Button clearFormatting;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button toFileButton;
     }
 }

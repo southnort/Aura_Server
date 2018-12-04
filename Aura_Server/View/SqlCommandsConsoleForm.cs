@@ -172,6 +172,12 @@ namespace Aura_Server.View
            SetActive(!showWindow);
           
         }
+
+        private void toFileButton_Click(object sender, EventArgs e)
+        {
+            SendRequest();
+            dataBase.CreateExcelFile(queryTextBox.Text);
+        }
     }
 
 }

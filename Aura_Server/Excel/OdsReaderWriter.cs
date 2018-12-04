@@ -8,306 +8,308 @@ using Ionic.Zip;
 
 namespace OdsReadWrite
 {
-    internal sealed class OdsReaderWriter
-    {
-        // Namespaces. We need this to initialize XmlNamespaceManager so that we can search XmlDocument.
-        private static string[,] namespaces = new string[,]
-        {
-            {"table", "urn:oasis:names:tc:opendocument:xmlns:table:1.0"},
-            {"office", "urn:oasis:names:tc:opendocument:xmlns:office:1.0"},
-            {"style", "urn:oasis:names:tc:opendocument:xmlns:style:1.0"},
-            {"text", "urn:oasis:names:tc:opendocument:xmlns:text:1.0"},
-            {"draw", "urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"},
-            {"fo", "urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0"},
-            {"dc", "http://purl.org/dc/elements/1.1/"},
-            {"meta", "urn:oasis:names:tc:opendocument:xmlns:meta:1.0"},
-            {"number", "urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0"},
-            {"presentation", "urn:oasis:names:tc:opendocument:xmlns:presentation:1.0"},
-            {"svg", "urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"},
-            {"chart", "urn:oasis:names:tc:opendocument:xmlns:chart:1.0"},
-            {"dr3d", "urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0"},
-            {"math", "http://www.w3.org/1998/Math/MathML"},
-            {"form", "urn:oasis:names:tc:opendocument:xmlns:form:1.0"},
-            {"script", "urn:oasis:names:tc:opendocument:xmlns:script:1.0"},
-            {"ooo", "http://openoffice.org/2004/office"},
-            {"ooow", "http://openoffice.org/2004/writer"},
-            {"oooc", "http://openoffice.org/2004/calc"},
-            {"dom", "http://www.w3.org/2001/xml-events"},
-            {"xforms", "http://www.w3.org/2002/xforms"},
-            {"xsd", "http://www.w3.org/2001/XMLSchema"},
-            {"xsi", "http://www.w3.org/2001/XMLSchema-instance"},
-            {"rpt", "http://openoffice.org/2005/report"},
-            {"of", "urn:oasis:names:tc:opendocument:xmlns:of:1.2"},
-            {"rdfa", "http://docs.oasis-open.org/opendocument/meta/rdfa#"},
-            {"config", "urn:oasis:names:tc:opendocument:xmlns:config:1.0"}
-        };
 
-        // Read zip stream (.ods file is zip file).
-        private ZipFile GetZipFile(Stream stream)
-        {
-            return ZipFile.Read(stream);
-        }
+    //internal sealed class OdsReaderWriter
+    //{
+    //    // Namespaces. We need this to initialize XmlNamespaceManager so that we can search XmlDocument.
+    //    private static string[,] namespaces = new string[,]
+    //    {
+    //        {"table", "urn:oasis:names:tc:opendocument:xmlns:table:1.0"},
+    //        {"office", "urn:oasis:names:tc:opendocument:xmlns:office:1.0"},
+    //        {"style", "urn:oasis:names:tc:opendocument:xmlns:style:1.0"},
+    //        {"text", "urn:oasis:names:tc:opendocument:xmlns:text:1.0"},
+    //        {"draw", "urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"},
+    //        {"fo", "urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0"},
+    //        {"dc", "http://purl.org/dc/elements/1.1/"},
+    //        {"meta", "urn:oasis:names:tc:opendocument:xmlns:meta:1.0"},
+    //        {"number", "urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0"},
+    //        {"presentation", "urn:oasis:names:tc:opendocument:xmlns:presentation:1.0"},
+    //        {"svg", "urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"},
+    //        {"chart", "urn:oasis:names:tc:opendocument:xmlns:chart:1.0"},
+    //        {"dr3d", "urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0"},
+    //        {"math", "http://www.w3.org/1998/Math/MathML"},
+    //        {"form", "urn:oasis:names:tc:opendocument:xmlns:form:1.0"},
+    //        {"script", "urn:oasis:names:tc:opendocument:xmlns:script:1.0"},
+    //        {"ooo", "http://openoffice.org/2004/office"},
+    //        {"ooow", "http://openoffice.org/2004/writer"},
+    //        {"oooc", "http://openoffice.org/2004/calc"},
+    //        {"dom", "http://www.w3.org/2001/xml-events"},
+    //        {"xforms", "http://www.w3.org/2002/xforms"},
+    //        {"xsd", "http://www.w3.org/2001/XMLSchema"},
+    //        {"xsi", "http://www.w3.org/2001/XMLSchema-instance"},
+    //        {"rpt", "http://openoffice.org/2005/report"},
+    //        {"of", "urn:oasis:names:tc:opendocument:xmlns:of:1.2"},
+    //        {"rdfa", "http://docs.oasis-open.org/opendocument/meta/rdfa#"},
+    //        {"config", "urn:oasis:names:tc:opendocument:xmlns:config:1.0"}
+    //    };
 
-        // Read zip file (.ods file is zip file).
-        private ZipFile GetZipFile(string inputFilePath)
-        {
-            return ZipFile.Read(inputFilePath);
-        }
+    //    // Read zip stream (.ods file is zip file).
+    //    private ZipFile GetZipFile(Stream stream)
+    //    {
+    //        return ZipFile.Read(stream);
+    //    }
 
-        private XmlDocument GetContentXmlFile(ZipFile zipFile)
-        {
-            // Get file(in zip archive) that contains data ("content.xml").
-            ZipEntry contentZipEntry = zipFile["content.xml"];
+    //    // Read zip file (.ods file is zip file).
+    //    private ZipFile GetZipFile(string inputFilePath)
+    //    {
+    //        return ZipFile.Read(inputFilePath);
+    //    }
 
-            // Extract that file to MemoryStream.
-            Stream contentStream = new MemoryStream();
-            contentZipEntry.Extract(contentStream);
-            contentStream.Seek(0, SeekOrigin.Begin);
+    //    private XmlDocument GetContentXmlFile(ZipFile zipFile)
+    //    {
+    //        // Get file(in zip archive) that contains data ("content.xml").
+    //        ZipEntry contentZipEntry = zipFile["content.xml"];
 
-            // Create XmlDocument from MemoryStream (MemoryStream contains content.xml).
-            XmlDocument contentXml = new XmlDocument();
-            contentXml.Load(contentStream);
+    //        // Extract that file to MemoryStream.
+    //        Stream contentStream = new MemoryStream();
+    //        contentZipEntry.Extract(contentStream);
+    //        contentStream.Seek(0, SeekOrigin.Begin);
 
-            return contentXml;
-        }
+    //        // Create XmlDocument from MemoryStream (MemoryStream contains content.xml).
+    //        XmlDocument contentXml = new XmlDocument();
+    //        contentXml.Load(contentStream);
 
-        private XmlNamespaceManager InitializeXmlNamespaceManager(XmlDocument xmlDocument)
-        {
-            XmlNamespaceManager nmsManager = new XmlNamespaceManager(xmlDocument.NameTable);
+    //        return contentXml;
+    //    }
 
-            for (int i = 0; i < namespaces.GetLength(0); i++)
-                nmsManager.AddNamespace(namespaces[i, 0], namespaces[i, 1]);
+    //    private XmlNamespaceManager InitializeXmlNamespaceManager(XmlDocument xmlDocument)
+    //    {
+    //        XmlNamespaceManager nmsManager = new XmlNamespaceManager(xmlDocument.NameTable);
 
-            return nmsManager;
-        }
+    //        for (int i = 0; i < namespaces.GetLength(0); i++)
+    //            nmsManager.AddNamespace(namespaces[i, 0], namespaces[i, 1]);
 
-        /// <summary>
-        /// Read .ods file and store it in DataSet.
-        /// </summary>
-        /// <param name="inputFilePath">Path to the .ods file.</param>
-        /// <returns>DataSet that represents .ods file.</returns>
-        public DataSet ReadOdsFile(string inputFilePath)
-        {
-            ZipFile odsZipFile = this.GetZipFile(inputFilePath);
+    //        return nmsManager;
+    //    }
 
-            // Get content.xml file
-            XmlDocument contentXml = this.GetContentXmlFile(odsZipFile);
+    //    /// <summary>
+    //    /// Read .ods file and store it in DataSet.
+    //    /// </summary>
+    //    /// <param name="inputFilePath">Path to the .ods file.</param>
+    //    /// <returns>DataSet that represents .ods file.</returns>
+    //    public DataSet ReadOdsFile(string inputFilePath)
+    //    {
+    //        ZipFile odsZipFile = this.GetZipFile(inputFilePath);
 
-            // Initialize XmlNamespaceManager
-            XmlNamespaceManager nmsManager = this.InitializeXmlNamespaceManager(contentXml);
+    //        // Get content.xml file
+    //        XmlDocument contentXml = this.GetContentXmlFile(odsZipFile);
 
-            DataSet odsFile = new DataSet(Path.GetFileName(inputFilePath));
+    //        // Initialize XmlNamespaceManager
+    //        XmlNamespaceManager nmsManager = this.InitializeXmlNamespaceManager(contentXml);
 
-            foreach (XmlNode tableNode in this.GetTableNodes(contentXml, nmsManager))
-                odsFile.Tables.Add(this.GetSheet(tableNode, nmsManager));
+    //        DataSet odsFile = new DataSet(Path.GetFileName(inputFilePath));
 
-            return odsFile;
-        }
+    //        foreach (XmlNode tableNode in this.GetTableNodes(contentXml, nmsManager))
+    //            odsFile.Tables.Add(this.GetSheet(tableNode, nmsManager));
 
-        // In ODF sheet is stored in table:table node
-        private XmlNodeList GetTableNodes(XmlDocument contentXmlDocument, XmlNamespaceManager nmsManager)
-        {
-            return contentXmlDocument.SelectNodes("/office:document-content/office:body/office:spreadsheet/table:table", nmsManager);
-        }
+    //        return odsFile;
+    //    }
 
-        private DataTable GetSheet(XmlNode tableNode, XmlNamespaceManager nmsManager)
-        {
-            DataTable sheet = new DataTable(tableNode.Attributes["table:name"].Value);
+    //    // In ODF sheet is stored in table:table node
+    //    private XmlNodeList GetTableNodes(XmlDocument contentXmlDocument, XmlNamespaceManager nmsManager)
+    //    {
+    //        return contentXmlDocument.SelectNodes("/office:document-content/office:body/office:spreadsheet/table:table", nmsManager);
+    //    }
 
-            XmlNodeList rowNodes = tableNode.SelectNodes("table:table-row", nmsManager);
+    //    private DataTable GetSheet(XmlNode tableNode, XmlNamespaceManager nmsManager)
+    //    {
+    //        DataTable sheet = new DataTable(tableNode.Attributes["table:name"].Value);
 
-            int rowIndex = 0;
-            foreach (XmlNode rowNode in rowNodes)
-                this.GetRow(rowNode, sheet, nmsManager, ref rowIndex);
+    //        XmlNodeList rowNodes = tableNode.SelectNodes("table:table-row", nmsManager);
 
-            return sheet;
-        }
+    //        int rowIndex = 0;
+    //        foreach (XmlNode rowNode in rowNodes)
+    //            this.GetRow(rowNode, sheet, nmsManager, ref rowIndex);
 
-        private void GetRow(XmlNode rowNode, DataTable sheet, XmlNamespaceManager nmsManager, ref int rowIndex)
-        {
-            XmlAttribute rowsRepeated = rowNode.Attributes["table:number-rows-repeated"];
-            if (rowsRepeated == null || Convert.ToInt32(rowsRepeated.Value, CultureInfo.InvariantCulture) == 1)
-            {
-                while (sheet.Rows.Count < rowIndex)
-                    sheet.Rows.Add(sheet.NewRow());
+    //        return sheet;
+    //    }
 
-                DataRow row = sheet.NewRow();
+    //    private void GetRow(XmlNode rowNode, DataTable sheet, XmlNamespaceManager nmsManager, ref int rowIndex)
+    //    {
+    //        XmlAttribute rowsRepeated = rowNode.Attributes["table:number-rows-repeated"];
+    //        if (rowsRepeated == null || Convert.ToInt32(rowsRepeated.Value, CultureInfo.InvariantCulture) == 1)
+    //        {
+    //            while (sheet.Rows.Count < rowIndex)
+    //                sheet.Rows.Add(sheet.NewRow());
 
-                XmlNodeList cellNodes = rowNode.SelectNodes("table:table-cell", nmsManager);
+    //            DataRow row = sheet.NewRow();
 
-                int cellIndex = 0;
-                foreach (XmlNode cellNode in cellNodes)
-                    this.GetCell(cellNode, row, nmsManager, ref cellIndex);
+    //            XmlNodeList cellNodes = rowNode.SelectNodes("table:table-cell", nmsManager);
 
-                sheet.Rows.Add(row);
+    //            int cellIndex = 0;
+    //            foreach (XmlNode cellNode in cellNodes)
+    //                this.GetCell(cellNode, row, nmsManager, ref cellIndex);
 
-                rowIndex++;
-            }
-            else
-            {
-                rowIndex += Convert.ToInt32(rowsRepeated.Value, CultureInfo.InvariantCulture);
-            }
+    //            sheet.Rows.Add(row);
 
-            // sheet must have at least one cell
-            if (sheet.Rows.Count == 0)
-            {
-                sheet.Rows.Add(sheet.NewRow());
-                sheet.Columns.Add();
-            }
-        }
+    //            rowIndex++;
+    //        }
+    //        else
+    //        {
+    //            rowIndex += Convert.ToInt32(rowsRepeated.Value, CultureInfo.InvariantCulture);
+    //        }
 
-        private void GetCell(XmlNode cellNode, DataRow row, XmlNamespaceManager nmsManager, ref int cellIndex)
-        {
-            XmlAttribute cellRepeated = cellNode.Attributes["table:number-columns-repeated"];
+    //        // sheet must have at least one cell
+    //        if (sheet.Rows.Count == 0)
+    //        {
+    //            sheet.Rows.Add(sheet.NewRow());
+    //            sheet.Columns.Add();
+    //        }
+    //    }
 
-            if (cellRepeated == null)
-            {
-                DataTable sheet = row.Table;
+    //    private void GetCell(XmlNode cellNode, DataRow row, XmlNamespaceManager nmsManager, ref int cellIndex)
+    //    {
+    //        XmlAttribute cellRepeated = cellNode.Attributes["table:number-columns-repeated"];
 
-                while (sheet.Columns.Count <= cellIndex)
-                    sheet.Columns.Add();
+    //        if (cellRepeated == null)
+    //        {
+    //            DataTable sheet = row.Table;
 
-                row[cellIndex] = this.ReadCellValue(cellNode);
+    //            while (sheet.Columns.Count <= cellIndex)
+    //                sheet.Columns.Add();
 
-                cellIndex++;
-            }
-            else
-            {
-                cellIndex += Convert.ToInt32(cellRepeated.Value, CultureInfo.InvariantCulture);
-            }
-        }
+    //            row[cellIndex] = this.ReadCellValue(cellNode);
 
-        private string ReadCellValue(XmlNode cell)
-        {
-            XmlAttribute cellVal = cell.Attributes["office:value"];
+    //            cellIndex++;
+    //        }
+    //        else
+    //        {
+    //            cellIndex += Convert.ToInt32(cellRepeated.Value, CultureInfo.InvariantCulture);
+    //        }
+    //    }
 
-            if (cellVal == null)
-                return String.IsNullOrEmpty(cell.InnerText) ? null : cell.InnerText;
-            else
-                return cellVal.Value;
-        }
+    //    private string ReadCellValue(XmlNode cell)
+    //    {
+    //        XmlAttribute cellVal = cell.Attributes["office:value"];
 
-        /// <summary>
-        /// Writes DataSet as .ods file.
-        /// </summary>
-        /// <param name="odsFile">DataSet that represent .ods file.</param>
-        /// <param name="outputFilePath">The name of the file to save to.</param>
-        public void WriteOdsFile(DataSet odsFile, string outputFilePath)
-        {           
-            ZipFile templateFile = GetZipFile("template.ods");           
+    //        if (cellVal == null)
+    //            return String.IsNullOrEmpty(cell.InnerText) ? null : cell.InnerText;
+    //        else
+    //            return cellVal.Value;
+    //    }
 
-            XmlDocument contentXml = this.GetContentXmlFile(templateFile);
+    //    /// <summary>
+    //    /// Writes DataSet as .ods file.
+    //    /// </summary>
+    //    /// <param name="odsFile">DataSet that represent .ods file.</param>
+    //    /// <param name="outputFilePath">The name of the file to save to.</param>
+    //    public void WriteOdsFile(DataSet odsFile, string outputFilePath)
+    //    {           
+    //        ZipFile templateFile = GetZipFile("template.ods");           
 
-            XmlNamespaceManager nmsManager = this.InitializeXmlNamespaceManager(contentXml);
+    //        XmlDocument contentXml = this.GetContentXmlFile(templateFile);
 
-            XmlNode sheetsRootNode = this.GetSheetsRootNodeAndRemoveChildrens(contentXml, nmsManager);
+    //        XmlNamespaceManager nmsManager = this.InitializeXmlNamespaceManager(contentXml);
 
-            foreach (DataTable sheet in odsFile.Tables)
-                this.SaveSheet(sheet, sheetsRootNode);
+    //        XmlNode sheetsRootNode = this.GetSheetsRootNodeAndRemoveChildrens(contentXml, nmsManager);
 
-            this.SaveContentXml(templateFile, contentXml);
+    //        foreach (DataTable sheet in odsFile.Tables)
+    //            this.SaveSheet(sheet, sheetsRootNode);
 
-            templateFile.Save(outputFilePath);
+    //        this.SaveContentXml(templateFile, contentXml);
+
+    //        templateFile.Save(outputFilePath);
             
-        }
+    //    }
 
-        private XmlNode GetSheetsRootNodeAndRemoveChildrens(XmlDocument contentXml, XmlNamespaceManager nmsManager)
-        {
-            XmlNodeList tableNodes = this.GetTableNodes(contentXml, nmsManager);
+    //    private XmlNode GetSheetsRootNodeAndRemoveChildrens(XmlDocument contentXml, XmlNamespaceManager nmsManager)
+    //    {
+    //        XmlNodeList tableNodes = this.GetTableNodes(contentXml, nmsManager);
 
-            XmlNode sheetsRootNode = tableNodes.Item(0).ParentNode;
-            // remove sheets from template file
-            foreach (XmlNode tableNode in tableNodes)
-                sheetsRootNode.RemoveChild(tableNode);
+    //        XmlNode sheetsRootNode = tableNodes.Item(0).ParentNode;
+    //        // remove sheets from template file
+    //        foreach (XmlNode tableNode in tableNodes)
+    //            sheetsRootNode.RemoveChild(tableNode);
 
-            return sheetsRootNode;
-        }
+    //        return sheetsRootNode;
+    //    }
 
-        private void SaveSheet(DataTable sheet, XmlNode sheetsRootNode)
-        {
-            XmlDocument ownerDocument = sheetsRootNode.OwnerDocument;
+    //    private void SaveSheet(DataTable sheet, XmlNode sheetsRootNode)
+    //    {
+    //        XmlDocument ownerDocument = sheetsRootNode.OwnerDocument;
 
-            XmlNode sheetNode = ownerDocument.CreateElement("table:table", this.GetNamespaceUri("table"));
+    //        XmlNode sheetNode = ownerDocument.CreateElement("table:table", this.GetNamespaceUri("table"));
 
-            XmlAttribute sheetName = ownerDocument.CreateAttribute("table:name", this.GetNamespaceUri("table"));
-            sheetName.Value = sheet.TableName;
-            sheetNode.Attributes.Append(sheetName);
+    //        XmlAttribute sheetName = ownerDocument.CreateAttribute("table:name", this.GetNamespaceUri("table"));
+    //        sheetName.Value = sheet.TableName;
+    //        sheetNode.Attributes.Append(sheetName);
 
-            this.SaveColumnDefinition(sheet, sheetNode, ownerDocument);
+    //        this.SaveColumnDefinition(sheet, sheetNode, ownerDocument);
 
-            this.SaveRows(sheet, sheetNode, ownerDocument);
+    //        this.SaveRows(sheet, sheetNode, ownerDocument);
 
-            sheetsRootNode.AppendChild(sheetNode);
-        }
+    //        sheetsRootNode.AppendChild(sheetNode);
+    //    }
 
-        private void SaveColumnDefinition(DataTable sheet, XmlNode sheetNode, XmlDocument ownerDocument)
-        {
-            XmlNode columnDefinition = ownerDocument.CreateElement("table:table-column", this.GetNamespaceUri("table"));
+    //    private void SaveColumnDefinition(DataTable sheet, XmlNode sheetNode, XmlDocument ownerDocument)
+    //    {
+    //        XmlNode columnDefinition = ownerDocument.CreateElement("table:table-column", this.GetNamespaceUri("table"));
 
-            XmlAttribute columnsCount = ownerDocument.CreateAttribute("table:number-columns-repeated", this.GetNamespaceUri("table"));
-            columnsCount.Value = sheet.Columns.Count.ToString(CultureInfo.InvariantCulture);
-            columnDefinition.Attributes.Append(columnsCount);
+    //        XmlAttribute columnsCount = ownerDocument.CreateAttribute("table:number-columns-repeated", this.GetNamespaceUri("table"));
+    //        columnsCount.Value = sheet.Columns.Count.ToString(CultureInfo.InvariantCulture);
+    //        columnDefinition.Attributes.Append(columnsCount);
 
-            sheetNode.AppendChild(columnDefinition);
-        }
+    //        sheetNode.AppendChild(columnDefinition);
+    //    }
 
-        private void SaveRows(DataTable sheet, XmlNode sheetNode, XmlDocument ownerDocument)
-        {
-            DataRowCollection rows = sheet.Rows;
-            for (int i = 0; i < rows.Count; i++)
-            {
-                XmlNode rowNode = ownerDocument.CreateElement("table:table-row", this.GetNamespaceUri("table"));
+    //    private void SaveRows(DataTable sheet, XmlNode sheetNode, XmlDocument ownerDocument)
+    //    {
+    //        DataRowCollection rows = sheet.Rows;
+    //        for (int i = 0; i < rows.Count; i++)
+    //        {
+    //            XmlNode rowNode = ownerDocument.CreateElement("table:table-row", this.GetNamespaceUri("table"));
 
-                this.SaveCell(rows[i], rowNode, ownerDocument);
+    //            this.SaveCell(rows[i], rowNode, ownerDocument);
 
-                sheetNode.AppendChild(rowNode);
-            }
-        }
+    //            sheetNode.AppendChild(rowNode);
+    //        }
+    //    }
 
-        private void SaveCell(DataRow row, XmlNode rowNode, XmlDocument ownerDocument)
-        {
-            object[] cells = row.ItemArray;
+    //    private void SaveCell(DataRow row, XmlNode rowNode, XmlDocument ownerDocument)
+    //    {
+    //        object[] cells = row.ItemArray;
 
-            for (int i = 0; i < cells.Length; i++)
-            {
-                XmlElement cellNode = ownerDocument.CreateElement("table:table-cell", this.GetNamespaceUri("table"));
+    //        for (int i = 0; i < cells.Length; i++)
+    //        {
+    //            XmlElement cellNode = ownerDocument.CreateElement("table:table-cell", this.GetNamespaceUri("table"));
 
-                if (row[i] != DBNull.Value)
-                {
-                    // We save values as text (string)
-                    XmlAttribute valueType = ownerDocument.CreateAttribute("office:value-type", this.GetNamespaceUri("office"));
-                    valueType.Value = "string";
-                    cellNode.Attributes.Append(valueType);
+    //            if (row[i] != DBNull.Value)
+    //            {
+    //                // We save values as text (string)
+    //                XmlAttribute valueType = ownerDocument.CreateAttribute("office:value-type", this.GetNamespaceUri("office"));
+    //                valueType.Value = "string";
+    //                cellNode.Attributes.Append(valueType);
 
-                    XmlElement cellValue = ownerDocument.CreateElement("text:p", this.GetNamespaceUri("text"));
-                    cellValue.InnerText = row[i].ToString();
-                    cellNode.AppendChild(cellValue);
-                }
+    //                XmlElement cellValue = ownerDocument.CreateElement("text:p", this.GetNamespaceUri("text"));
+    //                cellValue.InnerText = row[i].ToString();
+    //                cellNode.AppendChild(cellValue);
+    //            }
 
-                rowNode.AppendChild(cellNode);
-            }
-        }
+    //            rowNode.AppendChild(cellNode);
+    //        }
+    //    }
 
-        private void SaveContentXml(ZipFile templateFile, XmlDocument contentXml)
-        {
-            templateFile.RemoveEntry("content.xml");
+    //    private void SaveContentXml(ZipFile templateFile, XmlDocument contentXml)
+    //    {
+    //        templateFile.RemoveEntry("content.xml");
 
-            MemoryStream memStream = new MemoryStream();
-            contentXml.Save(memStream);
-            memStream.Seek(0, SeekOrigin.Begin);
+    //        MemoryStream memStream = new MemoryStream();
+    //        contentXml.Save(memStream);
+    //        memStream.Seek(0, SeekOrigin.Begin);
 
-            templateFile.AddEntry("content.xml", memStream);
-        }
+    //        templateFile.AddEntry("content.xml", memStream);
+    //    }
 
-        private string GetNamespaceUri(string prefix)
-        {
-            for (int i = 0; i < namespaces.GetLength(0); i++)
-            {
-                if (namespaces[i, 0] == prefix)
-                    return namespaces[i, 1];
-            }
+    //    private string GetNamespaceUri(string prefix)
+    //    {
+    //        for (int i = 0; i < namespaces.GetLength(0); i++)
+    //        {
+    //            if (namespaces[i, 0] == prefix)
+    //                return namespaces[i, 1];
+    //        }
 
-            throw new InvalidOperationException("Can't find that namespace URI");
-        }
-    }
+    //        throw new InvalidOperationException("Can't find that namespace URI");
+    //    }
+    //}
+
 }

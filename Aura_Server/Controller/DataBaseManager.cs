@@ -1,10 +1,12 @@
-﻿using OdsReadWrite;
+﻿using Aura_Server.Excel;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using Aura.Model;
+
+
 
 
 namespace Aura_Server.Controller
@@ -88,16 +90,18 @@ namespace Aura_Server.Controller
             ReloadOrganisations();
 
 
-            string name = Guid.NewGuid().ToString() + ".xls";
+            string name = Guid.NewGuid().ToString() + ".xlsx";
 
             string filePath = name;
 
             var table = GetTable(queryString);
             var dataSet = ConvertDataTableToDataSet(table);
+            
+            var writer = new ExcelWriter();
 
-            OdsReaderWriter writer = new OdsReaderWriter();
 
-            writer.WriteOdsFile(dataSet, filePath);
+            writer.ExportToFile(dataSet, filePath);
+
 
             return filePath;
 

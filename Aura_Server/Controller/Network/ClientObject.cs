@@ -33,7 +33,7 @@ namespace Aura_Server.Controller.Network
             client = tcpClient;
             server = serverObject;
             serverObject.AddConnection(this);
-          //  CreateBroadcastStream();
+            //  CreateBroadcastStream();
         }
 
         protected internal void Process()
@@ -53,7 +53,7 @@ namespace Aura_Server.Controller.Network
 
                     catch (Exception ex)
                     {
-                       // Console.WriteLine(ex.ToString());
+                        // Console.WriteLine(ex.ToString());
                         Console.WriteLine("\n\nClient connection closed");
                         Console.WriteLine(ex.ToString());
                         break;
@@ -64,12 +64,12 @@ namespace Aura_Server.Controller.Network
             }
             catch (Exception ex)
             {
-               // Console.WriteLine(e.Message);
+                // Console.WriteLine(e.Message);
                 Console.WriteLine("\n\nClient connection closed");
                 Console.WriteLine(ex.ToString());
                 Close();
             }
-            
+
         }
 
         protected internal void Close()
@@ -109,8 +109,8 @@ namespace Aura_Server.Controller.Network
 
             //try
             //{
-                bf.Serialize(ms, ob);
-                Send(ms.GetBuffer());
+            bf.Serialize(ms, ob);
+            Send(ms.GetBuffer());
 
             //}
             //catch (Exception ex)
@@ -152,15 +152,15 @@ namespace Aura_Server.Controller.Network
         private string ReceiveString(NetworkStream st)
         {
             //метод получения одного сообщения
-           // try
+            // try
             {
                 StringBuilder sb = new StringBuilder();
 
                 var data = new byte[64];
-                var size = new byte[4];                
+                var size = new byte[4];
                 int readCount;
                 int totalReadMessageBytes = 0;
-               
+
                 st.Read(size, 0, 4);
                 int messageLenght = BitConverter.ToInt32(size, 0);
 
@@ -171,8 +171,8 @@ namespace Aura_Server.Controller.Network
                     if (totalReadMessageBytes >= messageLenght)
                         break;
                 }
-                Console.WriteLine("\n\n"+sb.ToString());
-                Console.WriteLine("Size is - " + messageLenght+"\n\n");
+                Console.WriteLine("\n\n" + sb.ToString());
+                Console.WriteLine("Size is - " + messageLenght + "\n\n");
                 return sb.ToString();
 
             }
@@ -186,7 +186,7 @@ namespace Aura_Server.Controller.Network
         private object ReceiveObject(NetworkStream st)
         {
             //метод получения сериализованного объекта
-         //   try
+            //   try
             {
                 var ms = new MemoryStream();
                 var binaryWriter = new BinaryWriter(ms);
@@ -235,11 +235,11 @@ namespace Aura_Server.Controller.Network
 
         private void Send(byte[] data)
         {
-          //  try
+            //  try
             {
                 int size = data.Length;
                 byte[] preparedSize = BitConverter.GetBytes(size);
-                Console.WriteLine("Size is - : "+size);
+                Console.WriteLine("Size is - : " + size);
                 stream.Write(preparedSize, 0, preparedSize.Length);
                 stream.Write(data, 0, data.Length);
 
