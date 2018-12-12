@@ -44,3 +44,4 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\ClosedX
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\DocumentFormat.OpenXml.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\ExcelNumberFormat.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Release\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\obj\Release\Aura_Server.csprojAssemblyReference.cache
