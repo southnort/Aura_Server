@@ -20,9 +20,7 @@ namespace Aura_Server.Controller.Network
         private NetworkStream stream;
         TcpClient client;
         ServerObject server; // объект сервера
-
-
-        private TcpClient broadcastClient;
+     
         protected internal NetworkStream broadcastStream { get; private set; }      //поток для отправки оповещений
 
 
@@ -42,25 +40,25 @@ namespace Aura_Server.Controller.Network
             {
                 stream = client.GetStream();
 
-                // в бесконечном цикле получаем сообщения от клиента
-                while (true)
-                {
-                    try
-                    {
-                        string message = ReceiveString(stream);
-                        server.HandleMessage(message, this);
-                    }
+                //получаем сообщение от клиента
 
-                    catch (Exception ex)
-                    {
-                        // Console.WriteLine(ex.ToString());
-                        Console.WriteLine("\n\nClient connection closed");
-                        Console.WriteLine(ex.ToString());
-                        break;
-                    }
+                try
+                {
+                    string message = ReceiveString(stream);
+                    server.HandleMessage(message, this);
+                    Close();
                 }
 
-                Close();
+                catch (Exception ex)
+                {
+                    // Console.WriteLine(ex.ToString());
+                    Console.WriteLine("\n\nClient connection closed");
+                    Console.WriteLine(ex.ToString());
+
+                }
+
+
+                
             }
             catch (Exception ex)
             {
@@ -84,8 +82,7 @@ namespace Aura_Server.Controller.Network
 
             if (broadcastStream != null)
                 broadcastStream.Close();
-            if (broadcastClient != null)
-                broadcastClient.Close();
+           
 
         }
 

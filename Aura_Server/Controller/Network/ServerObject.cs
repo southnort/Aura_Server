@@ -14,7 +14,6 @@ namespace Aura_Server.Controller.Network
     /// Предназначен для клиент-серверного взаимодействия.
     /// Устанавливается на стороне сервера.
     /// Принимает новые подключения и создает на каждое из них ClientObject.
-    /// Выполняет массовое оповещение всех клиентов.
     /// </summary>
     class ServerObject
     {
@@ -154,39 +153,7 @@ namespace Aura_Server.Controller.Network
 
         }
 
-
-
-        protected internal void BroadcastMessage(string message, object ob)
-        {
-            //трансляция сообщения всем подключенным клиентам
-            Console.WriteLine("######## BROADCASTING " + message + " " + ob.GetType());
-            byte[] data = Encoding.Unicode.GetBytes(message);
-            int size = data.Length;
-            byte[] preparedSize = BitConverter.GetBytes(size);
-
-            foreach (var pair in clients)
-            {
-                pair.Value.broadcastStream.Write(preparedSize, 0, preparedSize.Length);
-                pair.Value.broadcastStream.Write(data, 0, data.Length); //передача данных
-            }
-
-            BinaryFormatter bf = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream();
-            bf.Serialize(ms, ob);
-            data = ms.GetBuffer();
-            size = data.Length;
-            preparedSize = BitConverter.GetBytes(size);
-
-
-            foreach (var pair in clients)
-            {
-                pair.Value.broadcastStream.Write(preparedSize, 0, preparedSize.Length);
-                pair.Value.broadcastStream.Write(data, 0, data.Length); //передача сериализованного объекта
-            }
-
-
-        }
-
+                      
         protected internal void SendMessage(string message, string connectionID)
         {
             clients[connectionID].SendMessage(message);
