@@ -163,7 +163,7 @@ namespace Aura_Server
             //statusSwitchTimer.Enabled = true;
 
             System.Timers.Timer backupTimer = new System.Timers.Timer();
-            backupTimer.Interval = 10800000;
+            backupTimer.Interval = 86400000;
             backupTimer.AutoReset = true;
             backupTimer.Elapsed += BackupTimer_Elapsed;
             backupTimer.Enabled = true;
