@@ -99,7 +99,7 @@ namespace Aura_Server.Controller.Network
                 case ("GETITEM"): server.SendObject(GetSingleObject(message), connectionID); break;
 
                 case ("GETLOGS"): server.SendObject(GetLogs(message), connectionID); break;
-
+                
                 default:
                     {
                         server.SendObject(null, connectionID);
@@ -426,7 +426,8 @@ namespace Aura_Server.Controller.Network
             
             return Program.dataBase.CreateExcelFile(message[3]);
             
-        }
+        }       
+
     }
 
 

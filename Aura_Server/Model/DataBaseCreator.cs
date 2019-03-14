@@ -25,6 +25,9 @@ namespace Aura_Server.Model
             commandString = CreateCommandString_Contracts();
             CreateDataBase(dbFileName, commandString);
 
+            commandString = CreateCommandString_Documentation();
+            CreateDataBase(dbFileName, commandString);
+
         }
 
         public void CreateDataBaseForLogs(string dbFileName)
@@ -248,6 +251,21 @@ namespace Aura_Server.Model
 
             return sb.ToString();
 
+        }
+
+        private string CreateCommandString_Documentation()
+        {
+            //строка для БД создание раздела документации
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IF NOT EXISTS Documentation (");
+
+            sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+            sb.Append("nodeDate TEXT, ");
+            sb.Append("text TEXT");
+
+            sb.Append(")");
+
+            return sb.ToString();
         }
 
 
