@@ -29,21 +29,21 @@ namespace Aura_Server
         private static string dbForLogsFileName = "AuraDataBase_ForLogs.sqlite";
         private static string dbFileName = "AuraDataBase.sqlite";
 
-        [DllImport("user32.dll")]
-        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        //[DllImport("user32.dll")]
+        //private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-        [DllImport("kernel32.dll", ExactSpelling = true)]
-        private static extern IntPtr GetConsoleWindow();
+        //[DllImport("kernel32.dll", ExactSpelling = true)]
+        //private static extern IntPtr GetConsoleWindow();
 
 
-        private static bool showWindow = false;
+        //private static bool showWindow = false;
 
 
         static void Main()
         {
             try
             {
-                StartIcon();
+              //  StartIcon();
                 StartDataBases();
                 StartNetwork();
                 StartTimers();
@@ -58,7 +58,7 @@ namespace Aura_Server
                 Console.WriteLine("TEST SERVER");
 #endif
 
-                ShowForms();
+              //  ShowForms();
                 Console.WriteLine("Server starting successfully.");
 
                 //при сворачивании в трей без этого, программа завершает работу
@@ -67,7 +67,7 @@ namespace Aura_Server
             }
             catch (Exception ex)
             {
-                ShowWindow(GetConsoleWindow(), 1);
+               // ShowWindow(GetConsoleWindow(), 1);
                 Console.WriteLine("##############ERROR:\n");
                 Console.WriteLine(ex.ToString());
                 Console.Read();
@@ -91,24 +91,24 @@ namespace Aura_Server
             server.ClosePorts();            
         }
 
-        private static void StartIcon()
-        {            
-            var icon = new NotifyIcon();
-            icon.Icon = new Icon("Icon.ico");
-            icon.Visible = true;
-            icon.DoubleClick += new EventHandler(Icon_DoubleClick);
-            icon.Text = "Aura Server Console";
+        //private static void StartIcon()
+        //{            
+        //    var icon = new NotifyIcon();
+        //    icon.Icon = new Icon("Icon.ico");
+        //    icon.Visible = true;
+        //    icon.DoubleClick += new EventHandler(Icon_DoubleClick);
+        //    icon.Text = "Aura Server Console";
 
-            ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
+        //    ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
 
-        }
+        //}
 
-        private static void Icon_DoubleClick(object sender, EventArgs e)
-        {
-            showWindow = !showWindow;
-            ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
+        //private static void Icon_DoubleClick(object sender, EventArgs e)
+        //{
+        //    showWindow = !showWindow;
+        //    ShowWindow(GetConsoleWindow(), showWindow ? 0 : 1);
 
-        }
+        //}
 
         private static void StartDataBases()
         {
