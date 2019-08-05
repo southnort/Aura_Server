@@ -4,7 +4,6 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Xml;
-using Ionic.Zip;
 
 namespace OdsReadWrite
 {
