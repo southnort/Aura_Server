@@ -58,7 +58,7 @@ namespace Aura_Server
                 Console.WriteLine("TEST SERVER");
 #endif
 
-              //  ShowForms();
+                ShowForms();
                 Console.WriteLine("Server starting successfully.");
 
                 //при сворачивании в трей без этого, программа завершает работу

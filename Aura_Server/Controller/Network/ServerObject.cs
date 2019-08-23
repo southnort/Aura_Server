@@ -104,13 +104,13 @@ namespace Aura_Server.Controller.Network
         {
             try
             {
+                IPAddress addres = IPAddress.Parse(ConnectionSettings.Instance.serverInternalAddress);
+                IPEndPoint ipEndPoint = new IPEndPoint(addres, ConnectionSettings.Instance.serverListenPort);
+
                 client.AddPortMapping(true, "test", "TCP",
                     ConnectionSettings.Instance.serverExternalAddress,
                     ConnectionSettings.Instance.serverListenPort,
-                    new IPEndPoint(
-                        IPAddress.Parse(ConnectionSettings.Instance.serverInternalAddress),
-                        ConnectionSettings.Instance.serverListenPort),
-                   0);
+                    ipEndPoint, 0);
 
                 Console.WriteLine("Port opened");
             }
