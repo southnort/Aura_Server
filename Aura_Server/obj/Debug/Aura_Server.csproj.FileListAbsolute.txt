@@ -105,3 +105,12 @@ C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelData
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.xml
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.Data.SQLite.dll.config
 C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\LumiSoft.Net.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ClosedXML.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelNumberFormat.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\FastMember.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\System.IO.Packaging.dll
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ClosedXML.pdb
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ClosedXML.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Ярик\Documents\Projects\Aura_Server\Aura_Server\bin\Debug\ExcelNumberFormat.xml
