@@ -28,6 +28,9 @@ namespace Aura_Server.Model
             commandString = CreateCommandString_Documentation();
             CreateDataBase(dbFileName, commandString);
 
+            commandString = CreateCommandString_Stages();
+            CreateDataBase(dbFileName, commandString);
+
         }
 
         public void CreateDataBaseForLogs(string dbFileName)
@@ -263,6 +266,47 @@ namespace Aura_Server.Model
             sb.Append("nodeDate TEXT, ");
             sb.Append("text TEXT");
 
+            sb.Append(")");
+
+            return sb.ToString();
+        }
+
+        private string CreateCommandString_Stages()
+        {
+            //коммендная строка для создания таблицы статусов
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IF NOT EXISTS Stages (");
+
+            sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+            sb.Append("stageName TEXT, ");
+            sb.Append("isActual INTEGER");
+
+            sb.Append(")");
+
+            return sb.ToString();
+        }
+
+        private string CreateCommandString_Methods()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IF NOT EXISTS Methods (");
+
+            sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+            sb.Append("name TEXT");
+            sb.Append(")");
+
+            return sb.ToString();
+        }
+
+        private string CreateCommandString_PurchaseMethods_Methods_Stages()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("CREATE TABLE IN NOT EXISTS Methoda_Stages (");
+
+            sb.Append("method_id INTEGER, ");
+            sb.Append("stage_id INTEGER, ");
+            sb.Append("FOREIGN KEY(method_id) REFERENCES Methods(id), ");
+            sb.Append("FOREIGN KEY(stage_id) REFERENCES Stages(id)");
             sb.Append(")");
 
             return sb.ToString();
