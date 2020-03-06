@@ -31,6 +31,12 @@ namespace Aura_Server.Model
             commandString = CreateCommandString_Stages();
             CreateDataBase(dbFileName, commandString);
 
+            commandString = CreateCommandString_Methods();
+            CreateDataBase(dbFileName, commandString);
+
+            commandString = CreateCommandString_PurchaseMethods_Methods_Stages();
+            CreateDataBase(dbFileName, commandString);
+
         }
 
         public void CreateDataBaseForLogs(string dbFileName)
@@ -292,6 +298,7 @@ namespace Aura_Server.Model
             sb.Append("CREATE TABLE IF NOT EXISTS Methods (");
 
             sb.Append("id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+            sb.Append("isActual INTEGER, ");
             sb.Append("name TEXT");
             sb.Append(")");
 
@@ -301,7 +308,7 @@ namespace Aura_Server.Model
         private string CreateCommandString_PurchaseMethods_Methods_Stages()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("CREATE TABLE IN NOT EXISTS Methoda_Stages (");
+            sb.Append("CREATE TABLE IF NOT EXISTS Methods_Stages (");
 
             sb.Append("method_id INTEGER, ");
             sb.Append("stage_id INTEGER, ");
