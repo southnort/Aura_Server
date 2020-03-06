@@ -179,13 +179,13 @@ namespace Aura_Server.Controller
         {
             //конвертирует значения полей в текст. Например, ID сотрудника в его фамилию
 
-
+            var methods = Program.dataBase.GetTable("SELECT * FROM Methods");
 
             switch (columnName)
             {
                 case "employeID": return users[GetStr(val)];
                 case "organizationID": return organisations[GetStr(val)];
-                case "purchaseMethodID": return Catalog.purchaseMethods[GetInt(val)].name;
+                case "purchaseMethodID": return methods.Rows[GetInt(val)][2].ToString();
                 case "statusID": return Catalog.allStatuses[GetInt(val)];
 
                 case "law": return Catalog.laws[GetInt(val)];

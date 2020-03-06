@@ -1,145 +1,61 @@
-/*
+BEGIN TRANSACTION;
 
-последовательные скрипты для изменения БД
+INSERT INTO Stages (id, stageName,isActual) VALUES
+	(0, "<не указано>", 1),
+	(1, "Вскрытие конвертов", 1),
+	(2, "Рассмотрение", 1),
+	(3, "Оценка", 1),
+	(4, "Первые части", 1),
+	(5, "Вторые части", 1),
+	(6, "Итоговый протокол", 1);
+	
+INSERT INTO Methods (id, isActual, name) VALUES
+	(0, 1, "<не указано>"),
+	(1, 1, "Единственный поставщик"),
+	(2, 1, "Запрос котировок"),
+	(3, 1, "Открытый запрос котировок в электронной форме"),
+	(4, 1, "Электронный аукцион"),
+	(5, 1, "Конкурс"),
+	(6, 1, "Конкурс в электронной форме"),
+	(7, 1, "Открытый аукцион в электронной форме"),
+	(8, 1, "Аукцион в электронной форме, участниками которого могут быть только субъекты малого и среднего предпринимательства");
 
-*/
-
-
--- добавляем новые колонки
-ALTER TABLE Purchases ADD COLUMN stageID INTEGER
-
-ALTER TABLE Purchases ADD COLUMN bidsCount1 INTEGER
-ALTER TABLE Purchases ADD COLUMN bidsCount2 INTEGER
-ALTER TABLE Purchases ADD COLUMN bidsCount3 INTEGER
-
-ALTER TABLE Purchases ADD COLUMN protocolStatusID2 INTEGER
-ALTER TABLE Purchases ADD COLUMN protocolStatusID3 INTEGER
-
-
--- изменяем значения в таблицах
-
-
---статусы и этапы
-
-
-
--- 2 вскрытие
-UPDATE Purchases 
-SET 
-	statusID = '1',
-	stageID = '1'
-WHERE statusID = 2
-
-
--- 3 рассмотрение
-UPDATE Purchases 
-SET 
-	statusID = '1',
-	stageID = '2'	
-WHERE statusID = 3
-
--- 4 оценка
-UPDATE Purchases 
-SET 
-	statusID = '1',
-	stageID = '3'
-WHERE statusID = 4
-
-
--- 5 первые части
-UPDATE Purchases 
-SET 
-	statusID = '1',
-	stageID = '4'
-WHERE statusID = 5
-
-
--- 6 вторые части
-UPDATE Purchases 
-SET 
-	statusID = '1',
-	stageID = '5'
-WHERE statusID = 6
-
-
--- 7 итоговый протокол
-UPDATE Purchases 
-SET 
-	statusID = '1',
-	stageID = '6'
-WHERE statusID = 7
-
-
--- 8 завершена
-UPDATE Purchases
-SET
-	statusID = '2'
-WHERE statusID = 8
-
-
--- 9 отменена
-UPDATE Purchases
-SET 
-	statusID = '3'
-WHERE statusID = 9
-
-
-
--- статусы протоколов
-
--- 1 0 заявок
-UPDATE Purchases
-SET 
-	protocolStatusID = '0',
-	protocolStatusID2 = '0',
-	protocolStatusID3 = '0',
-	bidsCount1 = '3',
-	bidsCount2 = '3',
-	bidsCount3 = '3'	
-WHERE protocolStatusID = 1
-
-
-
--- 2 1 заявка
-UPDATE Purchases
-SET 
-	protocolStatusID = '0',
-	protocolStatusID2 = '0',
-	protocolStatusID3 = '0',	
-	bidsCount1 = '1',
-	bidsCount2 = '1',
-	bidsCount3 = '1'	
-WHERE protocolStatusID = 2
-
-
--- 3 2 заявки
-UPDATE Purchases
-SET 
-	protocolStatusID = '0',
-	protocolStatusID2 = '0',
-	protocolStatusID2 = '0',
-	bidsCount1 = '2',
-	bidsCount2 = '2',
-	bidsCount3 = '2'	
-WHERE protocolStatusID = 3
-
--- 4 жду скан
-UPDATE Purchases
-SET
-	protocolStatusID = '1',
-	protocolStatusID2 = '1',
-	protocolStatusID3 = '1'
-WHERE protocolStatusID = 4
-
--- 5 опубликовано
-UPDATE Purchases
-SET 
-	protocolStatusID = '2',
-	protocolStatusID2 = '2',
-	protocolStatusID3 = '2'
-WHERE protocolStatusID = 5
-
-
-
-
-
+INSERT INTO Methods_Stages (method_id, stage_id) VALUES
+	(0,0),
+	(1,0),
+	
+	(2,0),
+	(2,1),
+	(2,2),
+	(2,3),
+	
+	(3,0),
+	(3,1),
+	(3,2),
+	(3,3),
+	
+	(4,0),
+	(4,4),
+	(4,5),
+	(4,6),
+	
+	(5,0),
+	(5,1),
+	(5,2),
+	(5,3),
+	
+	(6,0),
+	(6,1),
+	(6,2),
+	(6,3),
+	
+	(7,0),
+	(7,4),
+	(7,5),
+	(7,6),
+	
+	(8,0),
+	(8,4),
+	(8,5),
+	(8,6);
+COMMIT;
